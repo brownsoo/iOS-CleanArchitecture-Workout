@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		17E098892A965F8D00178398 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E098882A965F8D00178398 /* AppDelegate.swift */; };
 		17E0988B2A965F8D00178398 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E0988A2A965F8D00178398 /* SceneDelegate.swift */; };
-		17E0988D2A965F8D00178398 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E0988C2A965F8D00178398 /* ViewController.swift */; };
-		17E098902A965F8D00178398 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17E0988E2A965F8D00178398 /* Main.storyboard */; };
+		17E0988D2A965F8D00178398 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E0988C2A965F8D00178398 /* MainViewController.swift */; };
 		17E098922A965F8E00178398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E098912A965F8E00178398 /* Assets.xcassets */; };
 		17E098952A965F8E00178398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17E098932A965F8E00178398 /* LaunchScreen.storyboard */; };
-		17E098A02A965F8E00178398 /* KisTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E0989F2A965F8E00178398 /* KisTestTests.swift */; };
-		17E098AA2A965F8E00178398 /* KisTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E098A92A965F8E00178398 /* KisTestUITests.swift */; };
-		17E098AC2A965F8E00178398 /* KisTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E098AB2A965F8E00178398 /* KisTestUITestsLaunchTests.swift */; };
+		17E098A02A965F8E00178398 /* AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E0989F2A965F8E00178398 /* AppTests.swift */; };
+		17E098AA2A965F8E00178398 /* AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E098A92A965F8E00178398 /* AppUITests.swift */; };
+		17E098AC2A965F8E00178398 /* AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E098AB2A965F8E00178398 /* AppUITestsLaunchTests.swift */; };
+		17E098BB2A9666E700178398 /* AutoLayoutHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E098BA2A9666E700178398 /* AutoLayoutHelper.swift */; };
+		17E098BD2A966A6D00178398 /* Env.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E098BC2A966A6D00178398 /* Env.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,19 +37,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		17E098852A965F8D00178398 /* KisTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KisTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		17E098852A965F8D00178398 /* App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E098882A965F8D00178398 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17E0988A2A965F8D00178398 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		17E0988C2A965F8D00178398 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		17E0988F2A965F8D00178398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		17E0988C2A965F8D00178398 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		17E098912A965F8E00178398 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17E098942A965F8E00178398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		17E098962A965F8E00178398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		17E0989B2A965F8E00178398 /* KisTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KisTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		17E0989F2A965F8E00178398 /* KisTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KisTestTests.swift; sourceTree = "<group>"; };
-		17E098A52A965F8E00178398 /* KisTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KisTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		17E098A92A965F8E00178398 /* KisTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KisTestUITests.swift; sourceTree = "<group>"; };
-		17E098AB2A965F8E00178398 /* KisTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KisTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		17E0989B2A965F8E00178398 /* AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17E0989F2A965F8E00178398 /* AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTests.swift; sourceTree = "<group>"; };
+		17E098A52A965F8E00178398 /* AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		17E098A92A965F8E00178398 /* AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUITests.swift; sourceTree = "<group>"; };
+		17E098AB2A965F8E00178398 /* AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		17E098BA2A9666E700178398 /* AutoLayoutHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLayoutHelper.swift; sourceTree = "<group>"; };
+		17E098BC2A966A6D00178398 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +81,9 @@
 		17E0987C2A965F8D00178398 = {
 			isa = PBXGroup;
 			children = (
-				17E098872A965F8D00178398 /* KisTest */,
-				17E0989E2A965F8E00178398 /* KisTestTests */,
-				17E098A82A965F8E00178398 /* KisTestUITests */,
+				17E098872A965F8D00178398 /* App */,
+				17E0989E2A965F8E00178398 /* AppTests */,
+				17E098A82A965F8E00178398 /* AppUITests */,
 				17E098862A965F8D00178398 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -89,50 +91,67 @@
 		17E098862A965F8D00178398 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				17E098852A965F8D00178398 /* KisTest.app */,
-				17E0989B2A965F8E00178398 /* KisTestTests.xctest */,
-				17E098A52A965F8E00178398 /* KisTestUITests.xctest */,
+				17E098852A965F8D00178398 /* App.app */,
+				17E0989B2A965F8E00178398 /* AppTests.xctest */,
+				17E098A52A965F8E00178398 /* AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		17E098872A965F8D00178398 /* KisTest */ = {
+		17E098872A965F8D00178398 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				17E098B92A96668000178398 /* Support */,
+				17E098B82A96623B00178398 /* Env */,
 				17E098882A965F8D00178398 /* AppDelegate.swift */,
 				17E0988A2A965F8D00178398 /* SceneDelegate.swift */,
-				17E0988C2A965F8D00178398 /* ViewController.swift */,
-				17E0988E2A965F8D00178398 /* Main.storyboard */,
+				17E0988C2A965F8D00178398 /* MainViewController.swift */,
 				17E098912A965F8E00178398 /* Assets.xcassets */,
 				17E098932A965F8E00178398 /* LaunchScreen.storyboard */,
 				17E098962A965F8E00178398 /* Info.plist */,
 			);
-			path = KisTest;
+			path = App;
 			sourceTree = "<group>";
 		};
-		17E0989E2A965F8E00178398 /* KisTestTests */ = {
+		17E0989E2A965F8E00178398 /* AppTests */ = {
 			isa = PBXGroup;
 			children = (
-				17E0989F2A965F8E00178398 /* KisTestTests.swift */,
+				17E0989F2A965F8E00178398 /* AppTests.swift */,
 			);
-			path = KisTestTests;
+			path = AppTests;
 			sourceTree = "<group>";
 		};
-		17E098A82A965F8E00178398 /* KisTestUITests */ = {
+		17E098A82A965F8E00178398 /* AppUITests */ = {
 			isa = PBXGroup;
 			children = (
-				17E098A92A965F8E00178398 /* KisTestUITests.swift */,
-				17E098AB2A965F8E00178398 /* KisTestUITestsLaunchTests.swift */,
+				17E098A92A965F8E00178398 /* AppUITests.swift */,
+				17E098AB2A965F8E00178398 /* AppUITestsLaunchTests.swift */,
 			);
-			path = KisTestUITests;
+			path = AppUITests;
+			sourceTree = "<group>";
+		};
+		17E098B82A96623B00178398 /* Env */ = {
+			isa = PBXGroup;
+			children = (
+				17E098BC2A966A6D00178398 /* Env.swift */,
+			);
+			path = Env;
+			sourceTree = "<group>";
+		};
+		17E098B92A96668000178398 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				17E098BA2A9666E700178398 /* AutoLayoutHelper.swift */,
+			);
+			path = Support;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		17E098842A965F8D00178398 /* KisTest */ = {
+		17E098842A965F8D00178398 /* App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 17E098AF2A965F8E00178398 /* Build configuration list for PBXNativeTarget "KisTest" */;
+			buildConfigurationList = 17E098AF2A965F8E00178398 /* Build configuration list for PBXNativeTarget "App" */;
 			buildPhases = (
 				17E098812A965F8D00178398 /* Sources */,
 				17E098822A965F8D00178398 /* Frameworks */,
@@ -142,14 +161,14 @@
 			);
 			dependencies = (
 			);
-			name = KisTest;
+			name = App;
 			productName = KisTest;
-			productReference = 17E098852A965F8D00178398 /* KisTest.app */;
+			productReference = 17E098852A965F8D00178398 /* App.app */;
 			productType = "com.apple.product-type.application";
 		};
-		17E0989A2A965F8E00178398 /* KisTestTests */ = {
+		17E0989A2A965F8E00178398 /* AppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 17E098B22A965F8E00178398 /* Build configuration list for PBXNativeTarget "KisTestTests" */;
+			buildConfigurationList = 17E098B22A965F8E00178398 /* Build configuration list for PBXNativeTarget "AppTests" */;
 			buildPhases = (
 				17E098972A965F8E00178398 /* Sources */,
 				17E098982A965F8E00178398 /* Frameworks */,
@@ -160,14 +179,14 @@
 			dependencies = (
 				17E0989D2A965F8E00178398 /* PBXTargetDependency */,
 			);
-			name = KisTestTests;
+			name = AppTests;
 			productName = KisTestTests;
-			productReference = 17E0989B2A965F8E00178398 /* KisTestTests.xctest */;
+			productReference = 17E0989B2A965F8E00178398 /* AppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		17E098A42A965F8E00178398 /* KisTestUITests */ = {
+		17E098A42A965F8E00178398 /* AppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 17E098B52A965F8E00178398 /* Build configuration list for PBXNativeTarget "KisTestUITests" */;
+			buildConfigurationList = 17E098B52A965F8E00178398 /* Build configuration list for PBXNativeTarget "AppUITests" */;
 			buildPhases = (
 				17E098A12A965F8E00178398 /* Sources */,
 				17E098A22A965F8E00178398 /* Frameworks */,
@@ -178,9 +197,9 @@
 			dependencies = (
 				17E098A72A965F8E00178398 /* PBXTargetDependency */,
 			);
-			name = KisTestUITests;
+			name = AppUITests;
 			productName = KisTestUITests;
-			productReference = 17E098A52A965F8E00178398 /* KisTestUITests.xctest */;
+			productReference = 17E098A52A965F8E00178398 /* AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -219,9 +238,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				17E098842A965F8D00178398 /* KisTest */,
-				17E0989A2A965F8E00178398 /* KisTestTests */,
-				17E098A42A965F8E00178398 /* KisTestUITests */,
+				17E098842A965F8D00178398 /* App */,
+				17E0989A2A965F8E00178398 /* AppTests */,
+				17E098A42A965F8E00178398 /* AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -233,7 +252,6 @@
 			files = (
 				17E098952A965F8E00178398 /* LaunchScreen.storyboard in Resources */,
 				17E098922A965F8E00178398 /* Assets.xcassets in Resources */,
-				17E098902A965F8D00178398 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,7 +276,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17E0988D2A965F8D00178398 /* ViewController.swift in Sources */,
+				17E098BD2A966A6D00178398 /* Env.swift in Sources */,
+				17E098BB2A9666E700178398 /* AutoLayoutHelper.swift in Sources */,
+				17E0988D2A965F8D00178398 /* MainViewController.swift in Sources */,
 				17E098892A965F8D00178398 /* AppDelegate.swift in Sources */,
 				17E0988B2A965F8D00178398 /* SceneDelegate.swift in Sources */,
 			);
@@ -268,7 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17E098A02A965F8E00178398 /* KisTestTests.swift in Sources */,
+				17E098A02A965F8E00178398 /* AppTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,8 +296,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17E098AC2A965F8E00178398 /* KisTestUITestsLaunchTests.swift in Sources */,
-				17E098AA2A965F8E00178398 /* KisTestUITests.swift in Sources */,
+				17E098AC2A965F8E00178398 /* AppUITestsLaunchTests.swift in Sources */,
+				17E098AA2A965F8E00178398 /* AppUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,25 +306,17 @@
 /* Begin PBXTargetDependency section */
 		17E0989D2A965F8E00178398 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 17E098842A965F8D00178398 /* KisTest */;
+			target = 17E098842A965F8D00178398 /* App */;
 			targetProxy = 17E0989C2A965F8E00178398 /* PBXContainerItemProxy */;
 		};
 		17E098A72A965F8E00178398 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 17E098842A965F8D00178398 /* KisTest */;
+			target = 17E098842A965F8D00178398 /* App */;
 			targetProxy = 17E098A62A965F8E00178398 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		17E0988E2A965F8D00178398 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				17E0988F2A965F8D00178398 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		17E098932A965F8E00178398 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -438,10 +450,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KisTest/Info.plist;
+				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
@@ -469,10 +480,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KisTest/Info.plist;
+				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
@@ -576,7 +586,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		17E098AF2A965F8E00178398 /* Build configuration list for PBXNativeTarget "KisTest" */ = {
+		17E098AF2A965F8E00178398 /* Build configuration list for PBXNativeTarget "App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17E098B02A965F8E00178398 /* Debug */,
@@ -585,7 +595,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		17E098B22A965F8E00178398 /* Build configuration list for PBXNativeTarget "KisTestTests" */ = {
+		17E098B22A965F8E00178398 /* Build configuration list for PBXNativeTarget "AppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17E098B32A965F8E00178398 /* Debug */,
@@ -594,7 +604,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		17E098B52A965F8E00178398 /* Build configuration list for PBXNativeTarget "KisTestUITests" */ = {
+		17E098B52A965F8E00178398 /* Build configuration list for PBXNativeTarget "AppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17E098B62A965F8E00178398 /* Debug */,
