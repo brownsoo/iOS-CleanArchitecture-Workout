@@ -1,5 +1,5 @@
 //
-//  Character.swift
+//  MarvelCharacter.swift
 //  KisTest
 //
 //  Created by hyonsoo han on 2023/08/24.
@@ -11,15 +11,14 @@ struct MarvelCharacter: Identifiable {
     let id: Int
     let name: String
     let description: String
-    let modified: Date?
     /// The canonical URL identifier for this resource.
     let resourceURI: String
-    let urls: [MarvelURL]
-    let thumbnail: MarvelImage
-//    let comics: MarvelResourceList<MarvelComic>
-//    let stories: MarvelResourceList<MarvelStory>
-//    let events: MarvelResourceList<MarvelStory>
-//    let series: MarvelResourceList<MarvelSerise>
+    let urls: [String]
+    let thumbnail: String
+    let comics: MarvelResourceList
+    let stories: MarvelResourceList
+    let events: MarvelResourceList
+    let series: MarvelResourceList
 }
 
 extension MarvelCharacter: Equatable {
@@ -27,3 +26,4 @@ extension MarvelCharacter: Equatable {
         return lhs.id == rhs.id
     }
 }
+

@@ -1,5 +1,5 @@
 //
-//  MarvelImage.swift
+//  ResMarvelImage.swift
 //  KisTest
 //
 //  Created by hyonsoo han on 2023/08/24.
@@ -7,15 +7,12 @@
 
 import Foundation
 
-struct MarvelImage: Identifiable, Equatable {
-    var id: String {
-        self.path
-    }
+struct ResMarvelImage: Decodable {
     let path: String
     let `extension`: String
 }
 
-extension MarvelImage {
+extension ResMarvelImage {
     var fullPath: String {
         self.path + self.extension
     }

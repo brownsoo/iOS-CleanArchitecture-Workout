@@ -8,6 +8,7 @@
 import Foundation
 
 struct ResMarvelResults<T: Decodable>: Decodable {
+    
     let code: Int
     let status: String
     let data: ResMarvelContainer<T>
@@ -15,9 +16,29 @@ struct ResMarvelResults<T: Decodable>: Decodable {
 }
 
 struct ResMarvelContainer<T: Decodable>: Decodable {
-    let offset: Int
-    let limit: Int
-    let total: Int
-    let count: Int
-    let results: [T]
+    var offset: Int
+    var limit: Int
+    var total: Int
+    var count: Int
+    var results: [T]
+}
+
+extension ResMarvelContainer {
+    /// 1~n
+    func getPage() -> Int {
+        (offset / limit) + 1
+    }
+    /// 0~n
+    func getTotalPages() -> Int {
+        Int(ceil(Double(total) / Double(limit)))
+    }
+}
+
+extension ResMarvelResults<ResMarvelCharacter> {
+    func toPagedList() -> PagedList<MarvelCharacter> {
+        return PagedList(totalCount: data.total,
+                         page: data.getPage(),
+                         totalPages: data.getTotalPages(),
+                         items: data.results.map { $0.toDomain() })
+    }
 }
