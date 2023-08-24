@@ -22,7 +22,5 @@ class MainViewController: UIViewController {
             v.edgesConstraintTo(view.safeAreaLayoutGuide ,edges: [.top, .leading])
         }
     }
-
-
 }
 
