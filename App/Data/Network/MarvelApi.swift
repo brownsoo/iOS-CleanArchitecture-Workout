@@ -28,7 +28,7 @@ struct CharacterApi {
     }
     
     func searchComics(characterId: String, page: Int = 1, limit: Int = 20) -> ApiResource<ResMarvelResults<ResMarvelComic>> {
-        return self.searchComics(collectionURI: "/v1/public/characters/\(characterId)/comics")
+        return self.searchComics(collectionURI: "/v1/public/characters/\(characterId)/comics", page: page, limit: limit)
     }
     
     func searchComics(collectionURI: String, page: Int = 1, limit: Int = 20) -> ApiResource<ResMarvelResults<ResMarvelComic>> {

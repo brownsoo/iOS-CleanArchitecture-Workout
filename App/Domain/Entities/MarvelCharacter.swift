@@ -12,9 +12,9 @@ struct MarvelCharacter: Identifiable {
     let name: String
     let description: String
     /// The canonical URL identifier for this resource.
-    let resourceURI: String
-    let urls: [String]
-    let thumbnail: String
+    let resourceURI: URL?
+    let urls: [URL]
+    let thumbnail: URL?
     let comics: MarvelResourceList
     let stories: MarvelResourceList
     let events: MarvelResourceList

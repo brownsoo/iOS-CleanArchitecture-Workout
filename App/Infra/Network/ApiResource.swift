@@ -7,17 +7,10 @@
 
 import Foundation
 
-protocol ApiEndpoint {
-    var urlString: String { get }
-    var headers: [String: String] { get }
-    var parameters: [String: Any]? { get }
-}
-
 struct ApiResource<A>: Resource {
     let endpoint: ApiEndpoint
     let method: HttpMethod
     let body: Data?
-    let file: URL?
     
     var headers: [String: String] {
         endpoint.headers
@@ -30,13 +23,11 @@ struct ApiResource<A>: Resource {
     
     init(_ endpoint: ApiEndpoint,
          method: HttpMethod = .get,
-         body: Data? =  nil,
-         file: URL? = nil
+         body: Data? =  nil
     ) {
         self.endpoint = endpoint
         self.method = method
         self.body = body
-        self.file = file
     }
     
     private func paramsAppendix() -> String {
@@ -44,5 +35,15 @@ struct ApiResource<A>: Resource {
             return ""
         }
         return "?\(params.map { "\($0.key)=\($0.value)" }.joined(separator: "&"))"
+    }
+    
+    func toUrlRequest() throws -> URLRequest {
+        var request = URLRequest(url: self.url)
+        if let body = self.body {
+            request.httpBody = body
+        }
+        request.httpMethod = self.method.rawValue
+        request.allHTTPHeaderFields = self.headers
+        return request
     }
 }

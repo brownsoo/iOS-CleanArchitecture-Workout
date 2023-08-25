@@ -14,7 +14,7 @@ struct ResMarvelComic: Decodable {
     /// The canonical title of the comic.,
     let title: String
     /// The number of the issue in the series (will generally be 0 for collection formats).,
-    let issueNumber: Double
+    let issueNumber: Double?
     /// If the issue is a variant (e.g. an alternate cover, second printing, or director’s cut), a text description of the variant.,
     let variantDescription: String?
     /// The preferred description of the comic.,
@@ -48,4 +48,24 @@ struct ResMarvelComic: Decodable {
     let stories: ResMarvelResourceList<ResMarvelStorySummary>
     let events: ResMarvelResourceList<ResMarvelEventSummary>
     let series: ResMarvelResourceList<ResMarvelSeriesSummary>
+}
+
+extension ResMarvelComic {
+    func toDomain() -> MarvelComic {
+        MarvelComic(id: self.id,
+                    digitalId: self.digitalId,
+                    title: self.title,
+                    description: self.description,
+                    format: self.format,
+                    pageCount: self.pageCount,
+                    resourceURI: URL(string: self.resourceURI),
+                    urls: self.urls.compactMap({ URL(string: $0.url) }),
+                    thumbnail: URL(string: self.thumbnail.fullPath),
+                    images: self.images.compactMap({ URL(string: $0.fullPath) }),
+                    creators: self.creators.toDomain(),
+                    comics: self.comics.toDomain(),
+                    stories: self.stories.toDomain(),
+                    events: self.events.toDomain(),
+                    series: self.series.toDomain())
+    }
 }

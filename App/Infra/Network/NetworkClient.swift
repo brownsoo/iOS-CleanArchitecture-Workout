@@ -6,23 +6,61 @@
 //
 
 import Foundation
+import Alamofire
 
-class NetworkClient {
-    private var decoder: JSONDecoder = {
-        let decorder = JSONDecoder()
-        let formatter = DateFormatter()
-        decorder.dateDecodingStrategy = .custom({ decoder in
-            // 2014-04-29T14:18:17-0400
-            let container = try decoder.singleValueContainer()
-            let dateString = try container.decode(String.self)
-            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-            if let date = formatter.date(from: dateString) {
-                return date
-            }
-            throw DecodingError.dataCorruptedError(
-                in: container,
-                debugDescription: "Cannot decode date: \(dateString)")
-        })
-        return decorder
+protocol NetworkClient {
+    func request(_ resource: Resource) async throws -> Data
+}
+
+class DefaultNetworkClient: NetworkClient {
+    
+    let session: Alamofire.Session = {
+        let config = URLSessionConfiguration.af.default
+        let apiLogger = AlarmoLogger()
+#if DEBUG
+        return Session(configuration: config, eventMonitors: [apiLogger])
+#else
+        return Session(configuration: config)
+#endif
     }()
+    
+    func request(_ resource: Resource) async throws -> Data {
+        let request = try resource.toUrlRequest()
+        let task = self.session.request(request)
+            .validate(statusCode: 200..<299)
+            .serializingData()
+        let response = await task.response
+        
+        switch response.result {
+            case .success(let data):
+                return data
+            case .failure(let afError):
+                throw self.handleError(afError, withData: response.data)
+        }
+    }
+                                        
+    private func handleError(_ error: AFError, withData data: Data?) -> AppError {
+        if let data = data,
+           let res = try? JSONDecoder().decode(ResMarvelError.self, from: data) {
+            return AppError.requestFailed(statusCode: res.code, message: res.status)
+        }
+        if let nsError = error.underlyingError as? NSError {
+            switch(nsError.code) {
+                case NSURLErrorTimedOut,
+                    NSURLErrorNotConnectedToInternet,
+                    NSURLErrorInternationalRoamingOff,
+                    NSURLErrorDataNotAllowed,
+                    NSURLErrorCannotFindHost,
+                    NSURLErrorCannotConnectToHost,
+                    NSURLErrorNetworkConnectionLost:
+                    return .networkDisconnected
+                default:
+                    break
+                    
+            }
+        }
+        return .networkError(cause: error)
+    }
+    
+    
 }
