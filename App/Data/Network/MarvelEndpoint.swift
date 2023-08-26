@@ -14,10 +14,13 @@ struct MarvelEndpoint: ApiEndpoint {
     var headers: [String : String]
     var parameters: [String : Any]?
     
-    init(_ path: String, parameters: [String : Any]? = nil) {
+    init(_ path: String, etag: String? = nil, parameters: [String : Any]? = nil) {
         self.urlString = "\(apiHost)\(path)"
         self.headers = [:]
         self.headers["Content-Type"] = "application/json"
+        if etag != nil {
+            self.headers["If-None-Match"] = etag!
+        }
         var params = parameters ?? [:]
         params["apiKey"] = apiKey
         self.parameters = params

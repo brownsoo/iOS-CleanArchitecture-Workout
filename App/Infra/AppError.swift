@@ -14,6 +14,7 @@ enum AppError: Error {
     case emptyResponse
     case networkDisconnected
     case networkError(cause: Error)
+    case contentNotChanged
     case runtime(cause: Error, message: String?)
     case urlGenerate(urlString: String)
 }
@@ -35,6 +36,8 @@ extension AppError {
                 return "\(cause)"
             case .runtime(let cause, let message):
                 return "\(message ?? "runtime") \(cause)"
+            case .contentNotChanged:
+                return "컨텐츠 변경이 없음."
             case .urlGenerate(let urlString):
                 return "주소 형식이 맞지 않아요.\n\(urlString)"
         }

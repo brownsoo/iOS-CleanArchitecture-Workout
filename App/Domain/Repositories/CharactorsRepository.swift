@@ -8,6 +8,10 @@
 import Foundation
 
 protocol CharactorsRepository {
-    func fetch(page: Int) async throws -> [MarvelCharacter]
-    func get(id: Int) async throws -> MarvelCharacter?
+    func fetchList(page: Int,
+                   onCached: @escaping(PagedData<MarvelCharacter>) -> Void,
+                   onFetched: @escaping (Result<PagedData<MarvelCharacter>, Error>) -> Void
+    ) -> Cancellable
+    
+    func get(id: Int, onResult: @escaping (MarvelCharacter?) -> Void) -> Cancellable
 }

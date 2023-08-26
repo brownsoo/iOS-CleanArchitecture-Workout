@@ -35,10 +35,11 @@ extension ResMarvelContainer {
 }
 
 extension ResMarvelResults<ResMarvelCharacter> {
-    func toPagedList() -> PagedList<MarvelCharacter> {
-        return PagedList(totalCount: data.total,
+    func toPagedData() -> PagedData<MarvelCharacter> {
+        return PagedData(totalCount: data.total,
                          page: data.getPage(),
                          totalPages: data.getTotalPages(),
-                         items: data.results.map { $0.toDomain() })
+                         items: data.results.map { $0.toDomain() },
+                         etag: etag)
     }
 }

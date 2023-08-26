@@ -7,10 +7,11 @@
 
 import Foundation
 
-struct PagedList<Item: Identifiable> {
+struct PagedData<Item: Identifiable> {
     /// available total count of items
     var totalCount: Int
     var page: Int
     var totalPages: Int
     var items: [Item]
+    var etag: String
 }

@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 protocol NetworkClient {
-    func request(_ resource: Resource) async throws -> Data
+    func request(_ resource: Resource) async throws -> Response
 }
 
 class DefaultNetworkClient: NetworkClient {
@@ -24,7 +24,7 @@ class DefaultNetworkClient: NetworkClient {
 #endif
     }()
     
-    func request(_ resource: Resource) async throws -> Data {
+    func request(_ resource: Resource) async throws -> Response {
         let request = try resource.toUrlRequest()
         let task = self.session.request(request)
             .validate(statusCode: 200..<299)
@@ -33,7 +33,7 @@ class DefaultNetworkClient: NetworkClient {
         
         switch response.result {
             case .success(let data):
-                return data
+                return NetworkResponse(status: response.response?.statusCode ?? 0, data: data)
             case .failure(let afError):
                 throw self.handleError(afError, withData: response.data)
         }
