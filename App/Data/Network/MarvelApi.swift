@@ -11,6 +11,10 @@ class MarvelApi {
     static var character: CharacterApi = {
         CharacterApi()
     }()
+    
+    static var comic: ComicApi = {
+        ComicApi()
+    }()
 }
 
 struct CharacterApi {
@@ -18,7 +22,8 @@ struct CharacterApi {
         return NetworkResource(
             MarvelEndpoint("/v1/public/characters",
                            etag: etag,
-                           parameters: ["offset" : page * limit, "limit": limit])
+                           parameters: ["offset" : page * limit,
+                                        "limit": limit])
         )
     }
     
@@ -29,14 +34,21 @@ struct CharacterApi {
         )
     }
     
-    func searchComics(characterId: String, page: Int = 1, limit: Int = 20, etag: String? = nil) -> NetworkResource<ResMarvelResults<ResMarvelComic>> {
-        return self.searchComics(collectionURI: "/v1/public/characters/\(characterId)/comics", page: page, limit: limit)
-    }
-    
-    func searchComics(collectionURI: String, page: Int = 1, limit: Int = 20) -> NetworkResource<ResMarvelResults<ResMarvelComic>> {
+    func searchComics(characterId: Int, page: Int = 1, limit: Int = 20, etag: String? = nil) -> NetworkResource<ResMarvelResults<ResMarvelComic>> {
         return NetworkResource(
-            MarvelEndpoint(collectionURI,
-                           parameters: ["offset" : page * limit, "limit": limit])
+            MarvelEndpoint("/v1/public/characters/\(characterId)/comics",
+                           etag: etag,
+                           parameters: ["offset" : page * limit,
+                                        "limit": limit])
+        )
+    }
+}
+
+
+struct ComicApi {
+    func get(comicId: Int, etag: String? = nil) -> NetworkResource<ResMarvelResults<ResMarvelComic>> {
+        return NetworkResource(
+            MarvelEndpoint("/v1/public/comics/\(comicId)", etag: etag)
         )
     }
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// 네트워크에서 데이터 모델을 제공 
 protocol NetworkDataService {
     func request<T>(_ resource: NetworkResource<T>) async throws -> T where T: Decodable
 }
@@ -15,8 +16,8 @@ final class DefaultNetworkDataService {
     private let client: NetworkClient
     private let decoder: ResponseDecoder
     
-    init(client: NetworkClient = DefaultNetworkClient(),
-         decoder: ResponseDecoder = JSONResponseDecoder()) {
+    init(client: NetworkClient,
+         decoder: ResponseDecoder) {
         self.client = client
         self.decoder = decoder
     }

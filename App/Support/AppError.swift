@@ -14,8 +14,8 @@ enum AppError: Error {
     case emptyResponse
     case networkDisconnected
     case networkError(cause: Error)
-    case contentNotChanged
     case runtime(cause: Error, message: String?)
+    case contentNotChanged
     case urlGenerate(urlString: String)
 }
 

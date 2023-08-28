@@ -7,8 +7,9 @@
 
 import Foundation
 
-protocol CharacterStorage {
-    func getData(page: Int) async -> PagedData<MarvelCharacter>
+protocol CharactersStorage {
+    func getData(page: Int) async throws -> PagedData<MarvelCharacter>?
+    func getCharactor(id: Int) async throws -> MarvelCharacter?
     func save(data: PagedData<MarvelCharacter>) async -> Void
 }
 

@@ -9,5 +9,5 @@ import Foundation
 
 struct MarvelResourceList: Equatable {
     let availableCount: Int
-    let collectionURI: String
+    var collectionURI: String?
 }

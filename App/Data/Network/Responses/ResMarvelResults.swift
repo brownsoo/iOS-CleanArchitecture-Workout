@@ -43,3 +43,13 @@ extension ResMarvelResults<ResMarvelCharacter> {
                          etag: etag)
     }
 }
+
+extension ResMarvelResults<ResMarvelComic> {
+    func toPagedData() -> PagedData<MarvelComic> {
+        return PagedData(totalCount: data.total,
+                         page: data.getPage(),
+                         totalPages: data.getTotalPages(),
+                         items: data.results.map { $0.toDomain() },
+                         etag: etag)
+    }
+}

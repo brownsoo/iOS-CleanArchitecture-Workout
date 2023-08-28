@@ -8,10 +8,10 @@
 import Foundation
 
 struct PagedData<Item: Identifiable> {
+    var page: Int
     /// available total count of items
     var totalCount: Int
-    var page: Int
     var totalPages: Int
     var items: [Item]
-    var etag: String
+    var etag: String?
 }

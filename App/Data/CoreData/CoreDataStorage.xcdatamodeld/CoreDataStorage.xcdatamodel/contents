@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F82" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="FavoriteEntity" representedClassName="FavoriteEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="characterId" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="item" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarvelCharacterEntity" inverseName="favorite" inverseEntity="MarvelCharacterEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="characterId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="MarvelCharacterEntity" representedClassName="MarvelCharacterEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="desc" optional="YES" attributeType="String"/>
+        <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="resourceURI" optional="YES" attributeType="String"/>
+        <attribute name="thumbnail" optional="YES" attributeType="String"/>
+        <relationship name="comics" maxCount="1" deletionRule="Cascade" destinationEntity="MarvelResourceListEntity" inverseName="characterComics" inverseEntity="MarvelResourceListEntity"/>
+        <relationship name="events" maxCount="1" deletionRule="Cascade" destinationEntity="MarvelResourceListEntity" inverseName="characterEvents" inverseEntity="MarvelResourceListEntity"/>
+        <relationship name="favorite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="FavoriteEntity" inverseName="item" inverseEntity="FavoriteEntity"/>
+        <relationship name="paged" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarvelPagedCharactersEntity" inverseName="items" inverseEntity="MarvelPagedCharactersEntity"/>
+        <relationship name="series" maxCount="1" deletionRule="Cascade" destinationEntity="MarvelResourceListEntity" inverseName="characterSeries" inverseEntity="MarvelResourceListEntity"/>
+        <relationship name="stories" maxCount="1" deletionRule="Cascade" destinationEntity="MarvelResourceListEntity" inverseName="characterStories" inverseEntity="MarvelResourceListEntity"/>
+        <relationship name="urls" toMany="YES" deletionRule="Cascade" destinationEntity="UrlEntity" inverseName="characterUrl" inverseEntity="UrlEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="MarvelPagedCharactersEntity" representedClassName="MarvelPagedCharactersEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="etag" optional="YES" attributeType="String"/>
+        <attribute name="page" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="totalCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="totalPages" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MarvelCharacterEntity" inverseName="paged" inverseEntity="MarvelCharacterEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="page"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="MarvelResourceListEntity" representedClassName="MarvelResourceListEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="availableCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="collectionURI" optional="YES" attributeType="String"/>
+        <relationship name="characterComics" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarvelCharacterEntity" inverseName="comics" inverseEntity="MarvelCharacterEntity"/>
+        <relationship name="characterEvents" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarvelCharacterEntity" inverseName="events" inverseEntity="MarvelCharacterEntity"/>
+        <relationship name="characterSeries" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarvelCharacterEntity" inverseName="series" inverseEntity="MarvelCharacterEntity"/>
+        <relationship name="characterStories" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarvelCharacterEntity" inverseName="stories" inverseEntity="MarvelCharacterEntity"/>
+    </entity>
+    <entity name="UrlEntity" representedClassName="UrlEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="characterUrl" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MarvelCharacterEntity" inverseName="urls" inverseEntity="MarvelCharacterEntity"/>
+    </entity>
+</model>
