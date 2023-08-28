@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CharactersListViewController.swift
 //  KisTest
 //
 //  Created by hyonsoo on 2023/08/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class CharactersListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

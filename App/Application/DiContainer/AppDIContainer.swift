@@ -8,11 +8,15 @@
 import Foundation
 
 final class AppDIContainer {
+    
     lazy var networkDataService: NetworkDataService = {
        return DefaultNetworkDataService(client: DefaultNetworkClient(),
                                         decoder: JSONResponseDecoder())
     }()
     
-    lazy var charactersCache: CharactersStorage = CoreDataCharactersStorage()
-    lazy var favoritesCache: FavoritesStorage = CoreDataFavoritesStorage()
+    func makeCharactersSceneDIContainer() -> CharactersSceneDIContainer {
+        CharactersSceneDIContainer(networkDataService: networkDataService)
+    }
+    
+    
 }
