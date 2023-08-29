@@ -8,12 +8,17 @@
 import Foundation
 import Combine
 
-class BaseViewModel {
+protocol ViewModel {
+    var errorMessages: AnyPublisher<String, Never> { get }
+}
+
+class BaseViewModel: ViewModel {
     
-    var cancellabels: Set<AnyCancellable> = []
     var errorMessages: AnyPublisher<String, Never> {
         _errorMessages.eraseToAnyPublisher()
     }
+    
+    var cancellabels: Set<AnyCancellable> = []
     
     private let _errorMessages = PassthroughSubject<String, Never>()
     

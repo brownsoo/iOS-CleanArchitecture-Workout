@@ -8,18 +8,16 @@
 import UIKit
 
 protocol CharactersFlowCoordinatorDependencies {
-    func makeCharactersListView(
-        actions: CharactersListViewModelActions
-    ) -> CharactersListViewController
-    
-    func makeCharactersDetailView(chracter: MarvelCharacter) -> UIViewController
+    func makeCharactersListView(actions: CharactersListViewModelActions) -> CharactersListVc
+    func makeCharactersDetailView(chracter: MarvelCharacter) -> CharacterDetailVc
+    func makeFavoritesListView(actions: CharactersListViewModelActions) -> FavoritesListVc
 }
 
 final class CharactersFlowCoordinator {
     private weak var nc: UINavigationController?
     private let dependencies: CharactersFlowCoordinatorDependencies
-    
-    private weak var listVc: CharactersListViewController?
+    // FIXME: 왜 갖고 있지?
+    private weak var listVc: CharactersListVc?
     
     init(nc: UINavigationController? = nil,
          dependencies: CharactersFlowCoordinatorDependencies) {
@@ -41,6 +39,9 @@ final class CharactersFlowCoordinator {
     }
     
     private func showFavoritesView() {
-        
+        let actions = CharactersListViewModelActions(showCharacterDetails: self.showDetailsView,
+                                                     showFavorites: nil)
+        let vc = dependencies.makeFavoritesListView(actions: actions)
+        nc?.pushViewController(vc, animated: true)
     }
 }

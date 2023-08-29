@@ -17,6 +17,8 @@ final class AppFlowCoordinator {
     }
     
     func start() {
-        
+        let sceneDIContainer = diContainer.makeCharactersSceneDIContainer()
+        let flow = sceneDIContainer.makeCharactersFlowCoordinator(nc: navigationController)
+        flow.start()
     }
 }

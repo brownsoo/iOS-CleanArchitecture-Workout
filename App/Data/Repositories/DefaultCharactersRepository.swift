@@ -30,7 +30,7 @@ extension DefaultCharactersRepository: CharactersRepository {
                 return
             }
             // FXIME: ignores error?
-            let cached = try? await this.cache.getData(page: page)
+            let cached = try? await this.cache.getCharactors(page: page)
             onCached(cached)
             do {
                 let results = try await this.dataService.request(MarvelApi.character.search(page: page, limit: kQueryLimit, etag: cached?.etag))

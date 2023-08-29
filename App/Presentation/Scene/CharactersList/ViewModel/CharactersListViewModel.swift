@@ -10,31 +10,21 @@ import Combine
 
 struct CharactersListViewModelActions {
     let showCharacterDetails: (MarvelCharacter) -> Void
-    let showFavorites: () -> Void
+    let showFavorites: VoidCallback?
 }
 
-enum CharactersLoading {
-    case none
-    case first
-    case next
-}
-
-protocol CharactersListViewModel {
+protocol CharactersListViewModel: ViewModel {
     // in-
+    func refresh() -> Void
     func loadNextPage() -> Void
     func didSelectItem(at index: Int) -> Void
     func markFavorite(character: MarvelCharacter) -> Void
     func unmarkFavorte(character: MarvelCharacter) -> Void
     // out -
+    var emtpyLabelText: String { get }
     var items: AnyPublisher<[CharactersListItemViewModel], Never> { get }
-    var loading: AnyPublisher<CharactersLoading, Never> { get }
-}
-
-
-private extension Array where Element == PagedData<MarvelCharacter> {
-    var characters: [MarvelCharacter] {
-        self.flatMap { $0.items }
-    }
+    var itemsIsEmpty: Bool { get }
+    var loadings: AnyPublisher<ListLoading, Never> { get }
 }
 
 
@@ -55,7 +45,7 @@ final class DefaultCharactersListViewModel: BaseViewModel {
     }
     private let maingQueue = DispatchQueue.main
     private let _items = CurrentValueSubject<[CharactersListItemViewModel], Never>([])
-    private let _loading = CurrentValueSubject<CharactersLoading, Never>(.none)
+    private let _loading = CurrentValueSubject<ListLoading, Never>(.idle)
     
     init(actions: CharactersListViewModelActions,
          characterRepository: CharactersRepository) {
@@ -78,7 +68,7 @@ final class DefaultCharactersListViewModel: BaseViewModel {
         _items.send([])
     }
     
-    private func load(loading: CharactersLoading) {
+    private func load(loading: ListLoading) {
         _loading.send(loading)
         loadTask = repository.fetchList(
             page: naxtPage,
@@ -96,23 +86,22 @@ final class DefaultCharactersListViewModel: BaseViewModel {
                         case .failure(let error):
                             self?.handleError(error)
                     }
-                    self?._loading.send(.none)
+                    self?._loading.send(.idle)
                 }
             })
     }
 }
 
-extension DefaultCharactersListViewModel {
+
+extension DefaultCharactersListViewModel: CharactersListViewModel {
+    
     func refresh() {
         resetPages()
         load(loading: .first)
     }
-}
-
-extension DefaultCharactersListViewModel: CharactersListViewModel {
     
     func loadNextPage() {
-        guard hasMorePages, _loading.value == .none else { return }
+        guard hasMorePages, _loading.value == .idle else { return }
         load(loading: .next)
     }
     
@@ -128,8 +117,7 @@ extension DefaultCharactersListViewModel: CharactersListViewModel {
                 // 좋아요 마크
                 var news = self._items.value
                 if let index = news.firstIndex(where: { $0.id == character.id }) {
-                    news[index].isFavorite = true
-                    news[index].favoritedAt = Date()
+                    news[index].markFavorite(true, at: Date())
                     self._items.send(news)
                 }
             }
@@ -145,8 +133,7 @@ extension DefaultCharactersListViewModel: CharactersListViewModel {
                 // 안 좋아요 마크
                 var news = self._items.value
                 if let index = news.firstIndex(where: { $0.id == character.id }) {
-                    news[index].isFavorite = false
-                    news[index].favoritedAt = nil
+                    news[index].markFavorite(false, at: nil)
                     self._items.send(news)
                 }
             }
@@ -154,11 +141,21 @@ extension DefaultCharactersListViewModel: CharactersListViewModel {
         .store(in: &cancellabels)
     }
     
+    // out -
+    
+    var emtpyLabelText: String {
+        "데이터가 없어요."
+    }
+    
     var items: AnyPublisher<[CharactersListItemViewModel], Never> {
         _items.eraseToAnyPublisher()
     }
     
-    var loading: AnyPublisher<CharactersLoading, Never> {
+    var itemsIsEmpty: Bool {
+        _items.value.isEmpty
+    }
+    
+    var loadings: AnyPublisher<ListLoading, Never> {
         _loading.eraseToAnyPublisher()
     }
     

@@ -10,8 +10,8 @@ import Foundation
 final class AppDIContainer {
     
     lazy var networkDataService: NetworkDataService = {
-       return DefaultNetworkDataService(client: DefaultNetworkClient(),
-                                        decoder: JSONResponseDecoder())
+       DefaultNetworkDataService(client: DefaultNetworkClient(),
+                                 decoder: JSONResponseDecoder())
     }()
     
     func makeCharactersSceneDIContainer() -> CharactersSceneDIContainer {

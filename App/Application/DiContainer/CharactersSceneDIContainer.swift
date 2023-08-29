@@ -31,12 +31,23 @@ final class CharactersSceneDIContainer {
     }
 }
 
+extension CharactersSceneDIContainer {
+    func makeCharactersFlowCoordinator(nc: UINavigationController) -> CharactersSceneDIContainer {
+        CharactersSceneDIContainer(networkDataService: self.networkDataService)
+    }
+}
+
 extension CharactersSceneDIContainer: CharactersFlowCoordinatorDependencies {
-    func makeCharactersListView(actions: CharactersListViewModelActions) -> CharactersListViewController {
-        return CharactersListViewController()
+    
+    func makeCharactersListView(actions: CharactersListViewModelActions) -> CharactersListVc {
+        CharactersListVc.create(viewModel: self.makeCharactersViewModel(actions: actions))
     }
     
-    func makeCharactersDetailView(chracter: MarvelCharacter) -> UIViewController {
-        return UIViewController()
+    func makeCharactersDetailView(chracter: MarvelCharacter) -> CharacterDetailVc {
+        CharacterDetailVc()
+    }
+    
+    func makeFavoritesListView(actions: CharactersListViewModelActions) -> FavoritesListVc {
+        FavoritesListVc.create(viewModel: self.makeCharactersViewModel(actions: actions))
     }
 }
