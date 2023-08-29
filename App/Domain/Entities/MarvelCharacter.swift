@@ -19,6 +19,8 @@ struct MarvelCharacter: Identifiable {
     let stories: MarvelResourceList
     let events: MarvelResourceList
     let series: MarvelResourceList
+    var isFavorite: Bool? = nil
+    var favoritedAt: Date? = nil
 }
 
 extension MarvelCharacter: Equatable {

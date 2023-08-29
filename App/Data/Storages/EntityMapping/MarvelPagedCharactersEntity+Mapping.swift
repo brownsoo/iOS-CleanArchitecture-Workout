@@ -33,7 +33,10 @@ extension MarvelCharacterEntity {
             comics: self.comics?.toDomain() ?? MarvelResourceList(availableCount: 0),
             stories: self.stories?.toDomain() ?? MarvelResourceList(availableCount: 0),
             events: self.events?.toDomain() ?? MarvelResourceList(availableCount: 0),
-            series: self.series?.toDomain() ?? MarvelResourceList(availableCount: 0))
+            series: self.series?.toDomain() ?? MarvelResourceList(availableCount: 0),
+            isFavorite: self.favorite != nil,
+            favoritedAt: self.favorite?.createdAt
+        )
     }
 }
 
@@ -72,7 +75,8 @@ fileprivate extension URL {
 }
 
 extension MarvelCharacter {
-    func toEntity(in context: NSManagedObjectContext) -> MarvelCharacterEntity {
+    func toEntity(in context: NSManagedObjectContext,
+                  relation favorite: FavoriteEntity?) -> MarvelCharacterEntity {
         let entity = MarvelCharacterEntity(context: context)
         entity.id = Int64(self.id)
         entity.name = self.name
@@ -86,25 +90,34 @@ extension MarvelCharacter {
         entity.stories = self.stories.toEntity(in: context)
         entity.events = self.events.toEntity(in: context)
         entity.series = self.series.toEntity(in: context)
+        if let it = favorite {
+            entity.favorite = self.toFavoritEntity(in: context, character: entity, createdAt: it.createdAt ?? Date())
+        }
         return entity
     }
     
-    func toFavoritEntity(in context: NSManagedObjectContext, createdAt: Date) -> FavoriteEntity {
+    func toFavoritEntity(in context: NSManagedObjectContext,
+                         character: MarvelCharacterEntity,
+                         createdAt: Date) -> FavoriteEntity {
         let entity = FavoriteEntity(context: context)
-        entity.item = self.toEntity(in: context)
+        entity.item = character
         entity.createdAt = createdAt
         return entity
     }
 }
 
 extension PagedData<MarvelCharacter> {
-    func toEntity(in context: NSManagedObjectContext) -> MarvelPagedCharactersEntity {
+    func toEntity(in context: NSManagedObjectContext,
+                  favorites: [FavoriteEntity]) -> MarvelPagedCharactersEntity {
         let entity = MarvelPagedCharactersEntity(context: context)
         entity.page = Int32(self.page)
         entity.totalCount = Int32(self.totalCount)
         entity.totalPages = Int32(self.totalPages)
         self.items.forEach { it in
-            entity.addToItems(it.toEntity(in: context))
+            let item = it.toEntity(
+                in: context,
+                relation: favorites.first(where: { Int($0.characterId) == it.id}))
+            entity.addToItems(item)
         }
         entity.etag = self.etag
         return entity

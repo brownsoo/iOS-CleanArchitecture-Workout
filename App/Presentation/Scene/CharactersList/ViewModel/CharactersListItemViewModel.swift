@@ -16,6 +16,8 @@ struct CharactersListItemViewModel: Identifiable, Equatable {
     let storiesCount: Int
     let eventsCount: Int
     let seriesCount: Int
+    var isFavorite: Bool
+    var favoritedAt: Date?
 }
 
 extension CharactersListItemViewModel {
@@ -28,5 +30,7 @@ extension CharactersListItemViewModel {
         self.storiesCount = character.stories.availableCount
         self.eventsCount = character.events.availableCount
         self.seriesCount = character.series.availableCount
+        self.isFavorite = character.isFavorite == true
+        self.favoritedAt = character.favoritedAt
     }
 }

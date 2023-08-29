@@ -21,7 +21,7 @@ final class CoreDataStorage {
                 assertionFailure("CoreDataStorage 오류 \(error), \(error.userInfo)")
             }
         }
-        container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+        container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         return container
     }()
     

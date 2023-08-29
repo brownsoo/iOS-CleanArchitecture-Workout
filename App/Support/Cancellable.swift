@@ -6,9 +6,6 @@
 //
 
 import Foundation
-
-protocol Cancellable {
-    func cancel()
-}
+import Combine
 
 extension Task: Cancellable {}

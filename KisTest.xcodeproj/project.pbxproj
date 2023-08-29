@@ -18,17 +18,12 @@
 		1763B7062A98ACD10019F86D /* AlarmoLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7042A98ACD10019F86D /* AlarmoLogger.swift */; };
 		1763B7072A98ACD10019F86D /* AlarmoLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7042A98ACD10019F86D /* AlarmoLogger.swift */; };
 		1763B7092A98CB500019F86D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7082A98CB500019F86D /* AppError.swift */; };
-		1763B70A2A98CB500019F86D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7082A98CB500019F86D /* AppError.swift */; };
-		1763B70B2A98CB500019F86D /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7082A98CB500019F86D /* AppError.swift */; };
 		1763B70D2A9907A80019F86D /* ResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B70C2A9907A80019F86D /* ResponseDecoder.swift */; };
 		1763B70E2A9907A80019F86D /* ResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B70C2A9907A80019F86D /* ResponseDecoder.swift */; };
 		1763B70F2A9907A80019F86D /* ResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B70C2A9907A80019F86D /* ResponseDecoder.swift */; };
 		1763B7122A990C420019F86D /* CharactersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7112A990C420019F86D /* CharactersRepository.swift */; };
 		1763B7132A990C420019F86D /* CharactersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7112A990C420019F86D /* CharactersRepository.swift */; };
 		1763B7142A990C420019F86D /* CharactersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7112A990C420019F86D /* CharactersRepository.swift */; };
-		1763B7162A990CA90019F86D /* FavoritesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7152A990CA90019F86D /* FavoritesRepository.swift */; };
-		1763B7172A990CA90019F86D /* FavoritesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7152A990CA90019F86D /* FavoritesRepository.swift */; };
-		1763B7182A990CA90019F86D /* FavoritesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7152A990CA90019F86D /* FavoritesRepository.swift */; };
 		1763B71B2A99E2330019F86D /* DefaultCharactersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B71A2A99E2330019F86D /* DefaultCharactersRepository.swift */; };
 		1763B71C2A99E2330019F86D /* DefaultCharactersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B71A2A99E2330019F86D /* DefaultCharactersRepository.swift */; };
 		1763B71D2A99E2330019F86D /* DefaultCharactersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B71A2A99E2330019F86D /* DefaultCharactersRepository.swift */; };
@@ -48,19 +43,19 @@
 		1763B7352A9B501A0019F86D /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7332A9B50140019F86D /* CoreDataStorage.swift */; };
 		1763B7362A9B501A0019F86D /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7332A9B50140019F86D /* CoreDataStorage.swift */; };
 		1763B73A2A9B629B0019F86D /* CoreDataStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7382A9B629B0019F86D /* CoreDataStorage.xcdatamodeld */; };
-		1763B73C2A9C0FA30019F86D /* FavoritesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B73B2A9C0FA30019F86D /* FavoritesStorage.swift */; };
-		1763B73E2A9C117C0019F86D /* DefaultFavoritesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B73D2A9C117C0019F86D /* DefaultFavoritesRepository.swift */; };
 		1763B7402A9C2CFF0019F86D /* FavoriteCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B73F2A9C2CFF0019F86D /* FavoriteCharacter.swift */; };
 		1763B7422A9C2F810019F86D /* CoreDataCharactersStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7412A9C2F810019F86D /* CoreDataCharactersStorage.swift */; };
 		1763B7452A9C432F0019F86D /* MarvelPagedCharactersEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7442A9C432F0019F86D /* MarvelPagedCharactersEntity+Mapping.swift */; };
-		1763B7472A9C5ED00019F86D /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7462A9C5ED00019F86D /* Extentions.swift */; };
+		1763B7472A9C5ED00019F86D /* Foundation+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7462A9C5ED00019F86D /* Foundation+Extentions.swift */; };
 		1763B74A2A9C78DE0019F86D /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7492A9C78DE0019F86D /* AppDIContainer.swift */; };
-		1763B74C2A9C7BE50019F86D /* CoreDataFavoritesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B74B2A9C7BE50019F86D /* CoreDataFavoritesStorage.swift */; };
 		1763B7512A9CF6300019F86D /* CharactersListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7502A9CF6300019F86D /* CharactersListItemViewModel.swift */; };
 		1763B7532A9CF8B20019F86D /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7522A9CF8B20019F86D /* CharactersListViewModel.swift */; };
 		1763B7552A9CFDCD0019F86D /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7542A9CFDCD0019F86D /* AppFlowCoordinator.swift */; };
 		1763B7572A9CFEA10019F86D /* CharactersSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7562A9CFEA10019F86D /* CharactersSceneDIContainer.swift */; };
 		1763B75A2A9CFF5B0019F86D /* CharactersFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7592A9CFF5B0019F86D /* CharactersFlowCoordinator.swift */; };
+		1763B7602A9D74B70019F86D /* UIViewController+AddChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B75F2A9D74B70019F86D /* UIViewController+AddChild.swift */; };
+		1763B7622A9D75930019F86D /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7612A9D75930019F86D /* Alertable.swift */; };
+		1763B7652A9D78820019F86D /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7642A9D78820019F86D /* BaseViewModel.swift */; };
 		17DE8CA62A96E8A2007BBCCC /* ResMarvelResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CA52A96E8A2007BBCCC /* ResMarvelResults.swift */; };
 		17DE8CA72A96E8A2007BBCCC /* ResMarvelResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CA52A96E8A2007BBCCC /* ResMarvelResults.swift */; };
 		17DE8CAA2A96EAAC007BBCCC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 17DE8CA92A96EAAC007BBCCC /* Alamofire */; };
@@ -133,7 +128,6 @@
 		1763B7082A98CB500019F86D /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		1763B70C2A9907A80019F86D /* ResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseDecoder.swift; sourceTree = "<group>"; };
 		1763B7112A990C420019F86D /* CharactersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepository.swift; sourceTree = "<group>"; };
-		1763B7152A990CA90019F86D /* FavoritesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesRepository.swift; sourceTree = "<group>"; };
 		1763B71A2A99E2330019F86D /* DefaultCharactersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCharactersRepository.swift; sourceTree = "<group>"; };
 		1763B71F2A99F8CB0019F86D /* CharactersStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersStorage.swift; sourceTree = "<group>"; };
 		1763B7232A9A2F470019F86D /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
@@ -141,19 +135,19 @@
 		1763B72F2A9A3E480019F86D /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		1763B7332A9B50140019F86D /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		1763B7392A9B629B0019F86D /* CoreDataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataStorage.xcdatamodel; sourceTree = "<group>"; };
-		1763B73B2A9C0FA30019F86D /* FavoritesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesStorage.swift; sourceTree = "<group>"; };
-		1763B73D2A9C117C0019F86D /* DefaultFavoritesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFavoritesRepository.swift; sourceTree = "<group>"; };
 		1763B73F2A9C2CFF0019F86D /* FavoriteCharacter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCharacter.swift; sourceTree = "<group>"; };
 		1763B7412A9C2F810019F86D /* CoreDataCharactersStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCharactersStorage.swift; sourceTree = "<group>"; };
 		1763B7442A9C432F0019F86D /* MarvelPagedCharactersEntity+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MarvelPagedCharactersEntity+Mapping.swift"; sourceTree = "<group>"; };
-		1763B7462A9C5ED00019F86D /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		1763B7462A9C5ED00019F86D /* Foundation+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Extentions.swift"; sourceTree = "<group>"; };
 		1763B7492A9C78DE0019F86D /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
-		1763B74B2A9C7BE50019F86D /* CoreDataFavoritesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFavoritesStorage.swift; sourceTree = "<group>"; };
 		1763B7502A9CF6300019F86D /* CharactersListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListItemViewModel.swift; sourceTree = "<group>"; };
 		1763B7522A9CF8B20019F86D /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
 		1763B7542A9CFDCD0019F86D /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		1763B7562A9CFEA10019F86D /* CharactersSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersSceneDIContainer.swift; sourceTree = "<group>"; };
 		1763B7592A9CFF5B0019F86D /* CharactersFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersFlowCoordinator.swift; sourceTree = "<group>"; };
+		1763B75F2A9D74B70019F86D /* UIViewController+AddChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddChild.swift"; sourceTree = "<group>"; };
+		1763B7612A9D75930019F86D /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
+		1763B7642A9D78820019F86D /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		17DE8CA52A96E8A2007BBCCC /* ResMarvelResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResMarvelResults.swift; sourceTree = "<group>"; };
 		17DE8CB12A96EF27007BBCCC /* MarvelEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelEndpoint.swift; sourceTree = "<group>"; };
 		17DE8CB92A96F740007BBCCC /* ResMarvelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResMarvelError.swift; sourceTree = "<group>"; };
@@ -218,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				1763B7112A990C420019F86D /* CharactersRepository.swift */,
-				1763B7152A990CA90019F86D /* FavoritesRepository.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -227,7 +220,6 @@
 			isa = PBXGroup;
 			children = (
 				1763B71A2A99E2330019F86D /* DefaultCharactersRepository.swift */,
-				1763B73D2A9C117C0019F86D /* DefaultFavoritesRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -237,9 +229,7 @@
 			children = (
 				1763B7432A9C42DA0019F86D /* EntityMapping */,
 				1763B71F2A99F8CB0019F86D /* CharactersStorage.swift */,
-				1763B73B2A9C0FA30019F86D /* FavoritesStorage.swift */,
 				1763B7412A9C2F810019F86D /* CoreDataCharactersStorage.swift */,
-				1763B74B2A9C7BE50019F86D /* CoreDataFavoritesStorage.swift */,
 			);
 			path = Storages;
 			sourceTree = "<group>";
@@ -311,6 +301,33 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		1763B75D2A9D72880019F86D /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				1763B74E2A9CF5E40019F86D /* CaracterDetails */,
+				1763B74D2A9CF5C50019F86D /* CharactersList */,
+				1763B7582A9CFF2C0019F86D /* Flows */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		1763B75E2A9D72D20019F86D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1763B75F2A9D74B70019F86D /* UIViewController+AddChild.swift */,
+				1763B7612A9D75930019F86D /* Alertable.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		1763B7632A9D786E0019F86D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1763B7642A9D78820019F86D /* BaseViewModel.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		17DE8CA42A96E83B007BBCCC /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,14 +339,14 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
-		17DE8CAE2A96EDAD007BBCCC /* Page */ = {
+		17DE8CAE2A96EDAD007BBCCC /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				1763B7582A9CFF2C0019F86D /* Flows */,
-				1763B74E2A9CF5E40019F86D /* CaracterDetails */,
-				1763B74D2A9CF5C50019F86D /* CharactersList */,
+				1763B7632A9D786E0019F86D /* Base */,
+				1763B75D2A9D72880019F86D /* Scene */,
+				1763B75E2A9D72D20019F86D /* Utils */,
 			);
-			path = Page;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		17DE8CAF2A96EDDE007BBCCC /* Domain */ = {
@@ -381,14 +398,15 @@
 		17DE8CC22A96F935007BBCCC /* Application */ = {
 			isa = PBXGroup;
 			children = (
-				17E098962A965F8E00178398 /* Info.plist */,
 				17E098882A965F8D00178398 /* AppDelegate.swift */,
+				1763B7082A98CB500019F86D /* AppError.swift */,
 				1763B7542A9CFDCD0019F86D /* AppFlowCoordinator.swift */,
-				17E098BC2A966A6D00178398 /* Env.swift */,
-				17E0988A2A965F8D00178398 /* SceneDelegate.swift */,
 				17E098912A965F8E00178398 /* Assets.xcassets */,
-				17E098932A965F8E00178398 /* LaunchScreen.storyboard */,
 				1763B7482A9C78C90019F86D /* DiContainer */,
+				17E098BC2A966A6D00178398 /* Env.swift */,
+				17E098962A965F8E00178398 /* Info.plist */,
+				17E098932A965F8E00178398 /* LaunchScreen.storyboard */,
+				17E0988A2A965F8D00178398 /* SceneDelegate.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -445,7 +463,7 @@
 				17DE8CA42A96E83B007BBCCC /* Data */,
 				17DE8CAF2A96EDDE007BBCCC /* Domain */,
 				17DE8CE52A9751D6007BBCCC /* Infra */,
-				17DE8CAE2A96EDAD007BBCCC /* Page */,
+				17DE8CAE2A96EDAD007BBCCC /* Presentation */,
 				17E098B92A96668000178398 /* Support */,
 			);
 			path = App;
@@ -471,10 +489,9 @@
 		17E098B92A96668000178398 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				1763B7082A98CB500019F86D /* AppError.swift */,
 				17E098BA2A9666E700178398 /* UIView+AutoLayout.swift */,
 				1763B7232A9A2F470019F86D /* Cancellable.swift */,
-				1763B7462A9C5ED00019F86D /* Extentions.swift */,
+				1763B7462A9C5ED00019F86D /* Foundation+Extentions.swift */,
 			);
 			path = Support;
 			sourceTree = "<group>";
@@ -624,7 +641,6 @@
 				17DE8CEE2A975E78007BBCCC /* ResMarvelText.swift in Sources */,
 				17DE8CBD2A96F801007BBCCC /* ResMarvelURL.swift in Sources */,
 				17E098BD2A966A6D00178398 /* Env.swift in Sources */,
-				1763B73C2A9C0FA30019F86D /* FavoritesStorage.swift in Sources */,
 				17DE8CA62A96E8A2007BBCCC /* ResMarvelResults.swift in Sources */,
 				17DE8CC42A96FA30007BBCCC /* ResMarvelImage.swift in Sources */,
 				17DE8CB22A96EF27007BBCCC /* MarvelEndpoint.swift in Sources */,
@@ -632,9 +648,10 @@
 				1763B7012A98A14C0019F86D /* ApiEndpoint.swift in Sources */,
 				17DE8CD72A9744B3007BBCCC /* HttpMethod.swift in Sources */,
 				1763B7422A9C2F810019F86D /* CoreDataCharactersStorage.swift in Sources */,
-				1763B7472A9C5ED00019F86D /* Extentions.swift in Sources */,
+				1763B7472A9C5ED00019F86D /* Foundation+Extentions.swift in Sources */,
 				1763B7552A9CFDCD0019F86D /* AppFlowCoordinator.swift in Sources */,
 				17DE8CD02A972159007BBCCC /* PagedData.swift in Sources */,
+				1763B7622A9D75930019F86D /* Alertable.swift in Sources */,
 				1763B7342A9B50140019F86D /* CoreDataStorage.swift in Sources */,
 				17DE8CC72A96FAF9007BBCCC /* ResMarvelResourceList.swift in Sources */,
 				1763B7402A9C2CFF0019F86D /* FavoriteCharacter.swift in Sources */,
@@ -644,8 +661,8 @@
 				17DE8CE32A975122007BBCCC /* MarvelApi.swift in Sources */,
 				1763B7202A99F8CB0019F86D /* CharactersStorage.swift in Sources */,
 				1763B7242A9A2F470019F86D /* Cancellable.swift in Sources */,
-				1763B73E2A9C117C0019F86D /* DefaultFavoritesRepository.swift in Sources */,
 				17DE8CDD2A974764007BBCCC /* Resource.swift in Sources */,
+				1763B7652A9D78820019F86D /* BaseViewModel.swift in Sources */,
 				1763B73A2A9B629B0019F86D /* CoreDataStorage.xcdatamodeld in Sources */,
 				17E098BB2A9666E700178398 /* UIView+AutoLayout.swift in Sources */,
 				17E0988D2A965F8D00178398 /* CharactersListViewController.swift in Sources */,
@@ -659,12 +676,11 @@
 				1763B7532A9CF8B20019F86D /* CharactersListViewModel.swift in Sources */,
 				1763B7572A9CFEA10019F86D /* CharactersSceneDIContainer.swift in Sources */,
 				17DE8CCD2A97209F007BBCCC /* MarvelResourceList.swift in Sources */,
-				1763B7162A990CA90019F86D /* FavoritesRepository.swift in Sources */,
 				1763B6FB2A9822430019F86D /* MarvelComic.swift in Sources */,
 				1763B70D2A9907A80019F86D /* ResponseDecoder.swift in Sources */,
 				17E0988B2A965F8D00178398 /* SceneDelegate.swift in Sources */,
+				1763B7602A9D74B70019F86D /* UIViewController+AddChild.swift in Sources */,
 				1763B7302A9A3E480019F86D /* NetworkResponse.swift in Sources */,
-				1763B74C2A9C7BE50019F86D /* CoreDataFavoritesStorage.swift in Sources */,
 				17DE8CE02A9749E2007BBCCC /* NetworkResource.swift in Sources */,
 				1763B72C2A9A3D550019F86D /* Response.swift in Sources */,
 			);
@@ -680,7 +696,6 @@
 				1763B7132A990C420019F86D /* CharactersRepository.swift in Sources */,
 				1763B6FC2A9822430019F86D /* MarvelComic.swift in Sources */,
 				1763B7022A98A14C0019F86D /* ApiEndpoint.swift in Sources */,
-				1763B70A2A98CB500019F86D /* AppError.swift in Sources */,
 				17DE8CBE2A96F801007BBCCC /* ResMarvelURL.swift in Sources */,
 				1763B7062A98ACD10019F86D /* AlarmoLogger.swift in Sources */,
 				1763B7212A99F8CB0019F86D /* CharactersStorage.swift in Sources */,
@@ -695,7 +710,6 @@
 				17DE8CC82A96FAF9007BBCCC /* ResMarvelResourceList.swift in Sources */,
 				1763B6FF2A9892120019F86D /* NetworkDataService.swift in Sources */,
 				1763B7252A9A2F470019F86D /* Cancellable.swift in Sources */,
-				1763B7172A990CA90019F86D /* FavoritesRepository.swift in Sources */,
 				17DE8CC52A96FA30007BBCCC /* ResMarvelImage.swift in Sources */,
 				1763B70E2A9907A80019F86D /* ResponseDecoder.swift in Sources */,
 			);
@@ -719,8 +733,6 @@
 				1763B7142A990C420019F86D /* CharactersRepository.swift in Sources */,
 				1763B7352A9B501A0019F86D /* CoreDataStorage.swift in Sources */,
 				1763B7222A99F8CB0019F86D /* CharactersStorage.swift in Sources */,
-				1763B70B2A98CB500019F86D /* AppError.swift in Sources */,
-				1763B7182A990CA90019F86D /* FavoritesRepository.swift in Sources */,
 				17DE8CEC2A975B49007BBCCC /* NetworkClient.swift in Sources */,
 				1763B7072A98ACD10019F86D /* AlarmoLogger.swift in Sources */,
 				1763B7032A98A14C0019F86D /* ApiEndpoint.swift in Sources */,

@@ -28,14 +28,19 @@ final class CharactersFlowCoordinator {
     }
     
     func start() {
-        let actions = CharactersListViewModelActions(showCharacterDetails: self.showDetails)
+        let actions = CharactersListViewModelActions(showCharacterDetails: self.showDetailsView,
+                                                     showFavorites: self.showFavoritesView)
         let vc = dependencies.makeCharactersListView(actions: actions)
         nc?.pushViewController(vc, animated: true)
         listVc = vc
     }
     
-    private func showDetails(character: MarvelCharacter) {
+    private func showDetailsView(character: MarvelCharacter) {
         let vc = dependencies.makeCharactersDetailView(chracter: character)
         nc?.pushViewController(vc, animated: true)
+    }
+    
+    private func showFavoritesView() {
+        
     }
 }

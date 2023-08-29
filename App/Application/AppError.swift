@@ -17,6 +17,7 @@ enum AppError: Error {
     case runtime(cause: Error, message: String?)
     case contentNotChanged
     case urlGenerate(urlString: String)
+    case illegalArguments
 }
 
 extension AppError {
@@ -40,6 +41,8 @@ extension AppError {
                 return "컨텐츠 변경이 없음."
             case .urlGenerate(let urlString):
                 return "주소 형식이 맞지 않아요.\n\(urlString)"
+            case .illegalArguments:
+                return "잘못된 인자 전달"
         }
     }
 }
