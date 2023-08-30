@@ -53,7 +53,13 @@ extension CharactersListTableVc {
             self.updateView(with: items)
         }
         .store(in: &cancellables)
-            
+        
+        vm.itemsAllLoaded.removeDuplicates().sink { v in
+            if v {
+                // TODO: show banner
+                debugPrint("다 불러옴.")
+            }
+        }
     }
     
     
@@ -86,7 +92,7 @@ extension CharactersListTableVc {
 extension CharactersListTableVc {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let snapshot = dataSource.snapshot()
-        viewModel?.didSelectItem(at: indexPath.row)
+        viewModel?.didSelectItem(item: snapshot.itemIdentifiers[indexPath.row])
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

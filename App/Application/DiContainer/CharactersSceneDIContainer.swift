@@ -10,7 +10,7 @@ import UIKit
 final class CharactersSceneDIContainer {
     
     private let networkDataService: NetworkDataService
-    lazy var charactersCache: CharactersStorage = CoreDataCharactersStorage()
+    private lazy var charactersCache: CharactersStorage = CoreDataCharactersStorage()
     
     init(networkDataService: NetworkDataService) {
         self.networkDataService = networkDataService
@@ -32,8 +32,8 @@ final class CharactersSceneDIContainer {
 }
 
 extension CharactersSceneDIContainer {
-    func makeCharactersFlowCoordinator(nc: UINavigationController) -> CharactersSceneDIContainer {
-        CharactersSceneDIContainer(networkDataService: self.networkDataService)
+    func makeCharactersFlowCoordinator(nc: UINavigationController) -> CharactersFlowCoordinator {
+        CharactersFlowCoordinator(nc: nc, dependencies: self)
     }
 }
 

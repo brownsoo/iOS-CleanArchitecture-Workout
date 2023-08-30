@@ -18,12 +18,14 @@ protocol CharactersListViewModel: ViewModel {
     func refresh() -> Void
     func loadNextPage() -> Void
     func didSelectItem(at index: Int) -> Void
+    func didSelectItem(item: CharactersListItemViewModel) -> Void
     func markFavorite(character: MarvelCharacter) -> Void
     func unmarkFavorte(character: MarvelCharacter) -> Void
     // out -
     var emtpyLabelText: String { get }
     var items: AnyPublisher<[CharactersListItemViewModel], Never> { get }
     var itemsIsEmpty: Bool { get }
+    var itemsAllLoaded: AnyPublisher<Bool, Never> { get }
     var loadings: AnyPublisher<ListLoading, Never> { get }
 }
 
@@ -44,6 +46,7 @@ final class DefaultCharactersListViewModel: BaseViewModel {
         }
     }
     private let maingQueue = DispatchQueue.main
+    private let _itemsAllLoaded = PassthroughSubject<Bool, Never>()
     private let _items = CurrentValueSubject<[CharactersListItemViewModel], Never>([])
     private let _loading = CurrentValueSubject<ListLoading, Never>(.idle)
     
@@ -59,6 +62,10 @@ final class DefaultCharactersListViewModel: BaseViewModel {
         pages = pages.filter({ $0.page != newPage.page }) + [newPage]
         
         _items.send(pages.characters.map(CharactersListItemViewModel.init))
+        
+        if newPage.items.count < kQueryLimit {
+            _itemsAllLoaded.send(true)
+        }
     }
     
     private func resetPages() {
@@ -109,13 +116,20 @@ extension DefaultCharactersListViewModel: CharactersListViewModel {
         actions?.showCharacterDetails(pages.characters[index])
     }
     
+    func didSelectItem(item: CharactersListItemViewModel) {
+        let characters = self.pages.characters
+        if let one = characters.first(where: { $0.id == item.id}) {
+            actions?.showCharacterDetails(one)
+        }
+    }
+    
     func markFavorite(character: MarvelCharacter) {
         repository.favorite(character: character) { result in
             if case let .failure(error) = result {
                 self.handleError(error)
             } else {
                 // 좋아요 마크
-                var news = self._items.value
+                let news = self._items.value
                 if let index = news.firstIndex(where: { $0.id == character.id }) {
                     news[index].markFavorite(true, at: Date())
                     self._items.send(news)
@@ -131,7 +145,7 @@ extension DefaultCharactersListViewModel: CharactersListViewModel {
                 self.handleError(error)
             } else {
                 // 안 좋아요 마크
-                var news = self._items.value
+                let news = self._items.value
                 if let index = news.firstIndex(where: { $0.id == character.id }) {
                     news[index].markFavorite(false, at: nil)
                     self._items.send(news)
@@ -153,6 +167,10 @@ extension DefaultCharactersListViewModel: CharactersListViewModel {
     
     var itemsIsEmpty: Bool {
         _items.value.isEmpty
+    }
+    
+    var itemsAllLoaded: AnyPublisher<Bool, Never> {
+        _itemsAllLoaded.eraseToAnyPublisher()
     }
     
     var loadings: AnyPublisher<ListLoading, Never> {

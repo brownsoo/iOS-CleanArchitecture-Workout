@@ -14,14 +14,14 @@ protocol CharactersFlowCoordinatorDependencies {
 }
 
 final class CharactersFlowCoordinator {
-    private weak var nc: UINavigationController?
+    private weak var navigation: UINavigationController?
     private let dependencies: CharactersFlowCoordinatorDependencies
     // FIXME: 왜 갖고 있지?
     private weak var listVc: CharactersListVc?
     
-    init(nc: UINavigationController? = nil,
+    init(nc: UINavigationController?,
          dependencies: CharactersFlowCoordinatorDependencies) {
-        self.nc = nc
+        self.navigation = nc
         self.dependencies = dependencies
     }
     
@@ -29,19 +29,19 @@ final class CharactersFlowCoordinator {
         let actions = CharactersListViewModelActions(showCharacterDetails: self.showDetailsView,
                                                      showFavorites: self.showFavoritesView)
         let vc = dependencies.makeCharactersListView(actions: actions)
-        nc?.pushViewController(vc, animated: true)
+        navigation?.pushViewController(vc, animated: true)
         listVc = vc
     }
     
     private func showDetailsView(character: MarvelCharacter) {
         let vc = dependencies.makeCharactersDetailView(chracter: character)
-        nc?.pushViewController(vc, animated: true)
+        navigation?.pushViewController(vc, animated: true)
     }
     
     private func showFavoritesView() {
         let actions = CharactersListViewModelActions(showCharacterDetails: self.showDetailsView,
                                                      showFavorites: nil)
         let vc = dependencies.makeFavoritesListView(actions: actions)
-        nc?.pushViewController(vc, animated: true)
+        navigation?.pushViewController(vc, animated: true)
     }
 }

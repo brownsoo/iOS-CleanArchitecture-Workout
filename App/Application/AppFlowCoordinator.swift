@@ -8,7 +8,7 @@
 import UIKit
 
 final class AppFlowCoordinator {
-    var navigationController: UINavigationController
+    private(set) var navigationController: UINavigationController
     private let diContainer: AppDIContainer
     
     init(navigationController: UINavigationController, diContainer: AppDIContainer) {
@@ -17,8 +17,8 @@ final class AppFlowCoordinator {
     }
     
     func start() {
-        let sceneDIContainer = diContainer.makeCharactersSceneDIContainer()
-        let flow = sceneDIContainer.makeCharactersFlowCoordinator(nc: navigationController)
+        let sceneContainer = diContainer.makeCharactersSceneDIContainer()
+        let flow = sceneContainer.makeCharactersFlowCoordinator(nc: navigationController)
         flow.start()
     }
 }

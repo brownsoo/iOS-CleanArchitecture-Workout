@@ -143,9 +143,9 @@ extension CoreDataCharactersStorage: CharactersStorage {
             try await dataStorage.performBackgroundTask({ context in
                 let request = self.fetchCharacter(characterId: data.id)
                 if let character = try context.fetch(request).first {
-                    let entity = data.toFavoritEntity(in: context,
-                                                      character: character,
-                                                      createdAt: Date())
+                    let _ = data.toFavoritEntity(in: context,
+                                                 character: character,
+                                                 createdAt: Date())
                     try context.save()
                 }
             })
