@@ -70,6 +70,8 @@
 		1763B7822A9E41EC0019F86D /* ListLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7812A9E41EC0019F86D /* ListLoading.swift */; };
 		1763B7842A9E45160019F86D /* VoidCallback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7832A9E45160019F86D /* VoidCallback.swift */; };
 		1763B7862A9F8A780019F86D /* DefaultFavoritesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7852A9F8A780019F86D /* DefaultFavoritesListViewModel.swift */; };
+		1763B7882A9F98D80019F86D /* DefaultCharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7872A9F98D80019F86D /* DefaultCharactersListViewModel.swift */; };
+		1763B78A2A9F99410019F86D /* BaseCharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7892A9F99410019F86D /* BaseCharactersListViewModel.swift */; };
 		17BA3B232A9EF28600862313 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA3B222A9EF28600862313 /* UIViewPreview.swift */; };
 		17BA3B262A9F2E9A00862313 /* Foot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA3B252A9F2E9A00862313 /* Foot.swift */; };
 		17BA3B282A9F38CC00862313 /* String+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA3B272A9F38CC00862313 /* String+Crypto.swift */; };
@@ -179,6 +181,8 @@
 		1763B7812A9E41EC0019F86D /* ListLoading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListLoading.swift; sourceTree = "<group>"; };
 		1763B7832A9E45160019F86D /* VoidCallback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoidCallback.swift; sourceTree = "<group>"; };
 		1763B7852A9F8A780019F86D /* DefaultFavoritesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFavoritesListViewModel.swift; sourceTree = "<group>"; };
+		1763B7872A9F98D80019F86D /* DefaultCharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCharactersListViewModel.swift; sourceTree = "<group>"; };
+		1763B7892A9F99410019F86D /* BaseCharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCharactersListViewModel.swift; sourceTree = "<group>"; };
 		17BA3B222A9EF28600862313 /* UIViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreview.swift; sourceTree = "<group>"; };
 		17BA3B252A9F2E9A00862313 /* Foot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foot.swift; sourceTree = "<group>"; };
 		17BA3B272A9F38CC00862313 /* String+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Crypto.swift"; sourceTree = "<group>"; };
@@ -320,6 +324,8 @@
 				1763B7502A9CF6300019F86D /* CharactersListItemViewModel.swift */,
 				1763B7522A9CF8B20019F86D /* CharactersListViewModel.swift */,
 				1763B7852A9F8A780019F86D /* DefaultFavoritesListViewModel.swift */,
+				1763B7872A9F98D80019F86D /* DefaultCharactersListViewModel.swift */,
+				1763B7892A9F99410019F86D /* BaseCharactersListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -732,6 +738,7 @@
 				17DE8CD72A9744B3007BBCCC /* HttpMethod.swift in Sources */,
 				1763B7422A9C2F810019F86D /* CoreDataCharactersStorage.swift in Sources */,
 				1763B7472A9C5ED00019F86D /* Foundation+Extentions.swift in Sources */,
+				1763B7882A9F98D80019F86D /* DefaultCharactersListViewModel.swift in Sources */,
 				1763B7552A9CFDCD0019F86D /* AppFlowCoordinator.swift in Sources */,
 				17DE8CD02A972159007BBCCC /* PagedData.swift in Sources */,
 				1763B7622A9D75930019F86D /* Alertable.swift in Sources */,
@@ -771,6 +778,7 @@
 				17DE8CCD2A97209F007BBCCC /* MarvelResourceList.swift in Sources */,
 				1763B6FB2A9822430019F86D /* MarvelComic.swift in Sources */,
 				1763B70D2A9907A80019F86D /* ResponseDecoder.swift in Sources */,
+				1763B78A2A9F99410019F86D /* BaseCharactersListViewModel.swift in Sources */,
 				17E0988B2A965F8D00178398 /* SceneDelegate.swift in Sources */,
 				1763B7752A9E0E950019F86D /* CharacterDetailVc.swift in Sources */,
 				1763B7602A9D74B70019F86D /* UIViewController+AddChild.swift in Sources */,

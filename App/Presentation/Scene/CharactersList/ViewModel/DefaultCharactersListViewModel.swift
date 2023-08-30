@@ -1,22 +1,29 @@
 //
-//  DefaultFavoritesListViewModel.swift
+//  DefaultCharactersListViewModel.swift
 //  App
 //
-//  Created by hyonsoo on 2023/08/30.
+//  Created by hyonsoo on 2023/08/31.
 //
 
 import Foundation
 import Combine
 
-final class DefaultFavoritesListViewModel: BaseCharactersListViewModel {
+final class DefaultCharactersListViewModel: BaseCharactersListViewModel {
     
     override func load(loading: ListLoading,
-                      refreshing: Bool = false,
-                      isCurrentPage: Bool = false) {
+                       refreshing: Bool = false,
+                       isCurrentPage: Bool = false) {
         _loading.send(loading)
-        loadTask = repository.getFavoriteList(
+        loadTask = repository.fetchList(
             page: isCurrentPage ? currentPage : naxtPage,
-            onResult: { [weak self] result in
+            refreshing: refreshing,
+            onCached: { [weak self] page in
+                guard let newPage = page else { return }
+                self?.maingQueue.async {
+                    self?.appendPage(newPage)
+                }
+            },
+            onFetched: { [weak self] result in
                 self?.maingQueue.async {
                     switch result {
                         case .success(let newPage):
