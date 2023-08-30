@@ -1,37 +1,14 @@
 //
-//  CharactersListViewModel.swift
+//  DefaultFavoritesListViewModel.swift
 //  App
 //
-//  Created by hyonsoo on 2023/08/29.
+//  Created by hyonsoo on 2023/08/30.
 //
 
 import Foundation
 import Combine
 
-struct CharactersListViewModelActions {
-    let showCharacterDetails: (MarvelCharacter) -> Void
-    // FIXME: nullable 제거
-    let showFavorites: VoidCallback?
-}
-
-protocol CharactersListViewModel: ViewModel {
-    // in-
-    func refresh(forced: Bool) -> Void
-    func loadNextPage() -> Void
-    func didSelectItem(at index: Int) -> Void
-    func didSelectItem(characterId: Int) -> Void
-    func toggleFavorited(characterId: Int) -> Void
-    func showFavoritesList() -> Void
-    // out -
-    var emtpyLabelText: String { get }
-    var items: AnyPublisher<[CharactersListItemViewModel], Never> { get }
-    var itemsIsEmpty: Bool { get }
-    var itemsAllLoaded: AnyPublisher<Bool, Never> { get }
-    var loadings: AnyPublisher<ListLoading, Never> { get }
-}
-
-
-final class DefaultCharactersListViewModel: BaseViewModel {
+final class DefaultFavoritesListViewModel: BaseViewModel {
     private var actions: CharactersListViewModelActions?
     private var repository: CharactersRepository
     
@@ -58,7 +35,7 @@ final class DefaultCharactersListViewModel: BaseViewModel {
     }
     
     private func appendPage(_ newPage: PagedData<MarvelCharacter>) {
-        foot("page \(newPage.page) count:\(newPage.items.count)")
+        foot("page \(newPage.page) totalPages:\(newPage.totalPages)")
         currentPage = newPage.page
         totalPages = newPage.totalPages
         pages = pages.filter({ $0.page != newPage.page }) + [newPage]
@@ -78,16 +55,9 @@ final class DefaultCharactersListViewModel: BaseViewModel {
                       refreshing: Bool = false,
                       isCurrentPage: Bool = false) {
         _loading.send(loading)
-        loadTask = repository.fetchList(
+        loadTask = repository.getFavoriteList(
             page: isCurrentPage ? currentPage : naxtPage,
-            refreshing: refreshing,
-            onCached: { [weak self] page in
-                guard let newPage = page else { return }
-                self?.maingQueue.async {
-                    self?.appendPage(newPage)
-                }
-            },
-            onFetched: { [weak self] result in
+            onResult: { [weak self] result in
                 self?.maingQueue.async {
                     switch result {
                         case .success(let newPage):
@@ -134,8 +104,7 @@ final class DefaultCharactersListViewModel: BaseViewModel {
     }
 }
 
-
-extension DefaultCharactersListViewModel: CharactersListViewModel {
+extension DefaultFavoritesListViewModel: CharactersListViewModel {
     
     func refresh(forced: Bool = false) {
         resetPages()
@@ -172,7 +141,7 @@ extension DefaultCharactersListViewModel: CharactersListViewModel {
     }
     
     func showFavoritesList() {
-        actions?.showFavorites?()
+        // Not handled
     }
     
     // out -

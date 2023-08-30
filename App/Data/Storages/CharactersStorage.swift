@@ -12,6 +12,7 @@ protocol CharactersStorage {
     func getCharactor(id: Int) async throws -> MarvelCharacter?
     func save(data: PagedData<MarvelCharacter>) async -> Void
     
+    func getAllFavorites() async throws -> [MarvelCharacter]
     func getFavorites(page: Int) async throws -> PagedData<MarvelCharacter>
     func saveFavorite(data: MarvelCharacter) async throws -> Void
     func removeFavorite(data: MarvelCharacter) async throws -> Void

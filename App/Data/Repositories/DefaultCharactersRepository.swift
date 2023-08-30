@@ -21,6 +21,7 @@ final class DefaultCharactersRepository {
 extension DefaultCharactersRepository: CharactersRepository {
     
     func fetchList(page: Int,
+                   refreshing: Bool,
                    onCached: @escaping (PagedData<MarvelCharacter>?) -> Void,
                    onFetched: @escaping (Result<PagedData<MarvelCharacter>, Error>) -> Void) -> Cancellable {
         foot()
@@ -34,11 +35,20 @@ extension DefaultCharactersRepository: CharactersRepository {
             let cached = try? await this.cache.getCharactors(page: page)
             onCached(cached)
             do {
-                let results = try await this.dataService.request(MarvelApi.character.search(page: page, limit: kQueryLimit, etag: cached?.etag))
+                let etag = refreshing ? nil : cached?.etag
+                let results = try await this.dataService.request(MarvelApi.character.search(page: page, limit: kQueryLimit, etag: etag))
                 guard !Task.isCancelled else {
                     return
                 }
-                let paged = results.toPagedData()
+                var paged = results.toPagedData()
+                // FIXME: 원격데이터에 좋아요 정보가 없어 제공하고 있으나, 전부 조회하는 건 성능개선이 필요.
+                let allFavorites = try await this.cache.getAllFavorites()
+                allFavorites.forEach { it in
+                    if let index = paged.items.firstIndex(where: { $0.id == it.id }) {
+                        paged.items[index].isFavorite = true
+                        paged.items[index].favoritedAt = it.favoritedAt
+                    }
+                }
                 await this.cache.save(data: paged)
                 onFetched(.success(paged))
             } catch {

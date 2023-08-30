@@ -154,6 +154,7 @@ extension CharactersTableVc {
             snapshot.appendSections(Section.allCases)
             snapshot.appendItems(items, toSection: .characters)
             self.dataSource.apply(snapshot, animatingDifferences: animating)
+            self.tableView.refreshControl?.endRefreshing()
         }
     }
 }

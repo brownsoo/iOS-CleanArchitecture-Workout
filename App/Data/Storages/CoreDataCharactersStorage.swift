@@ -47,7 +47,7 @@ final class CoreDataCharactersStorage {
             NSSortDescriptor(key: #keyPath(FavoriteEntity.createdAt), ascending: false)
         ]
         request.fetchLimit = queryLimit
-        request.fetchOffset = page * queryLimit
+        request.fetchOffset = (page - 1) * queryLimit
         return request
     }
     
@@ -120,6 +120,18 @@ extension CoreDataCharactersStorage: CharactersStorage {
         }
     }
     
+    func getAllFavorites() async throws -> [MarvelCharacter] {
+        do {
+            let data: [MarvelCharacter] = try await dataStorage.performBackgroundTask({ context in
+                let request = FavoriteEntity.fetchRequest()
+                let entities = try context.fetch(request)
+                return entities.compactMap({ $0.item?.toDomain() })
+            })
+            return data
+        } catch {
+            throw AppError.runtime(cause: error, message: error.localizedDescription)
+        }
+    }
     
     func getFavorites(page: Int) async throws -> PagedData<MarvelCharacter> {
         do {
@@ -131,7 +143,7 @@ extension CoreDataCharactersStorage: CharactersStorage {
             let total = await getFavoritesTotal()
             return .init(page: page,
                          totalCount: total,
-                         totalPages: Int(ceil(Double(total) / Double(page))),
+                         totalPages: Int(ceil(Double(total) / Double(page * kQueryLimit))),
                          items: data)
         } catch {
             throw AppError.runtime(cause: error, message: error.localizedDescription)
@@ -161,12 +173,13 @@ extension CoreDataCharactersStorage: CharactersStorage {
             try await dataStorage.performBackgroundTask({ context in
                 let request: NSFetchRequest = FavoriteEntity.fetchRequest()
                 request.predicate = NSPredicate(
-                    format: "$K = %d",
+                    format: "%K = %d",
                     #keyPath(FavoriteEntity.characterId),
                     Int64(data.id)
                 )
                 if let result = try context.fetch(request).first {
                     context.delete(result)
+                    try context.save()
                 }
             })
         } catch {

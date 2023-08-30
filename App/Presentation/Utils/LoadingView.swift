@@ -10,20 +10,28 @@ import UIKit
 class LoadingView {
 
     static var spinner: UIActivityIndicatorView?
-
-    static func show() {
+    static var spinnerContainer: UIView?
+    
+    static func show(parent: UIView) {
         DispatchQueue.main.async {
             NotificationCenter.default.addObserver(self, selector: #selector(update), name: UIDevice.orientationDidChangeNotification, object: nil)
             
-            if spinner == nil,
-               let window = UIApplication.shared.connectedScenes.compactMap({ ($0 as? UIWindowScene)?.keyWindow }).first {
-                let frame = UIScreen.main.bounds
-                let spinner = UIActivityIndicatorView(frame: frame)
-                spinner.backgroundColor = UIColor.black.withAlphaComponent(0.2)
-                spinner.style = .large
-                window.addSubview(spinner)
+            if spinner == nil {
+                let frame = parent.bounds
+                let spinner = UIActivityIndicatorView(style: .large)
+                let spinnerContainer = UIView(frame: frame)
+                spinnerContainer.isOpaque = true
+                spinnerContainer.backgroundColor = .black.withAlphaComponent(0.2)
+                spinnerContainer.addSubview(spinner)
+                spinner.makeConstraints { it in
+                    it.centerXAnchorConstraintToSuperview()
+                    it.centerYAnchorConstraintToSuperview()
+                }
+                
+                parent.addSubview(spinnerContainer)
 
                 spinner.startAnimating()
+                self.spinnerContainer = spinnerContainer
                 self.spinner = spinner
             }
         }
@@ -34,6 +42,8 @@ class LoadingView {
             guard let spinner = spinner else { return }
             spinner.stopAnimating()
             spinner.removeFromSuperview()
+            self.spinnerContainer?.removeFromSuperview()
+            self.spinnerContainer = nil
             self.spinner = nil
             didHide?()
         }
@@ -41,9 +51,9 @@ class LoadingView {
 
     @objc static func update() {
         DispatchQueue.main.async {
-            if spinner != nil {
+            if let superview = spinnerContainer?.superview {
                 hide {
-                    show()
+                    show(parent: superview)
                 }
             }
         }

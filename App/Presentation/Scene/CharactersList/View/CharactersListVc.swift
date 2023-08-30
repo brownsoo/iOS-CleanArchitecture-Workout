@@ -23,24 +23,28 @@ class CharactersListVc: UIViewController, Alertable {
     private let lbLicense = UILabel()
     
     private var cancellables: Set<AnyCancellable> = []
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         bindViewModel()
+        viewModel?.refresh(forced: false)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        viewModel?.refresh()
-    }
 }
 
 extension CharactersListVc {
     private func setupViews() {
         self.title = "Marvel Characters"
+        self.view.backgroundColor = .systemBackground
         
-        listViewContainer.accessibilityLabel = "List View Container"
+        let thumbImage = UIImage(systemName: "hand.thumbsup",
+                                 withConfiguration: UIImage.SymbolConfiguration(hierarchicalColor: .systemMint))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil,
+                                                                 image: thumbImage,
+                                                                 target: self,
+                                                                 action: #selector(navigateToFavoriteView))
+        
         listViewContainer.also { it in
             it.backgroundColor = .yellow
             view.addSubview(it)
@@ -65,7 +69,7 @@ extension CharactersListVc {
         let vc = CharactersTableVc.create(viewModel: self.viewModel)
         add(childVc: vc, container: listViewContainer)
         listTableVc = vc
-
+        
         emptyLabel.also { it in
             it.font = UIFont.systemFont(ofSize: 14, weight: .light)
             it.textColor = .tertiaryLabel
@@ -98,7 +102,7 @@ extension CharactersListVc {
         
         switch loading {
             case .first:
-                LoadingView.show()
+                LoadingView.show(parent: self.view)
             case .next:
                 listViewContainer.isHidden = false
             case .idle:
@@ -112,5 +116,9 @@ extension CharactersListVc {
     private func showError(message: String) {
         guard !message.isEmpty else { return }
         showAlert(message: message)
+    }
+    
+    @objc private func navigateToFavoriteView() {
+        viewModel?.showFavoritesList()
     }
 }
