@@ -9,23 +9,50 @@ import UIKit
 import SwiftUI
 import Kingfisher
 
+enum CharactersListItemClickType {
+    case item(characterId: Int)
+    case favorite(characterId: Int)
+}
+
+protocol CharactersListItemCellDelegate {
+    func charactersListItemClicked(type: CharactersListItemClickType)
+}
+
 final class CharactersListItemCell: UITableViewCell {
     static let reuseIdentifier = String(describing: CharactersListItemCell.self)
     static let height = CGFloat(200)
     
-    private let ivRepresent: UIImageView = UIImageView()
-    private let lbTitle: UILabel = UILabel()
-    private let lbComicsCount: UILabel = UILabel()
-    private let lbEventsCount: UILabel = UILabel()
-    private let lbSeriesCount: UILabel = UILabel()
-    private let lbStoriesCount: UILabel = UILabel()
-    private let lbUrlsCount: UILabel = UILabel()
-    private let stackCount: UIStackView = UIStackView()
+    private let btBackground = UIButton(type: .custom)
+    private let lbTitle = UILabel()
+    private let lbComicsCount = UILabel()
+    private let lbEventsCount = UILabel()
+    private let lbSeriesCount = UILabel()
+    private let lbStoriesCount = UILabel()
+    private let lbUrlsCount = UILabel()
+    private let stackCount = UIStackView()
+    private let thumbImage = UIImage(
+        systemName: "hand.thumbsup",
+            withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 28))
+            .applying(UIImage.SymbolConfiguration(hierarchicalColor: .systemMint)))
+    private let thumbImageFill = UIImage(
+        systemName: "hand.thumbsup.fill",
+        withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 28))
+            .applying(UIImage.SymbolConfiguration(hierarchicalColor: .systemMint)))
+    private let thumbImageFillHighlight = UIImage(
+        systemName: "hand.thumbsup.fill",
+        withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 28))
+            .applying(UIImage.SymbolConfiguration(hierarchicalColor: .systemMint.withAlphaComponent(0.5))))
+    
+    private let btThumb = UIButton(type: .custom)
     
     private lazy var processor: ImageProcessor = {
         DownsamplingImageProcessor(size: contentView.bounds.size)
         //|> RoundCornerImageProcessor(cornerRadius: 6)
     }()
+    
+    private var characterId: Int = -1
+    var delegate: CharactersListItemCellDelegate?
+    
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -37,8 +64,11 @@ final class CharactersListItemCell: UITableViewCell {
     }
     
     func fill(with viewModel: CharactersListItemViewModel) {
-        ivRepresent.kf.setImage(
+        characterId = viewModel.id
+        
+        btBackground.kf.setBackgroundImage(
             with: viewModel.thumbnail,
+            for: .normal,
             options: [
                 .processor(processor),
                 .scaleFactor(UIScreen.main.scale),
@@ -53,25 +83,30 @@ final class CharactersListItemCell: UITableViewCell {
         lbSeriesCount.text = "\(viewModel.seriesCount) Series"
         lbStoriesCount.text = "\(viewModel.storiesCount) Stories"
         lbUrlsCount.text = "\(viewModel.urlsCount) Urls"
+        btThumb.isSelected = viewModel.isFavorite
+        
     }
 }
 
 extension CharactersListItemCell {
     private func setupViews() {
-        contentView.makeConstraints { it in
-            it.edgesConstraintToSuperview(edges: .all)
-        }
+//        contentView.makeConstraints { it in
+//            it.edgesConstraintToSuperview(edges: .all)
+//            it.heightAnchorConstraintTo(CharactersListItemCell.height).priority = .required
+//        }
+        contentView.backgroundColor = .yellow
         
-        ivRepresent.also { it in
+        btBackground.also { it in
             it.backgroundColor = .secondarySystemBackground
-            it.kf.indicatorType = .activity
+            it.imageView?.kf.indicatorType = .activity
             contentView.addSubview(it)
             it.makeConstraints {
-                $0.edgesConstraintToSuperview(edges: [.horizontal, .top])
-                $0.bottomAnchorConstraintToSuperview()?.priority = .defaultHigh
-                $0.heightAnchorConstraintTo(CharactersListItemCell.height)
+                $0.edgesConstraintToSuperview(edges: .all)
+                // $0.bottomAnchorConstraintToSuperview()?.priority = .defaultHigh
+               // $0.heightAnchorConstraintTo(CharactersListItemCell.height)
             }
         }
+        btBackground.addTarget(self, action: #selector(onClickItem), for: .touchUpInside)
         
         lbTitle.also { it in
             it.backgroundColor = UIColor.tertiarySystemFill
@@ -81,10 +116,10 @@ extension CharactersListItemCell {
             it.textAlignment = .natural
             contentView.addSubview(it)
             it.makeConstraints {
-                $0.leadingAnchorConstraintTo(ivRepresent, constant: 20)
-                $0.topAnchorConstraintTo(ivRepresent, constant: 20)
+                $0.leadingAnchorConstraintToSuperview(20)
+                $0.topAnchorConstraintToSuperview(20)
                 $0.trailingAnchor
-                    .constraint(lessThanOrEqualTo: ivRepresent.trailingAnchor, constant: -40)
+                    .constraint(lessThanOrEqualTo: btBackground.trailingAnchor, constant: -40)
                     .isActive = true
             }
         }
@@ -95,10 +130,10 @@ extension CharactersListItemCell {
             it.alignment = .center
             contentView.addSubview(it)
             it.makeConstraints {
-                $0.leadingAnchorConstraintTo(ivRepresent, constant: 20)
-                $0.bottomAnchorConstraintTo(ivRepresent, constant: -20)
+                $0.leadingAnchorConstraintToSuperview(20)
+                $0.bottomAnchorConstraintToSuperview(-20)
                 $0.trailingAnchor
-                    .constraint(lessThanOrEqualTo: ivRepresent.trailingAnchor, constant: -40)
+                    .constraint(lessThanOrEqualTo: btBackground.trailingAnchor, constant: -40)
                     .isActive = true
             }
         }
@@ -109,6 +144,30 @@ extension CharactersListItemCell {
         makeCountLabel(lbStoriesCount, to: stackCount)
         makeCountLabel(lbUrlsCount, to: stackCount)
         
+        btThumb.also { it in
+            it.setImage(thumbImage, for: .normal)
+            it.setImage(thumbImageFillHighlight, for: .highlighted)
+            it.setImage(thumbImageFill, for: .selected)
+            contentView.addSubview(it)
+            it.makeConstraints {
+                $0.trailingAnchorConstraintToSuperview(-20)
+                $0.bottomAnchorConstraintToSuperview(-20)
+            }
+        }
+        btThumb.addTarget(self, action: #selector(onClickFavorite), for: .touchUpInside)
+        
+    }
+    
+    @objc private func onClickFavorite() {
+        if characterId > 0 {
+            delegate?.charactersListItemClicked(type: .favorite(characterId: characterId))
+        }
+    }
+    
+    @objc private func onClickItem() {
+        if characterId > 0 {
+            delegate?.charactersListItemClicked(type: .item(characterId: characterId))
+        }
     }
     
     private func makeCountLabel(_ lb: UILabel, to stack: UIStackView) {
@@ -138,20 +197,22 @@ struct CharactersListItemCell_Preview: PreviewProvider {
             UIViewPreview {
                 cell1
             }
+            .frame(height: 200)
             .onAppear {
                 cell1.fill(with: sample1)
             }
-            .previewLayout(.sizeThatFits)
             
             UIViewPreview {
                 cell2
             }
+            .frame(height: 200)
             .onAppear {
                 cell2.fill(with: sample2)
             }
-            .previewLayout(.sizeThatFits)
             
             Spacer()
+            
         }
+        .previewLayout(.sizeThatFits)
     }
 }

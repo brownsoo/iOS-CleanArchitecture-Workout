@@ -18,9 +18,8 @@ protocol CharactersListViewModel: ViewModel {
     func refresh() -> Void
     func loadNextPage() -> Void
     func didSelectItem(at index: Int) -> Void
-    func didSelectItem(item: CharactersListItemViewModel) -> Void
-    func markFavorite(character: MarvelCharacter) -> Void
-    func unmarkFavorte(character: MarvelCharacter) -> Void
+    func didSelectItem(characterId: Int) -> Void
+    func toggleFavorited(characterId: Int) -> Void
     // out -
     var emtpyLabelText: String { get }
     var items: AnyPublisher<[CharactersListItemViewModel], Never> { get }
@@ -57,6 +56,7 @@ final class DefaultCharactersListViewModel: BaseViewModel {
     }
     
     private func appendPage(_ newPage: PagedData<MarvelCharacter>) {
+        foot("page \(newPage.page) count:\(newPage.items.count)")
         currentPage = newPage.page
         totalPages = newPage.totalPages
         pages = pages.filter({ $0.page != newPage.page }) + [newPage]
@@ -70,7 +70,7 @@ final class DefaultCharactersListViewModel: BaseViewModel {
     
     private func resetPages() {
         currentPage = 0
-        totalPages = 0
+        totalPages = 1
         pages.removeAll()
         _items.send([])
     }
@@ -97,6 +97,38 @@ final class DefaultCharactersListViewModel: BaseViewModel {
                 }
             })
     }
+    
+    private func markFavorite(character: MarvelCharacter) {
+        repository.favorite(character: character) { result in
+            if case let .failure(error) = result {
+                self.handleError(error)
+            } else {
+                // 좋아요 마크
+                let news = self._items.value
+                if let index = news.firstIndex(where: { $0.id == character.id }) {
+                    news[index].markFavorite(true, at: Date())
+                    self._items.send(news)
+                }
+            }
+        }
+        .store(in: &cancellabels)
+    }
+    
+    private func unmarkFavorte(character: MarvelCharacter) {
+        repository.unfavorite(character: character) { result in
+            if case let .failure(error) = result {
+                self.handleError(error)
+            } else {
+                // 안 좋아요 마크
+                let news = self._items.value
+                if let index = news.firstIndex(where: { $0.id == character.id }) {
+                    news[index].markFavorite(false, at: nil)
+                    self._items.send(news)
+                }
+            }
+        }
+        .store(in: &cancellabels)
+    }
 }
 
 
@@ -115,45 +147,27 @@ extension DefaultCharactersListViewModel: CharactersListViewModel {
     func didSelectItem(at index: Int) {
         actions?.showCharacterDetails(pages.characters[index])
     }
-    
-    func didSelectItem(item: CharactersListItemViewModel) {
+    func didSelectItem(characterId: Int) {
         let characters = self.pages.characters
-        if let one = characters.first(where: { $0.id == item.id}) {
+        if let one = characters.first(where: { $0.id == characterId }) {
             actions?.showCharacterDetails(one)
         }
     }
     
-    func markFavorite(character: MarvelCharacter) {
-        repository.favorite(character: character) { result in
-            if case let .failure(error) = result {
-                self.handleError(error)
-            } else {
-                // 좋아요 마크
-                let news = self._items.value
-                if let index = news.firstIndex(where: { $0.id == character.id }) {
-                    news[index].markFavorite(true, at: Date())
-                    self._items.send(news)
-                }
-            }
+    func toggleFavorited(characterId: Int) {
+        let characters = self.pages.characters
+        guard let character = characters.first(where: { $0.id == characterId }) else {
+            // TODO: report cloud
+            return
         }
-        .store(in: &cancellabels)
+        if character.isFavorite == true {
+            unmarkFavorte(character: character)
+        } else {
+            markFavorite(character: character)
+        }
     }
     
-    func unmarkFavorte(character: MarvelCharacter) {
-        repository.unfavorite(character: character) { result in
-            if case let .failure(error) = result {
-                self.handleError(error)
-            } else {
-                // 안 좋아요 마크
-                let news = self._items.value
-                if let index = news.firstIndex(where: { $0.id == character.id }) {
-                    news[index].markFavorite(false, at: nil)
-                    self._items.send(news)
-                }
-            }
-        }
-        .store(in: &cancellabels)
-    }
+    
     
     // out -
     

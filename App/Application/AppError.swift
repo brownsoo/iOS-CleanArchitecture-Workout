@@ -20,6 +20,12 @@ enum AppError: Error {
     case illegalArguments
 }
 
+extension Error {
+    var asAppError: AppError? {
+        self as? AppError
+    }
+}
+
 extension AppError {
     func humanMessage() -> String {
         switch self {

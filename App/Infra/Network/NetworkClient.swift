@@ -44,6 +44,9 @@ class DefaultNetworkClient: NetworkClient {
            let res = try? JSONDecoder().decode(ResMarvelError.self, from: data) {
             return AppError.requestFailed(statusCode: res.code, message: res.status)
         }
+        if error.responseCode == 304 {
+            return AppError.contentNotChanged
+        }
         if let nsError = error.underlyingError as? NSError {
             switch(nsError.code) {
                 case NSURLErrorTimedOut,

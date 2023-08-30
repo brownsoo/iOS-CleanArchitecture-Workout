@@ -17,6 +17,4 @@ final class AppDIContainer {
     func makeCharactersSceneDIContainer() -> CharactersSceneDIContainer {
         CharactersSceneDIContainer(networkDataService: networkDataService)
     }
-    
-    
 }

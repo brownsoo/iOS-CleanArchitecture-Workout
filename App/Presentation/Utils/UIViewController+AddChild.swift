@@ -8,11 +8,11 @@
 import UIKit
 
 extension UIViewController {
-    func add(child: UIViewController, container: UIView) {
-        addChild(child)
-        child.view.frame = container.bounds
-        container.addSubview(child.view)
-        child.didMove(toParent: self)
+    func add(childVc: UIViewController, container: UIView) {
+        addChild(childVc)
+        childVc.view.frame = container.bounds
+        container.addSubview(childVc.view)
+        childVc.didMove(toParent: self)
     }
     
     func removeSelf() {

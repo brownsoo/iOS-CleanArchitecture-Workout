@@ -23,6 +23,7 @@ extension DefaultCharactersRepository: CharactersRepository {
     func fetchList(page: Int,
                    onCached: @escaping (PagedData<MarvelCharacter>?) -> Void,
                    onFetched: @escaping (Result<PagedData<MarvelCharacter>, Error>) -> Void) -> Cancellable {
+        foot()
         let task = Task { [weak self] in
             guard let this = self else { return }
             guard page > 0 else {
@@ -41,7 +42,12 @@ extension DefaultCharactersRepository: CharactersRepository {
                 await this.cache.save(data: paged)
                 onFetched(.success(paged))
             } catch {
-                onFetched(.failure(error))
+                if let e = error.asAppError,
+                   case AppError.contentNotChanged = e {
+                    // not changed
+                } else {
+                    onFetched(.failure(error))
+                }
             }
         }
         return task

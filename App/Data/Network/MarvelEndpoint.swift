@@ -10,6 +10,7 @@ import Foundation
 struct MarvelEndpoint: ApiEndpoint {
     private let apiHost = kMarvelApiHost
     private let apiKey = kMarvelPublicKey
+    private let privateKey = kMarvelPrivateKey
     let urlString: String
     var headers: [String : String]
     var parameters: [String : Any]?
@@ -22,7 +23,12 @@ struct MarvelEndpoint: ApiEndpoint {
             self.headers["If-None-Match"] = etag!
         }
         var params = parameters ?? [:]
-        params["apiKey"] = apiKey
+        params["apikey"] = apiKey
+        let ts = "\(Int(round(Date().timeIntervalSince1970)))"
+        params["ts"] = ts
+        if let hash = "\(ts)\(privateKey)\(apiKey)".hashed(.md5) {
+            params["hash"] = hash
+        }
         self.parameters = params
     }
 }

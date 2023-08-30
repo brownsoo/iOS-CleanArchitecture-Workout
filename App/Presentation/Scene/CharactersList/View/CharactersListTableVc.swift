@@ -10,10 +10,17 @@ import Combine
 
 final class CharactersListTableVc: UITableViewController {
     
+    static func create(viewModel: CharactersListViewModel?) -> CharactersListTableVc {
+        let vc = CharactersListTableVc()
+        vc.viewModel = viewModel
+        return vc
+    }
+    
     var viewModel: CharactersListViewModel?
     
     private var pageLoadingSpinner: UIActivityIndicatorView?
     private var cancellables: Set<AnyCancellable> = []
+    private let cellClickPublisher = PassthroughSubject<CharactersListItemClickType, Never>()
     private lazy var dataSource = makeDataSource()
     
     private enum Section: CaseIterable {
@@ -42,6 +49,7 @@ extension CharactersListTableVc {
     private func setupViews() {
         tableView.estimatedRowHeight = CharactersListItemCell.height
         tableView.rowHeight = UITableView.automaticDimension
+        tableView.allowsSelection = false
         tableView.register(CharactersListItemCell.self, forCellReuseIdentifier: CharactersListItemCell.reuseIdentifier)
     }
     
@@ -54,14 +62,31 @@ extension CharactersListTableVc {
         }
         .store(in: &cancellables)
         
-        vm.itemsAllLoaded.removeDuplicates().sink { v in
-            if v {
-                // TODO: show banner
-                debugPrint("다 불러옴.")
+        vm.itemsAllLoaded
+            .removeDuplicates().sink { v in
+                if v {
+                    // TODO: show banner
+                    debugPrint("다 불러옴.")
+                }
             }
-        }
+            .store(in: &cancellables)
+        
+        cellClickPublisher.throttle(for: 1.0, scheduler: Scheduler.masinScheduler, latest: true)
+            .sink { type in
+                self.handleCellClick(type)
+            }
+            .store(in: &cancellables)
     }
     
+    private func handleCellClick(_ type: CharactersListItemClickType) {
+        guard let vm = viewModel else { return }
+        switch type {
+            case .favorite(let characterId):
+                vm.didSelectItem(characterId: characterId)
+            case .item(let characterId):
+                vm.toggleFavorited(characterId: characterId)
+        }
+    }
     
     private func makeDataSource() -> UITableViewDiffableDataSource<Section, CharactersListItemViewModel> {
         return UITableViewDiffableDataSource(
@@ -72,11 +97,13 @@ extension CharactersListTableVc {
                 }
                 cell.accessibilityIdentifier = "CharactersListItemCell.\(indexPath.row)"
                 cell.fill(with: itemViewModel)
+                cell.delegate = self
                 return cell
             }
     }
     
     private func updateView(with items: [CharactersListItemViewModel], animating: Bool = true) {
+        foot("\(items.count)")
         DispatchQueue.main.async {
             var snapshot = NSDiffableDataSourceSnapshot<Section, CharactersListItemViewModel>()
             snapshot.appendSections(Section.allCases)
@@ -84,16 +111,10 @@ extension CharactersListTableVc {
             self.dataSource.apply(snapshot, animatingDifferences: animating)
         }
     }
-    
-    
 }
-// MARK: - UITableViewDataSource, UITableViewDelegate
 
-extension CharactersListTableVc {
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let snapshot = dataSource.snapshot()
-        viewModel?.didSelectItem(item: snapshot.itemIdentifiers[indexPath.row])
-        tableView.deselectRow(at: indexPath, animated: true)
+extension CharactersListTableVc: CharactersListItemCellDelegate {
+    func charactersListItemClicked(type: CharactersListItemClickType) {
+        cellClickPublisher.send(type)
     }
-    
 }

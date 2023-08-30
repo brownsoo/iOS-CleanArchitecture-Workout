@@ -16,8 +16,6 @@ protocol CharactersFlowCoordinatorDependencies {
 final class CharactersFlowCoordinator {
     private weak var navigation: UINavigationController?
     private let dependencies: CharactersFlowCoordinatorDependencies
-    // FIXME: 왜 갖고 있지?
-    private weak var listVc: CharactersListVc?
     
     init(nc: UINavigationController?,
          dependencies: CharactersFlowCoordinatorDependencies) {
@@ -26,11 +24,11 @@ final class CharactersFlowCoordinator {
     }
     
     func start() {
+        foot()
         let actions = CharactersListViewModelActions(showCharacterDetails: self.showDetailsView,
                                                      showFavorites: self.showFavoritesView)
         let vc = dependencies.makeCharactersListView(actions: actions)
-        navigation?.pushViewController(vc, animated: true)
-        listVc = vc
+        navigation?.pushViewController(vc, animated: false)
     }
     
     private func showDetailsView(character: MarvelCharacter) {

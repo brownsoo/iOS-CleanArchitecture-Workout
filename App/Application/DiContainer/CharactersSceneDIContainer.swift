@@ -23,7 +23,7 @@ final class CharactersSceneDIContainer {
                                     cache: charactersCache)
     }
     
-    // MARK: - Characters List View
+    // MARK: - ViewModels
     
     func makeCharactersViewModel(actions: CharactersListViewModelActions) -> CharactersListViewModel {
         DefaultCharactersListViewModel(actions: actions,

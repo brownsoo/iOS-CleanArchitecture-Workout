@@ -22,7 +22,7 @@ struct CharacterApi {
         return NetworkResource(
             MarvelEndpoint("/v1/public/characters",
                            etag: etag,
-                           parameters: ["offset" : page * limit,
+                           parameters: ["offset" : (page - 1) * limit,
                                         "limit": limit])
         )
     }
@@ -38,7 +38,7 @@ struct CharacterApi {
         return NetworkResource(
             MarvelEndpoint("/v1/public/characters/\(characterId)/comics",
                            etag: etag,
-                           parameters: ["offset" : page * limit,
+                           parameters: ["offset" : (page - 1) * limit,
                                         "limit": limit])
         )
     }
