@@ -40,7 +40,9 @@ extension CharactersListVc {
     private func setupViews() {
         self.title = "Marvel Characters"
         
+        listViewContainer.accessibilityLabel = "List View Container"
         listViewContainer.also { it in
+            it.backgroundColor = .yellow
             view.addSubview(it)
             it.makeConstraints {
                 $0.edgesConstraintToSuperview(edges: .all)
@@ -51,6 +53,7 @@ extension CharactersListVc {
             it.text = "Data provided by Marvel. © 2014 Marvel"
             it.textAlignment = .center
             it.textColor = .secondaryLabel
+            it.backgroundColor = .secondarySystemGroupedBackground
             view.addSubview(it)
             it.makeConstraints {
                 $0.centerXAnchorConstraintToSuperview()

@@ -72,6 +72,7 @@
 		17BA3B232A9EF28600862313 /* UIViewPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA3B222A9EF28600862313 /* UIViewPreview.swift */; };
 		17BA3B262A9F2E9A00862313 /* Foot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA3B252A9F2E9A00862313 /* Foot.swift */; };
 		17BA3B282A9F38CC00862313 /* String+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA3B272A9F38CC00862313 /* String+Crypto.swift */; };
+		17BA3B2A2A9F58DC00862313 /* UIImage+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA3B292A9F58DC00862313 /* UIImage+Extentions.swift */; };
 		17DE8CA62A96E8A2007BBCCC /* ResMarvelResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CA52A96E8A2007BBCCC /* ResMarvelResults.swift */; };
 		17DE8CA72A96E8A2007BBCCC /* ResMarvelResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CA52A96E8A2007BBCCC /* ResMarvelResults.swift */; };
 		17DE8CAA2A96EAAC007BBCCC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 17DE8CA92A96EAAC007BBCCC /* Alamofire */; };
@@ -178,6 +179,7 @@
 		17BA3B222A9EF28600862313 /* UIViewPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewPreview.swift; sourceTree = "<group>"; };
 		17BA3B252A9F2E9A00862313 /* Foot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foot.swift; sourceTree = "<group>"; };
 		17BA3B272A9F38CC00862313 /* String+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Crypto.swift"; sourceTree = "<group>"; };
+		17BA3B292A9F58DC00862313 /* UIImage+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extentions.swift"; sourceTree = "<group>"; };
 		17DE8CA52A96E8A2007BBCCC /* ResMarvelResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResMarvelResults.swift; sourceTree = "<group>"; };
 		17DE8CB12A96EF27007BBCCC /* MarvelEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelEndpoint.swift; sourceTree = "<group>"; };
 		17DE8CB92A96F740007BBCCC /* ResMarvelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResMarvelError.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 				1763B77F2A9E40DA0019F86D /* Array+PagedData.swift */,
 				1763B7812A9E41EC0019F86D /* ListLoading.swift */,
 				17BA3B222A9EF28600862313 /* UIViewPreview.swift */,
+				17BA3B292A9F58DC00862313 /* UIImage+Extentions.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -710,6 +713,7 @@
 				17DE8CB22A96EF27007BBCCC /* MarvelEndpoint.swift in Sources */,
 				17DE8CE82A9759A9007BBCCC /* ResMarvelComic.swift in Sources */,
 				1763B7012A98A14C0019F86D /* ApiEndpoint.swift in Sources */,
+				17BA3B2A2A9F58DC00862313 /* UIImage+Extentions.swift in Sources */,
 				17DE8CD72A9744B3007BBCCC /* HttpMethod.swift in Sources */,
 				1763B7422A9C2F810019F86D /* CoreDataCharactersStorage.swift in Sources */,
 				1763B7472A9C5ED00019F86D /* Foundation+Extentions.swift in Sources */,

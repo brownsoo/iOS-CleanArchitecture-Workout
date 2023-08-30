@@ -15,7 +15,7 @@ protocol ViewModel {
 class BaseViewModel: ViewModel {
     
     var errorMessages: AnyPublisher<String, Never> {
-        _errorMessages.eraseToAnyPublisher()
+        _errorMessages.receive(on: Scheduler.masinScheduler).eraseToAnyPublisher()
     }
     
     var cancellabels: Set<AnyCancellable> = []

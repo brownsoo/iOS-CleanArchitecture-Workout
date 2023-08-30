@@ -14,6 +14,6 @@ struct ResMarvelImage: Decodable {
 
 extension ResMarvelImage {
     var fullPath: String {
-        self.path + self.extension
+        self.path + "." + self.extension
     }
 }

@@ -60,12 +60,9 @@ final class DefaultCharactersListViewModel: BaseViewModel {
         currentPage = newPage.page
         totalPages = newPage.totalPages
         pages = pages.filter({ $0.page != newPage.page }) + [newPage]
-        
-        _items.send(pages.characters.map(CharactersListItemViewModel.init))
-        
-        if newPage.items.count < kQueryLimit {
-            _itemsAllLoaded.send(true)
-        }
+        let characters = pages.characters
+        _items.send(characters.map(CharactersListItemViewModel.init))
+        _itemsAllLoaded.send(newPage.items.count < kQueryLimit && !characters.isEmpty)
     }
     
     private func resetPages() {
@@ -91,7 +88,12 @@ final class DefaultCharactersListViewModel: BaseViewModel {
                         case .success(let newPage):
                             self?.appendPage(newPage)
                         case .failure(let error):
-                            self?.handleError(error)
+                            if let e = error.asAppError,
+                               case AppError.contentNotChanged = e {
+                                // not changed
+                            } else {
+                                self?.handleError(error)
+                            }
                     }
                     self?._loading.send(.idle)
                 }
@@ -104,7 +106,7 @@ final class DefaultCharactersListViewModel: BaseViewModel {
                 self.handleError(error)
             } else {
                 // 좋아요 마크
-                let news = self._items.value
+                var news = self._items.value
                 if let index = news.firstIndex(where: { $0.id == character.id }) {
                     news[index].markFavorite(true, at: Date())
                     self._items.send(news)
@@ -120,7 +122,7 @@ final class DefaultCharactersListViewModel: BaseViewModel {
                 self.handleError(error)
             } else {
                 // 안 좋아요 마크
-                let news = self._items.value
+                var news = self._items.value
                 if let index = news.firstIndex(where: { $0.id == character.id }) {
                     news[index].markFavorite(false, at: nil)
                     self._items.send(news)
@@ -140,6 +142,7 @@ extension DefaultCharactersListViewModel: CharactersListViewModel {
     }
     
     func loadNextPage() {
+        foot("hasMorePages:\(hasMorePages), loading: \(_loading.value)")
         guard hasMorePages, _loading.value == .idle else { return }
         load(loading: .next)
     }

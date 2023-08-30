@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CharactersListItemViewModel: NSObject, Identifiable {
+struct CharactersListItemViewModel: Identifiable, Equatable, Hashable {
     
     let id: Int
     let name: String
@@ -20,20 +20,7 @@ class CharactersListItemViewModel: NSObject, Identifiable {
     private(set) var isFavorite: Bool
     private(set) var favoritedAt: Date?
     
-    init(id: Int, name: String, thumbnail: URL? = nil, urlsCount: Int, comicsCount: Int, storiesCount: Int, eventsCount: Int, seriesCount: Int, isFavorite: Bool, favoritedAt: Date? = nil) {
-        self.id = id
-        self.name = name
-        self.thumbnail = thumbnail
-        self.urlsCount = urlsCount
-        self.comicsCount = comicsCount
-        self.storiesCount = storiesCount
-        self.eventsCount = eventsCount
-        self.seriesCount = seriesCount
-        self.isFavorite = isFavorite
-        self.favoritedAt = favoritedAt
-    }
-    
-    func markFavorite(_ value: Bool, at: Date? = nil) {
+    mutating func markFavorite(_ value: Bool, at: Date? = nil) {
         self.isFavorite = value
         self.favoritedAt = at
     }
@@ -54,7 +41,7 @@ class CharactersListItemViewModel: NSObject, Identifiable {
 }
 
 extension CharactersListItemViewModel {
-    convenience init(character: MarvelCharacter) {
+    init(character: MarvelCharacter) {
         self.init(
             id : character.id,
             name : character.name,

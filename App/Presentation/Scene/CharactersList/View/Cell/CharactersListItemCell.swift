@@ -23,6 +23,7 @@ final class CharactersListItemCell: UITableViewCell {
     static let height = CGFloat(200)
     
     private let btBackground = UIButton(type: .custom)
+    private let ivRepresent = UIImageView()
     private let lbTitle = UILabel()
     private let lbComicsCount = UILabel()
     private let lbEventsCount = UILabel()
@@ -47,7 +48,6 @@ final class CharactersListItemCell: UITableViewCell {
     
     private lazy var processor: ImageProcessor = {
         DownsamplingImageProcessor(size: contentView.bounds.size)
-        //|> RoundCornerImageProcessor(cornerRadius: 6)
     }()
     
     private var characterId: Int = -1
@@ -66,16 +66,21 @@ final class CharactersListItemCell: UITableViewCell {
     func fill(with viewModel: CharactersListItemViewModel) {
         characterId = viewModel.id
         
-        btBackground.kf.setBackgroundImage(
+        ivRepresent.kf.setImage(
             with: viewModel.thumbnail,
-            for: .normal,
             options: [
                 .processor(processor),
                 .scaleFactor(UIScreen.main.scale),
                 .transition(.fade(0.4)),
                 .cacheOriginalImage
-            ]
-        )
+            ], completionHandler:  { result in
+                switch result {
+                    case .success(let value):
+                        foot("\(value.cacheType) -> \(value.source.url?.absoluteString ?? "?")")
+                    case .failure(let error):
+                        foot("\(error.localizedDescription)")
+                }
+            })
         
         lbTitle.text = viewModel.name
         lbComicsCount.text = "\(viewModel.comicsCount) Comics"
@@ -96,20 +101,30 @@ extension CharactersListItemCell {
 //        }
         contentView.backgroundColor = .yellow
         
-        btBackground.also { it in
+        ivRepresent.also { it in
+            contentView.addSubview(it)
             it.backgroundColor = .secondarySystemBackground
-            it.imageView?.kf.indicatorType = .activity
+            it.contentMode = .scaleAspectFill
+            it.clipsToBounds = true
+            it.kf.indicatorType = .activity
+            it.makeConstraints {
+                $0.edgesConstraintToSuperview(edges: [.top, .horizontal])
+                $0.heightAnchorConstraintTo(CharactersListItemCell.height)
+                $0.bottomAnchorConstraintToSuperview()?.priority = .init(999)
+            }
+        }
+        
+        btBackground.also { it in
+            it.setBackgroundImage(UIImage().solid(.white.withAlphaComponent(0.1)), for: .highlighted)
             contentView.addSubview(it)
             it.makeConstraints {
-                $0.edgesConstraintToSuperview(edges: .all)
-                // $0.bottomAnchorConstraintToSuperview()?.priority = .defaultHigh
-               // $0.heightAnchorConstraintTo(CharactersListItemCell.height)
+                $0.edgesConstraintTo(ivRepresent.safeAreaLayoutGuide, edges: .all)
             }
         }
         btBackground.addTarget(self, action: #selector(onClickItem), for: .touchUpInside)
         
         lbTitle.also { it in
-            it.backgroundColor = UIColor.tertiarySystemFill
+            it.backgroundColor = UIColor.lightText
             it.numberOfLines = 0
             it.font = UIFont.systemFont(ofSize: 30, weight: .bold)
             it.textColor = UIColor.label
@@ -119,7 +134,7 @@ extension CharactersListItemCell {
                 $0.leadingAnchorConstraintToSuperview(20)
                 $0.topAnchorConstraintToSuperview(20)
                 $0.trailingAnchor
-                    .constraint(lessThanOrEqualTo: btBackground.trailingAnchor, constant: -40)
+                    .constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -50)
                     .isActive = true
             }
         }
@@ -133,7 +148,7 @@ extension CharactersListItemCell {
                 $0.leadingAnchorConstraintToSuperview(20)
                 $0.bottomAnchorConstraintToSuperview(-20)
                 $0.trailingAnchor
-                    .constraint(lessThanOrEqualTo: btBackground.trailingAnchor, constant: -40)
+                    .constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -40)
                     .isActive = true
             }
         }
@@ -148,14 +163,26 @@ extension CharactersListItemCell {
             it.setImage(thumbImage, for: .normal)
             it.setImage(thumbImageFillHighlight, for: .highlighted)
             it.setImage(thumbImageFill, for: .selected)
+            var configuration = UIButton.Configuration.filled()
+            configuration.imagePadding = 10
+            configuration.baseBackgroundColor = .clear
+            it.configuration = configuration
             contentView.addSubview(it)
             it.makeConstraints {
-                $0.trailingAnchorConstraintToSuperview(-20)
-                $0.bottomAnchorConstraintToSuperview(-20)
+                $0.trailingAnchorConstraintToSuperview(-10)
+                $0.topAnchorConstraintToSuperview(20)
             }
         }
         btThumb.addTarget(self, action: #selector(onClickFavorite), for: .touchUpInside)
         
+    }
+    
+    private func makeCountLabel(_ lb: UILabel, to stack: UIStackView) {
+        lb.numberOfLines = 1
+        lb.font = .systemFont(ofSize: 14, weight: .medium)
+        lb.textColor = .lightText
+        lb.backgroundColor = UIColor.darkText
+        stack.addArrangedSubview(lb)
     }
     
     @objc private func onClickFavorite() {
@@ -170,23 +197,19 @@ extension CharactersListItemCell {
         }
     }
     
-    private func makeCountLabel(_ lb: UILabel, to stack: UIStackView) {
-        lb.numberOfLines = 1
-        lb.font = .systemFont(ofSize: 12, weight: .medium)
-        lb.textColor = .lightGray
-        stack.addArrangedSubview(lb)
-    }
 }
 
 
 
 struct CharactersListItemCell_Preview: PreviewProvider {
     static let sample1 = CharactersListItemViewModel(
-        id: 1, name: "Name1", thumbnail: nil,
+        id: 1, name: "Name1",
+        thumbnail: URL(string: "http://i.annihil.us/u/prod/marvel/i/mg/3/20/5232158de5b16.jpg"),
         urlsCount: 10, comicsCount: 1, storiesCount: 2, eventsCount: 3, seriesCount: 4,
         isFavorite: true, favoritedAt: Date())
     static let sample2 = CharactersListItemViewModel(
-        id: 1, name: "Name2 abcde asdf sdf abcde asdf sdf", thumbnail: URL(string: "https://picsum.photos/500")!,
+        id: 1, name: "Name2 abcde asdf sdf abcde asdf sdf",
+        thumbnail: URL(string: "https://picsum.photos/500"),
         urlsCount: 10, comicsCount: 1, storiesCount: 2, eventsCount: 3, seriesCount: 4,
         isFavorite: false)
     

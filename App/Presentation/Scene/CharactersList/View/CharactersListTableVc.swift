@@ -21,6 +21,17 @@ final class CharactersListTableVc: UITableViewController {
     private var pageLoadingSpinner: UIActivityIndicatorView?
     private var cancellables: Set<AnyCancellable> = []
     private let cellClickPublisher = PassthroughSubject<CharactersListItemClickType, Never>()
+    private lazy var bannerAllLoaded: UILabel = {
+        let lb = UILabel()
+        lb.text = "All Characters are loaded."
+        lb.backgroundColor = .systemYellow
+        lb.textColor = .label
+        lb.textAlignment = .center
+        lb.alpha = 0
+        lb.font = UIFont.monospacedSystemFont(ofSize: 14, weight: .bold)
+        lb.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
+        return lb
+    }()
     private lazy var dataSource = makeDataSource()
     
     private enum Section: CaseIterable {
@@ -47,6 +58,7 @@ final class CharactersListTableVc: UITableViewController {
 
 extension CharactersListTableVc {
     private func setupViews() {
+        tableView.delaysContentTouches = true
         tableView.estimatedRowHeight = CharactersListItemCell.height
         tableView.rowHeight = UITableView.automaticDimension
         tableView.allowsSelection = false
@@ -65,17 +77,36 @@ extension CharactersListTableVc {
         vm.itemsAllLoaded
             .removeDuplicates().sink { v in
                 if v {
-                    // TODO: show banner
                     debugPrint("다 불러옴.")
+                    self.showAllLoaded()
                 }
             }
             .store(in: &cancellables)
         
         cellClickPublisher.throttle(for: 1.0, scheduler: Scheduler.masinScheduler, latest: true)
             .sink { type in
-                self.handleCellClick(type)
+                //self.handleCellClick(type)
+                foot("\(type)")
             }
             .store(in: &cancellables)
+    }
+    
+    private func showAllLoaded() {
+        if bannerAllLoaded.superview == nil {
+            view.addSubview(bannerAllLoaded)
+            bannerAllLoaded.makeConstraints { it in
+                it.widthAnchorConstraintTo(view.bounds.width)
+                it.heightAnchorConstraintTo(bannerAllLoaded.font.pointSize * 2)
+                it.topAnchorConstraintToSuperview()
+            }
+            bannerAllLoaded.alpha = 1
+            UIView.animate(withDuration: 0.5, delay: 3.0, options: .beginFromCurrentState,
+                           animations: {
+                self.bannerAllLoaded.alpha = 0
+            }) { [weak self] _ in
+                self?.bannerAllLoaded.removeFromSuperview()
+            }
+        }
     }
     
     private func handleCellClick(_ type: CharactersListItemClickType) {
@@ -90,14 +121,20 @@ extension CharactersListTableVc {
     
     private func makeDataSource() -> UITableViewDiffableDataSource<Section, CharactersListItemViewModel> {
         return UITableViewDiffableDataSource(
-            tableView: self.tableView) { tableView, indexPath, itemViewModel in
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: CharactersListItemCell.reuseIdentifier) as? CharactersListItemCell else {
+            tableView: self.tableView) { [weak self] tableView, indexPath, itemViewModel in
+                guard let this = self,
+                      let cell = tableView.dequeueReusableCell(withIdentifier: CharactersListItemCell.reuseIdentifier) as? CharactersListItemCell else {
                     assertionFailure("Cell 클래스 \(CharactersListItemCell.self) 없음.")
                     return UITableViewCell()
                 }
                 cell.accessibilityIdentifier = "CharactersListItemCell.\(indexPath.row)"
                 cell.fill(with: itemViewModel)
-                cell.delegate = self
+                cell.delegate = this
+                
+                let snapshot = this.dataSource.snapshot().itemIdentifiers.count
+                if indexPath.row == snapshot - 1{
+                    this.viewModel?.loadNextPage()
+                }
                 return cell
             }
     }
@@ -105,7 +142,8 @@ extension CharactersListTableVc {
     private func updateView(with items: [CharactersListItemViewModel], animating: Bool = true) {
         foot("\(items.count)")
         DispatchQueue.main.async {
-            var snapshot = NSDiffableDataSourceSnapshot<Section, CharactersListItemViewModel>()
+            var snapshot = self.dataSource.snapshot() //NSDiffableDataSourceSnapshot<Section, CharactersListItemViewModel>()
+            snapshot.deleteAllItems()
             snapshot.appendSections(Section.allCases)
             snapshot.appendItems(items, toSection: .characters)
             self.dataSource.apply(snapshot, animatingDifferences: animating)

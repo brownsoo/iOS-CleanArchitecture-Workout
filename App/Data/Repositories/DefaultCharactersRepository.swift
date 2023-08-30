@@ -42,12 +42,7 @@ extension DefaultCharactersRepository: CharactersRepository {
                 await this.cache.save(data: paged)
                 onFetched(.success(paged))
             } catch {
-                if let e = error.asAppError,
-                   case AppError.contentNotChanged = e {
-                    // not changed
-                } else {
-                    onFetched(.failure(error))
-                }
+                onFetched(.failure(error))
             }
         }
         return task
