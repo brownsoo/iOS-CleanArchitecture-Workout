@@ -7,7 +7,6 @@
 
 import Foundation
 
-@available(*, deprecated, message: "없어도 될듯.")
 struct MarvelComic: Identifiable {
     let id: Int
     let digitalId: Int

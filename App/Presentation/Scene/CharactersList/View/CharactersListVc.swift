@@ -29,6 +29,8 @@ class CharactersListVc: UIViewController, Alertable {
         setupViews()
         bindViewModel()
         viewModel?.refresh(forced: false)
+        
+        // TODO: 좋아요 화면의 변경사항을 반영
     }
     
 }
@@ -91,7 +93,6 @@ extension CharactersListVc {
         viewModel?.errorMessages
             .sink { self.showError(message: $0) }
             .store(in: &cancellables)
-        
     }
     
     private func updateLoading(_ loading: ListLoading) {
@@ -109,7 +110,6 @@ extension CharactersListVc {
                 listViewContainer.isHidden = viewModel?.itemsIsEmpty == true
                 emptyLabel.isHidden = viewModel?.itemsIsEmpty == false
         }
-        
         listTableVc?.updateLoading(loading)
     }
     

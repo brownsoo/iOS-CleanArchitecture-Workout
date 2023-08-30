@@ -95,12 +95,6 @@ final class CharactersListItemCell: UITableViewCell {
 
 extension CharactersListItemCell {
     private func setupViews() {
-//        contentView.makeConstraints { it in
-//            it.edgesConstraintToSuperview(edges: .all)
-//            it.heightAnchorConstraintTo(CharactersListItemCell.height).priority = .required
-//        }
-        contentView.backgroundColor = .yellow
-        
         ivRepresent.also { it in
             contentView.addSubview(it)
             it.backgroundColor = .secondarySystemBackground
@@ -147,9 +141,9 @@ extension CharactersListItemCell {
             it.makeConstraints {
                 $0.leadingAnchorConstraintToSuperview(20)
                 $0.bottomAnchorConstraintToSuperview(-20)
-                $0.trailingAnchor
-                    .constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -40)
-                    .isActive = true
+//                $0.trailingAnchor
+//                    .constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -40)
+//                    .isActive = true
             }
         }
         

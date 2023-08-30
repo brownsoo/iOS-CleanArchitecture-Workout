@@ -11,13 +11,13 @@ import Combine
 /// CharactersListViewModel 의 공통 구현체
 class BaseCharactersListViewModel: BaseViewModel {
     
-    private var actions: CharactersListViewModelActions?
+    internal var actions: CharactersListViewModelActions?
     internal var repository: CharactersRepository
     
-    var currentPage: Int = 0
+    internal var currentPage: Int = 0
+    internal var naxtPage: Int { hasMorePages ? currentPage + 1 : currentPage }
     private var totalPages: Int = 0
     private var hasMorePages: Bool { currentPage < totalPages }
-    internal var naxtPage: Int { hasMorePages ? currentPage + 1 : currentPage }
     
     private var pages: [PagedData<MarvelCharacter>] = []
     internal var loadTask: Cancellable? {
@@ -37,10 +37,15 @@ class BaseCharactersListViewModel: BaseViewModel {
     }
     
     // MARK: implements to subclass
-    func load(loading: ListLoading,
+    internal func load(loading: ListLoading,
               refreshing: Bool = false,
               isCurrentPage: Bool = false) {
-        
+        debugPrint("서브 클래스에서 구현해야 해")
+    }
+    
+    // MARK: implements to subclass
+    internal func actionOpenFavoritesList() {
+        debugPrint("서브 클래스에서 구현해야 해")
     }
     
     internal func appendPage(_ newPage: PagedData<MarvelCharacter>) {
@@ -150,6 +155,6 @@ extension BaseCharactersListViewModel: CharactersListViewModel {
     }
     
     func showFavoritesList() {
-        // Not handled
+        actionOpenFavoritesList()
     }
 }

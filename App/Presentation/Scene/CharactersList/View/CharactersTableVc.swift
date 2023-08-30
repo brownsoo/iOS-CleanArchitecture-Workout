@@ -18,7 +18,6 @@ final class CharactersTableVc: UITableViewController {
     
     var viewModel: CharactersListViewModel?
     
-    private var pageLoadingSpinner: UIActivityIndicatorView?
     private var cancellables: Set<AnyCancellable> = []
     private let cellClickPublisher = PassthroughSubject<CharactersListItemClickType, Never>()
     private lazy var bannerAllLoaded: UILabel = {
@@ -30,8 +29,22 @@ final class CharactersTableVc: UITableViewController {
         lb.alpha = 0
         lb.font = UIFont.monospacedSystemFont(ofSize: 14, weight: .bold)
         lb.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
+        lb.sizeToFit()
         return lb
     }()
+    private lazy var bannerLoading: UILabel = {
+        let lb = UILabel()
+        lb.text = "Loading..."
+        lb.backgroundColor = .systemPurple
+        lb.textColor = .lightText
+        lb.textAlignment = .center
+        lb.font = UIFont.monospacedSystemFont(ofSize: 14, weight: .bold)
+        lb.setContentHuggingPriority(.fittingSizeLevel, for: .horizontal)
+        lb.sizeToFit()
+        return lb
+    }()
+    
+    
     private lazy var dataSource = makeDataSource()
     
     private enum Section: CaseIterable {
@@ -47,11 +60,9 @@ final class CharactersTableVc: UITableViewController {
     func updateLoading(_ loading: ListLoading) {
         switch loading {
             case .next:
-                pageLoadingSpinner?.removeFromSuperview()
-                pageLoadingSpinner = makeActivityIndicator(size: CGSize(width: tableView.frame.width, height: 44))
-                tableView.tableFooterView = pageLoadingSpinner
+                showNextLoading()
             default:
-                tableView.tableFooterView = nil
+                hideNextLoading()
         }
     }
 }
@@ -102,9 +113,10 @@ extension CharactersTableVc {
         if bannerAllLoaded.superview == nil {
             view.addSubview(bannerAllLoaded)
             bannerAllLoaded.makeConstraints { it in
-                it.widthAnchorConstraintTo(view.bounds.width)
                 it.heightAnchorConstraintTo(bannerAllLoaded.font.pointSize * 2)
-                it.topAnchorConstraintToSuperview()
+                it.widthAnchorConstraintTo(UIScreen.main.bounds.width)
+                it.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+                it.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
             }
             bannerAllLoaded.alpha = 1
             UIView.animate(withDuration: 0.5, delay: 3.0, options: .beginFromCurrentState,
@@ -114,6 +126,23 @@ extension CharactersTableVc {
                 self?.bannerAllLoaded.removeFromSuperview()
             }
         }
+    }
+    
+    private func showNextLoading() {
+        if bannerLoading.superview == nil {
+            view.addSubview(bannerLoading)
+            bannerLoading.makeConstraints { it in
+                it.heightAnchorConstraintTo(bannerLoading.font.pointSize * 2)
+                it.widthAnchorConstraintTo(UIScreen.main.bounds.width)
+                it.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+                it.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+            }
+        }
+        bannerLoading.isHidden = false
+    }
+    
+    private func hideNextLoading() {
+        bannerLoading.isHidden = true
     }
     
     private func handleCellClick(_ type: CharactersListItemClickType) {

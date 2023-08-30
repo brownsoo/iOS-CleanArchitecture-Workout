@@ -10,8 +10,7 @@ import Combine
 
 struct CharactersListViewModelActions {
     let showCharacterDetails: (MarvelCharacter) -> Void
-    // FIXME: nullable 제거
-    let showFavorites: VoidCallback?
+    let showFavorites: VoidCallback
 }
 
 protocol CharactersListViewModel: ViewModel {

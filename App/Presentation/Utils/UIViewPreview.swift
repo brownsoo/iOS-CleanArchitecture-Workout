@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct UIViewPreview<View: UIView>: UIViewRepresentable {
-    let view: View
-    init(_ builder: () -> View) {
-        view = builder()
+struct UIViewPreview<V: UIView>: UIViewRepresentable {
+    let builder: () -> V
+    init(_ builder: @escaping () -> V) {
+        self.builder = builder
     }
     
     func makeUIView(context: Context) -> some UIView {
-        return view
+        return builder()
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {

@@ -40,8 +40,9 @@ final class CharactersFlowCoordinator {
     }
     
     private func showFavoritesView() {
-        let actions = CharactersListViewModelActions(showCharacterDetails: self.showDetailsView,
-                                                     showFavorites: nil)
+        let actions = CharactersListViewModelActions(
+            showCharacterDetails: self.showDetailsView,
+            showFavorites: self.showFavoritesView)
         let vc = dependencies.makeFavoritesListView(actions: actions)
         navigation?.pushViewController(vc, animated: true)
     }
