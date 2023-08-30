@@ -17,7 +17,7 @@ class CharactersListVc: UIViewController, Alertable {
     }
     
     private var viewModel: CharactersListViewModel?
-    private var listTableVc: CharactersListTableVc?
+    private var listTableVc: CharactersTableVc?
     private let emptyLabel = UILabel()
     private let listViewContainer = UIView()
     private let lbLicense = UILabel()
@@ -62,7 +62,7 @@ extension CharactersListVc {
             }
         }
         
-        let vc = CharactersListTableVc.create(viewModel: self.viewModel)
+        let vc = CharactersTableVc.create(viewModel: self.viewModel)
         add(childVc: vc, container: listViewContainer)
         listTableVc = vc
 

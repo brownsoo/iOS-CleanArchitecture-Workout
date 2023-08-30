@@ -8,10 +8,10 @@
 import UIKit
 import Combine
 
-final class CharactersListTableVc: UITableViewController {
+final class CharactersTableVc: UITableViewController {
     
-    static func create(viewModel: CharactersListViewModel?) -> CharactersListTableVc {
-        let vc = CharactersListTableVc()
+    static func create(viewModel: CharactersListViewModel?) -> CharactersTableVc {
+        let vc = CharactersTableVc()
         vc.viewModel = viewModel
         return vc
     }
@@ -56,13 +56,20 @@ final class CharactersListTableVc: UITableViewController {
     }
 }
 
-extension CharactersListTableVc {
+extension CharactersTableVc {
     private func setupViews() {
         tableView.delaysContentTouches = true
         tableView.estimatedRowHeight = CharactersListItemCell.height
         tableView.rowHeight = UITableView.automaticDimension
         tableView.allowsSelection = false
         tableView.register(CharactersListItemCell.self, forCellReuseIdentifier: CharactersListItemCell.reuseIdentifier)
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(pullToRefresh), for: .valueChanged)
+    }
+    
+    @objc private func pullToRefresh() {
+        foot()
+        viewModel?.refresh(forced: true)
     }
     
     private func bindData() {
@@ -85,8 +92,8 @@ extension CharactersListTableVc {
         
         cellClickPublisher.throttle(for: 1.0, scheduler: Scheduler.masinScheduler, latest: true)
             .sink { type in
-                //self.handleCellClick(type)
                 foot("\(type)")
+                self.handleCellClick(type)
             }
             .store(in: &cancellables)
     }
@@ -113,9 +120,9 @@ extension CharactersListTableVc {
         guard let vm = viewModel else { return }
         switch type {
             case .favorite(let characterId):
-                vm.didSelectItem(characterId: characterId)
-            case .item(let characterId):
                 vm.toggleFavorited(characterId: characterId)
+            case .item(let characterId):
+                vm.didSelectItem(characterId: characterId)
         }
     }
     
@@ -151,7 +158,7 @@ extension CharactersListTableVc {
     }
 }
 
-extension CharactersListTableVc: CharactersListItemCellDelegate {
+extension CharactersTableVc: CharactersListItemCellDelegate {
     func charactersListItemClicked(type: CharactersListItemClickType) {
         cellClickPublisher.send(type)
     }

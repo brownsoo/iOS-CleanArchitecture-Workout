@@ -15,7 +15,7 @@ struct CharactersListViewModelActions {
 
 protocol CharactersListViewModel: ViewModel {
     // in-
-    func refresh() -> Void
+    func refresh(forced: Bool) -> Void
     func loadNextPage() -> Void
     func didSelectItem(at index: Int) -> Void
     func didSelectItem(characterId: Int) -> Void
@@ -30,8 +30,8 @@ protocol CharactersListViewModel: ViewModel {
 
 
 final class DefaultCharactersListViewModel: BaseViewModel {
-    private let actions: CharactersListViewModelActions?
-    private let repository: CharactersRepository
+    private var actions: CharactersListViewModelActions?
+    private var repository: CharactersRepository
     
     private var currentPage: Int = 0
     private var totalPages: Int = 0
@@ -72,10 +72,11 @@ final class DefaultCharactersListViewModel: BaseViewModel {
         _items.send([])
     }
     
-    private func load(loading: ListLoading) {
+    private func load(loading: ListLoading, refreshing: Bool = false) {
         _loading.send(loading)
         loadTask = repository.fetchList(
             page: naxtPage,
+            refreshing: refreshing,
             onCached: { [weak self] page in
                 guard let newPage = page else { return }
                 self?.maingQueue.async {
@@ -136,9 +137,9 @@ final class DefaultCharactersListViewModel: BaseViewModel {
 
 extension DefaultCharactersListViewModel: CharactersListViewModel {
     
-    func refresh() {
+    func refresh(forced: Bool = false) {
         resetPages()
-        load(loading: .first)
+        load(loading: .first, refreshing: forced)
     }
     
     func loadNextPage() {

@@ -9,7 +9,8 @@ import UIKit
 
 protocol CharactersFlowCoordinatorDependencies {
     func makeCharactersListView(actions: CharactersListViewModelActions) -> CharactersListVc
-    func makeCharactersDetailView(chracter: MarvelCharacter) -> CharacterDetailVc
+    func makeCharactersDetailView(character: MarvelCharacter,
+                                  actons: CharacterDetailViewModelActions) -> CharacterDetailVc
     func makeFavoritesListView(actions: CharactersListViewModelActions) -> FavoritesListVc
 }
 
@@ -32,7 +33,8 @@ final class CharactersFlowCoordinator {
     }
     
     private func showDetailsView(character: MarvelCharacter) {
-        let vc = dependencies.makeCharactersDetailView(chracter: character)
+        let actions = CharacterDetailViewModelActions()
+        let vc = dependencies.makeCharactersDetailView(character: character, actons: actions)
         navigation?.pushViewController(vc, animated: true)
     }
     

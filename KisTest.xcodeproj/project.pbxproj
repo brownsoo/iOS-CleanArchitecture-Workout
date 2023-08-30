@@ -56,7 +56,7 @@
 		1763B7602A9D74B70019F86D /* UIViewController+AddChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B75F2A9D74B70019F86D /* UIViewController+AddChild.swift */; };
 		1763B7622A9D75930019F86D /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7612A9D75930019F86D /* Alertable.swift */; };
 		1763B7652A9D78820019F86D /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7642A9D78820019F86D /* BaseViewModel.swift */; };
-		1763B7672A9DD4EB0019F86D /* CharactersListTableVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7662A9DD4EB0019F86D /* CharactersListTableVc.swift */; };
+		1763B7672A9DD4EB0019F86D /* CharactersTableVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7662A9DD4EB0019F86D /* CharactersTableVc.swift */; };
 		1763B76A2A9DD67D0019F86D /* CharactersListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7692A9DD67D0019F86D /* CharactersListItemCell.swift */; };
 		1763B76C2A9DE39E0019F86D /* Also.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B76B2A9DE39E0019F86D /* Also.swift */; };
 		1763B76D2A9DE3A10019F86D /* Also.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B76B2A9DE39E0019F86D /* Also.swift */; };
@@ -73,6 +73,7 @@
 		17BA3B262A9F2E9A00862313 /* Foot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA3B252A9F2E9A00862313 /* Foot.swift */; };
 		17BA3B282A9F38CC00862313 /* String+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA3B272A9F38CC00862313 /* String+Crypto.swift */; };
 		17BA3B2A2A9F58DC00862313 /* UIImage+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA3B292A9F58DC00862313 /* UIImage+Extentions.swift */; };
+		17BA3B2C2A9F664300862313 /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17BA3B2B2A9F664300862313 /* CharacterDetailViewModel.swift */; };
 		17DE8CA62A96E8A2007BBCCC /* ResMarvelResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CA52A96E8A2007BBCCC /* ResMarvelResults.swift */; };
 		17DE8CA72A96E8A2007BBCCC /* ResMarvelResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CA52A96E8A2007BBCCC /* ResMarvelResults.swift */; };
 		17DE8CAA2A96EAAC007BBCCC /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 17DE8CA92A96EAAC007BBCCC /* Alamofire */; };
@@ -165,7 +166,7 @@
 		1763B75F2A9D74B70019F86D /* UIViewController+AddChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddChild.swift"; sourceTree = "<group>"; };
 		1763B7612A9D75930019F86D /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		1763B7642A9D78820019F86D /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
-		1763B7662A9DD4EB0019F86D /* CharactersListTableVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListTableVc.swift; sourceTree = "<group>"; };
+		1763B7662A9DD4EB0019F86D /* CharactersTableVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableVc.swift; sourceTree = "<group>"; };
 		1763B7692A9DD67D0019F86D /* CharactersListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListItemCell.swift; sourceTree = "<group>"; };
 		1763B76B2A9DE39E0019F86D /* Also.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Also.swift; sourceTree = "<group>"; };
 		1763B76F2A9DEE580019F86D /* UITableViewController+AcitivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewController+AcitivityIndicator.swift"; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 		17BA3B252A9F2E9A00862313 /* Foot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foot.swift; sourceTree = "<group>"; };
 		17BA3B272A9F38CC00862313 /* String+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Crypto.swift"; sourceTree = "<group>"; };
 		17BA3B292A9F58DC00862313 /* UIImage+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extentions.swift"; sourceTree = "<group>"; };
+		17BA3B2B2A9F664300862313 /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		17DE8CA52A96E8A2007BBCCC /* ResMarvelResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResMarvelResults.swift; sourceTree = "<group>"; };
 		17DE8CB12A96EF27007BBCCC /* MarvelEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelEndpoint.swift; sourceTree = "<group>"; };
 		17DE8CB92A96F740007BBCCC /* ResMarvelError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResMarvelError.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 		1763B74E2A9CF5E40019F86D /* CaracterDetails */ = {
 			isa = PBXGroup;
 			children = (
+				17BA3B2D2A9F664800862313 /* ViewGroup */,
 				1763B7732A9E0E830019F86D /* View */,
 			);
 			path = CaracterDetails;
@@ -332,7 +335,7 @@
 				17BA3B242A9EF4F200862313 /* Cell */,
 				1763B7772A9E0F230019F86D /* FavoritesListVc.swift */,
 				17E0988C2A965F8D00178398 /* CharactersListVc.swift */,
-				1763B7662A9DD4EB0019F86D /* CharactersListTableVc.swift */,
+				1763B7662A9DD4EB0019F86D /* CharactersTableVc.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -385,6 +388,14 @@
 				1763B7692A9DD67D0019F86D /* CharactersListItemCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		17BA3B2D2A9F664800862313 /* ViewGroup */ = {
+			isa = PBXGroup;
+			children = (
+				17BA3B2B2A9F664300862313 /* CharacterDetailViewModel.swift */,
+			);
+			path = ViewGroup;
 			sourceTree = "<group>";
 		};
 		17DE8CA42A96E83B007BBCCC /* Data */ = {
@@ -731,9 +742,10 @@
 				1763B7242A9A2F470019F86D /* Cancellable.swift in Sources */,
 				17DE8CDD2A974764007BBCCC /* Resource.swift in Sources */,
 				1763B7652A9D78820019F86D /* BaseViewModel.swift in Sources */,
-				1763B7672A9DD4EB0019F86D /* CharactersListTableVc.swift in Sources */,
+				1763B7672A9DD4EB0019F86D /* CharactersTableVc.swift in Sources */,
 				1763B73A2A9B629B0019F86D /* CoreDataStorage.xcdatamodeld in Sources */,
 				17E098BB2A9666E700178398 /* UIView+AutoLayout.swift in Sources */,
+				17BA3B2C2A9F664300862313 /* CharacterDetailViewModel.swift in Sources */,
 				17E0988D2A965F8D00178398 /* CharactersListVc.swift in Sources */,
 				1763B7052A98ACD10019F86D /* AlarmoLogger.swift in Sources */,
 				1763B7722A9E09E80019F86D /* LoadingView.swift in Sources */,

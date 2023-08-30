@@ -25,9 +25,18 @@ final class CharactersSceneDIContainer {
     
     // MARK: - ViewModels
     
-    func makeCharactersViewModel(actions: CharactersListViewModelActions) -> CharactersListViewModel {
+    func makeCharactersListViewModel(actions: CharactersListViewModelActions) -> CharactersListViewModel {
         DefaultCharactersListViewModel(actions: actions,
                                        characterRepository: makeCharactersRepository())
+    }
+    
+    func makeDetailViewModel(chracter: MarvelCharacter,
+                             actions: CharacterDetailViewModelActions) -> CharacterDetailViewModel {
+        DefaultCharacterDetailViewModel(
+            character: chracter,
+            actions: actions,
+            repository: makeCharactersRepository()
+        )
     }
 }
 
@@ -40,14 +49,15 @@ extension CharactersSceneDIContainer {
 extension CharactersSceneDIContainer: CharactersFlowCoordinatorDependencies {
     
     func makeCharactersListView(actions: CharactersListViewModelActions) -> CharactersListVc {
-        CharactersListVc.create(viewModel: self.makeCharactersViewModel(actions: actions))
+        CharactersListVc.create(viewModel: self.makeCharactersListViewModel(actions: actions))
     }
     
-    func makeCharactersDetailView(chracter: MarvelCharacter) -> CharacterDetailVc {
-        CharacterDetailVc()
+    func makeCharactersDetailView(character: MarvelCharacter,
+                                  actons: CharacterDetailViewModelActions) -> CharacterDetailVc {
+        CharacterDetailVc.create(viewModel: self.makeDetailViewModel(chracter: character, actions: actons))
     }
     
     func makeFavoritesListView(actions: CharactersListViewModelActions) -> FavoritesListVc {
-        FavoritesListVc.create(viewModel: self.makeCharactersViewModel(actions: actions))
+        FavoritesListVc.create(viewModel: self.makeCharactersListViewModel(actions: actions))
     }
 }

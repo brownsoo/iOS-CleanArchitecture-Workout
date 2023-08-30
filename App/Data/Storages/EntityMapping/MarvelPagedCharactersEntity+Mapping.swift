@@ -12,10 +12,12 @@ import CoreData
 
 extension MarvelPagedCharactersEntity {
     func toDomain() -> PagedData<MarvelCharacter> {
+        var sorted = self.items?.allObjects.compactMap { ($0 as? MarvelCharacterEntity)?.toDomain() } ?? []
+        sorted.sort(by: { $0.name < $1.name })
         return .init(page: Int(self.page),
                      totalCount: Int(self.totalCount),
                      totalPages: Int(self.totalPages),
-                     items: self.items?.allObjects.compactMap { ($0 as? MarvelCharacterEntity)?.toDomain() } ?? [],
+                     items: sorted,
                      etag: self.etag
         )
     }
@@ -100,8 +102,9 @@ extension MarvelCharacter {
                          character: MarvelCharacterEntity,
                          createdAt: Date) -> FavoriteEntity {
         let entity = FavoriteEntity(context: context)
-        entity.item = character
+        entity.characterId = character.id
         entity.createdAt = createdAt
+        entity.item = character
         return entity
     }
 }
