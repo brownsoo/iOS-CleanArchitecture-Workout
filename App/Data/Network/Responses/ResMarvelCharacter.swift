@@ -28,7 +28,7 @@ extension ResMarvelCharacter {
                         name: self.name,
                         description: self.description,
                         resourceURI: URL(string: self.resourceURI),
-                        urls: self.urls.compactMap({ URL(string: $0.url) }),
+                        urls: self.urls.map({ MarvelUrl(type: $0.type, url: $0.url) }),
                         thumbnail: URL(string: self.thumbnail.fullPath),
                         comics: self.comics.toDomain(),
                         stories: self.stories.toDomain(),

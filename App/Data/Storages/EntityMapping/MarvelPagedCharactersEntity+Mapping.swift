@@ -52,8 +52,9 @@ extension MarvelResourceListEntity {
 
 
 extension UrlEntity {
-    func toDomain() -> URL? {
-        self.url?.toURL()
+    func toDomain() -> MarvelUrl? {
+        guard let type = self.type, let url = self.url else { return nil }
+        return MarvelUrl(type: type, url: url)
     }
 }
 
@@ -68,10 +69,11 @@ extension MarvelResourceList {
     }
 }
 
-fileprivate extension URL {
+fileprivate extension MarvelUrl {
     func toEntity(in context: NSManagedObjectContext) -> UrlEntity {
         let entity = UrlEntity(context: context)
-        entity.url = self.absoluteString
+        entity.type = self.type
+        entity.url = self.url
         return entity
     }
 }
@@ -117,9 +119,11 @@ extension PagedData<MarvelCharacter> {
         entity.totalCount = Int32(self.totalCount)
         entity.totalPages = Int32(self.totalPages)
         self.items.forEach { it in
+            let fovorite = favorites.first(where: { Int($0.characterId) == it.id})
             let item = it.toEntity(
                 in: context,
-                relation: favorites.first(where: { Int($0.characterId) == it.id}))
+                relation: fovorite
+            )
             entity.addToItems(item)
         }
         entity.etag = self.etag

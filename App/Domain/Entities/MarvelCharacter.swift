@@ -13,7 +13,7 @@ struct MarvelCharacter: Identifiable {
     let description: String
     /// The canonical URL identifier for this resource.
     let resourceURI: URL?
-    let urls: [URL]
+    let urls: [MarvelUrl]
     let thumbnail: URL?
     let comics: MarvelResourceList
     let stories: MarvelResourceList
@@ -22,10 +22,3 @@ struct MarvelCharacter: Identifiable {
     var isFavorite: Bool? = nil
     var favoritedAt: Date? = nil
 }
-
-extension MarvelCharacter: Equatable {
-    static func ==(lhs: MarvelCharacter, rhs: MarvelCharacter) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
-

@@ -41,6 +41,25 @@ final class CoreDataCharactersStorage {
         }
     }
     
+    private func deleteCharacters(inIds ids: [Int64], in context: NSManagedObjectContext) throws {
+        let request = MarvelCharacterEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "id IN %@", ids)
+        let results = try context.fetch(request)
+        for it in results {
+            context.delete(it)
+        }
+    }
+    
+//    private func deleteCharacters(inPage page: Int, in context: NSManagedObjectContext) throws {
+//        let request = MarvelPagedCharactersEntity.fetchRequest()
+//        request.predicate = NSPredicate(format: "%K = %d",
+//                                        #keyPath(MarvelPagedCharactersEntity.page), Int32(page))
+//        let results = try context.fetch(request)
+//        for it in results {
+//            context.delete(it)
+//        }
+//    }
+    
     private func fetchFavorites(page: Int) -> NSFetchRequest<FavoriteEntity> {
         let request = FavoriteEntity.fetchRequest()
         request.sortDescriptors = [
@@ -92,11 +111,12 @@ extension CoreDataCharactersStorage: CharactersStorage {
     func save(data: PagedData<MarvelCharacter>) async {
         do {
             try await dataStorage.performBackgroundTask { context in
-                // try self.deleteCharacters(page: data.page, in: context)
-                // FIXME: 그냥 저장하면, 기존 좋아요 정보가 사라질까?
                 let ids: [Int64] = data.items.map({ Int64($0.id) })
                 let favoritesRequest = self.fetchFavorites(inIds: ids)
                 let favorites = try context.fetch(favoritesRequest)
+                
+                //try self.deleteCharacters(inIds: ids, in: context)
+                try self.deleteCharacters(page: data.page, in: context)
                 
                 let _ = data.toEntity(in: context, favorites: favorites)
                 try context.save()
