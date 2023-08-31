@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		174E1DDC2AA0823B00755D6A /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CDC2A974764007BBCCC /* Resource.swift */; };
+		174E1DDD2AA0824300755D6A /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CEA2A975B49007BBCCC /* NetworkClient.swift */; };
 		1763B6FE2A9892120019F86D /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B6FD2A9892120019F86D /* NetworkDataService.swift */; };
 		1763B6FF2A9892120019F86D /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B6FD2A9892120019F86D /* NetworkDataService.swift */; };
 		1763B7012A98A14C0019F86D /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7002A98A14C0019F86D /* ApiEndpoint.swift */; };
@@ -251,6 +253,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		174E1DD42AA0813C00755D6A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1763B6FD2A9892120019F86D /* NetworkDataService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		174E1DDB2AA0822B00755D6A /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				17DE8CEA2A975B49007BBCCC /* NetworkClient.swift */,
+				1763B7042A98ACD10019F86D /* AlarmoLogger.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		174E1DE62AA082FE00755D6A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				17E098912A965F8E00178398 /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		1763B7102A990C080019F86D /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
@@ -485,7 +512,6 @@
 				17E098882A965F8D00178398 /* AppDelegate.swift */,
 				1763B7082A98CB500019F86D /* AppError.swift */,
 				1763B7542A9CFDCD0019F86D /* AppFlowCoordinator.swift */,
-				17E098912A965F8E00178398 /* Assets.xcassets */,
 				1763B7482A9C78C90019F86D /* DiContainer */,
 				17E098BC2A966A6D00178398 /* Env.swift */,
 				17E098962A965F8E00178398 /* Info.plist */,
@@ -507,16 +533,15 @@
 		17DE8CE62A9751ED007BBCCC /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				1763B7042A98ACD10019F86D /* AlarmoLogger.swift */,
 				1763B7002A98A14C0019F86D /* ApiEndpoint.swift */,
-				17DE8CDF2A9749E2007BBCCC /* NetworkResource.swift */,
-				1763B6FD2A9892120019F86D /* NetworkDataService.swift */,
 				17DE8CD62A9744B3007BBCCC /* HttpMethod.swift */,
-				17DE8CEA2A975B49007BBCCC /* NetworkClient.swift */,
-				17DE8CDC2A974764007BBCCC /* Resource.swift */,
-				1763B70C2A9907A80019F86D /* ResponseDecoder.swift */,
-				1763B72B2A9A3D550019F86D /* Response.swift */,
+				17DE8CDF2A9749E2007BBCCC /* NetworkResource.swift */,
 				1763B72F2A9A3E480019F86D /* NetworkResponse.swift */,
+				17DE8CDC2A974764007BBCCC /* Resource.swift */,
+				1763B72B2A9A3D550019F86D /* Response.swift */,
+				1763B70C2A9907A80019F86D /* ResponseDecoder.swift */,
+				174E1DDB2AA0822B00755D6A /* Client */,
+				174E1DD42AA0813C00755D6A /* Service */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -544,6 +569,7 @@
 		17E098872A965F8D00178398 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				174E1DE62AA082FE00755D6A /* Resource */,
 				17DE8CC22A96F935007BBCCC /* Application */,
 				17DE8CA42A96E83B007BBCCC /* Data */,
 				17DE8CAF2A96EDDE007BBCCC /* Domain */,
@@ -807,6 +833,7 @@
 				1763B7022A98A14C0019F86D /* ApiEndpoint.swift in Sources */,
 				17DE8CBE2A96F801007BBCCC /* ResMarvelURL.swift in Sources */,
 				1763B7062A98ACD10019F86D /* AlarmoLogger.swift in Sources */,
+				174E1DDC2AA0823B00755D6A /* Resource.swift in Sources */,
 				1763B7212A99F8CB0019F86D /* CharactersStorage.swift in Sources */,
 				17E098A02A965F8E00178398 /* ResMarvelContainerTests.swift in Sources */,
 				17DE8CBB2A96F740007BBCCC /* ResMarvelError.swift in Sources */,
@@ -821,6 +848,7 @@
 				1763B7252A9A2F470019F86D /* Cancellable.swift in Sources */,
 				17DE8CC52A96FA30007BBCCC /* ResMarvelImage.swift in Sources */,
 				1763B70E2A9907A80019F86D /* ResponseDecoder.swift in Sources */,
+				174E1DDD2AA0824300755D6A /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

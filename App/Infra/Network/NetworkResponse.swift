@@ -11,5 +11,3 @@ struct NetworkResponse: Response {
     var status: Int
     var data: Data?
 }
-
-

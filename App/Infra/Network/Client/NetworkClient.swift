@@ -64,6 +64,4 @@ class DefaultNetworkClient: NetworkClient {
         }
         return .networkError(cause: error)
     }
-    
-    
 }
