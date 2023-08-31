@@ -56,7 +56,7 @@ extension CharactersListVc {
         }
         
         lbLicense.also { it in
-            it.text = "Data provided by Marvel. © 2014 Marvel"
+            it.text = "Data provided by Marvel. © 2023 Marvel"
             it.textAlignment = .center
             it.textColor = .secondaryLabel
             it.backgroundColor = .secondarySystemGroupedBackground
