@@ -52,7 +52,13 @@ class BaseCharactersListViewModel: BaseViewModel {
         foot("page \(newPage.page) totalPages:\(newPage.totalPages)")
         currentPage = newPage.page
         totalPages = newPage.totalPages
-        pages = pages.filter({ $0.page != newPage.page }) + [newPage]
+        var pages = self.pages
+        if let index = pages.firstIndex(where: { $0.page == newPage.page }) {
+            pages[index] = newPage
+        } else {
+            pages.append(newPage)
+        }
+        self.pages = pages
         let characters = pages.characters
         _items.send(characters.map(CharactersListItemViewModel.init))
         _itemsAllLoaded.send(newPage.items.count < kQueryLimit && !characters.isEmpty)
