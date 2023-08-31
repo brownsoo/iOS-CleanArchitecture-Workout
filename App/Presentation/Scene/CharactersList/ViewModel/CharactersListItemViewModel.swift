@@ -24,20 +24,6 @@ struct CharactersListItemViewModel: Identifiable, Equatable, Hashable {
         self.isFavorite = value
         self.favoritedAt = at
     }
-    
-    static func == (lhs: CharactersListItemViewModel,
-                    rhs: CharactersListItemViewModel) -> Bool {
-        return lhs.id == rhs.id
-        && lhs.name == rhs.name
-        && lhs.thumbnail == rhs.thumbnail
-        && lhs.urlsCount == rhs.urlsCount
-        && lhs.comicsCount == rhs.comicsCount
-        && lhs.storiesCount == rhs.storiesCount
-        && lhs.eventsCount == rhs.eventsCount
-        && lhs.seriesCount == rhs.seriesCount
-        && lhs.isFavorite == rhs.isFavorite
-        && lhs.favoritedAt == rhs.favoritedAt
-    }
 }
 
 extension CharactersListItemViewModel {

@@ -28,11 +28,3 @@ struct MarvelComic: Identifiable {
     let events: MarvelResourceList
     let series: MarvelResourceList
 }
-
-extension MarvelComic: Equatable {
-    static func ==(lhs: MarvelComic, rhs: MarvelComic) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
-
-
