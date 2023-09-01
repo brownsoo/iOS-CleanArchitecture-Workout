@@ -20,7 +20,6 @@ class LoadingView {
                 let frame = parent.bounds
                 let spinner = UIActivityIndicatorView(style: .large)
                 let spinnerContainer = UIView(frame: frame)
-                spinnerContainer.isOpaque = true
                 spinnerContainer.backgroundColor = .black.withAlphaComponent(0.2)
                 spinnerContainer.addSubview(spinner)
                 spinner.makeConstraints { it in

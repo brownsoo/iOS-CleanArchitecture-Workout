@@ -98,7 +98,7 @@ extension CharactersListVc {
     private func updateLoading(_ loading: ListLoading) {
         foot("\(loading)")
         emptyLabel.isHidden = true
-        listViewContainer.isHidden = true
+        //listViewContainer.isHidden = true
         LoadingView.hide()
         
         switch loading {
@@ -107,7 +107,7 @@ extension CharactersListVc {
             case .next:
                 listViewContainer.isHidden = false
             case .idle:
-                listViewContainer.isHidden = viewModel?.itemsIsEmpty == true
+               // listViewContainer.isHidden = viewModel?.itemsIsEmpty == true
                 emptyLabel.isHidden = viewModel?.itemsIsEmpty == false
         }
         listTableVc?.updateLoading(loading)

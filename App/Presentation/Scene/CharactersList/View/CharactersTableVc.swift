@@ -178,7 +178,7 @@ extension CharactersTableVc {
     private func updateView(with items: [CharactersListItemViewModel], animating: Bool = true) {
         foot("\(items.count)")
         DispatchQueue.main.async {
-            var snapshot = self.dataSource.snapshot() //NSDiffableDataSourceSnapshot<Section, CharactersListItemViewModel>()
+            var snapshot = self.dataSource.snapshot()
             snapshot.deleteAllItems()
             snapshot.appendSections(Section.allCases)
             snapshot.appendItems(items, toSection: .characters)
