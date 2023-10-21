@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		174E1DDC2AA0823B00755D6A /* NetworkResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CDC2A974764007BBCCC /* NetworkResource.swift */; };
+		174E1DDC2AA0823B00755D6A /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CDC2A974764007BBCCC /* NetworkRequest.swift */; };
 		174E1DDD2AA0824300755D6A /* AlamofireNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CEA2A975B49007BBCCC /* AlamofireNetworkClient.swift */; };
 		1763B6FE2A9892120019F86D /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B6FD2A9892120019F86D /* NetworkDataService.swift */; };
 		1763B6FF2A9892120019F86D /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B6FD2A9892120019F86D /* NetworkDataService.swift */; };
@@ -33,9 +33,9 @@
 		1763B7242A9A2F470019F86D /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7232A9A2F470019F86D /* Cancellable.swift */; };
 		1763B7252A9A2F470019F86D /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7232A9A2F470019F86D /* Cancellable.swift */; };
 		1763B7262A9A2F470019F86D /* Cancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7232A9A2F470019F86D /* Cancellable.swift */; };
-		1763B7302A9A3E480019F86D /* HttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B72F2A9A3E480019F86D /* HttpResponse.swift */; };
-		1763B7312A9A3E480019F86D /* HttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B72F2A9A3E480019F86D /* HttpResponse.swift */; };
-		1763B7322A9A3E480019F86D /* HttpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B72F2A9A3E480019F86D /* HttpResponse.swift */; };
+		1763B7302A9A3E480019F86D /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B72F2A9A3E480019F86D /* ApiResponse.swift */; };
+		1763B7312A9A3E480019F86D /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B72F2A9A3E480019F86D /* ApiResponse.swift */; };
+		1763B7322A9A3E480019F86D /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B72F2A9A3E480019F86D /* ApiResponse.swift */; };
 		1763B7342A9B50140019F86D /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7332A9B50140019F86D /* CoreDataStorage.swift */; };
 		1763B7352A9B501A0019F86D /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7332A9B50140019F86D /* CoreDataStorage.swift */; };
 		1763B7362A9B501A0019F86D /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7332A9B50140019F86D /* CoreDataStorage.swift */; };
@@ -100,10 +100,10 @@
 		17DE8CD12A972159007BBCCC /* PagedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CCF2A972159007BBCCC /* PagedData.swift */; };
 		17DE8CD72A9744B3007BBCCC /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CD62A9744B3007BBCCC /* HttpMethod.swift */; };
 		17DE8CD82A9744B3007BBCCC /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CD62A9744B3007BBCCC /* HttpMethod.swift */; };
-		17DE8CDD2A974764007BBCCC /* NetworkResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CDC2A974764007BBCCC /* NetworkResource.swift */; };
-		17DE8CDE2A974764007BBCCC /* NetworkResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CDC2A974764007BBCCC /* NetworkResource.swift */; };
-		17DE8CE02A9749E2007BBCCC /* HttpResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CDF2A9749E2007BBCCC /* HttpResource.swift */; };
-		17DE8CE12A9749E2007BBCCC /* HttpResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CDF2A9749E2007BBCCC /* HttpResource.swift */; };
+		17DE8CDD2A974764007BBCCC /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CDC2A974764007BBCCC /* NetworkRequest.swift */; };
+		17DE8CDE2A974764007BBCCC /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CDC2A974764007BBCCC /* NetworkRequest.swift */; };
+		17DE8CE02A9749E2007BBCCC /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CDF2A9749E2007BBCCC /* ApiRequest.swift */; };
+		17DE8CE12A9749E2007BBCCC /* ApiRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CDF2A9749E2007BBCCC /* ApiRequest.swift */; };
 		17DE8CE32A975122007BBCCC /* MarvelApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CE22A975122007BBCCC /* MarvelApi.swift */; };
 		17DE8CE42A975122007BBCCC /* MarvelApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CE22A975122007BBCCC /* MarvelApi.swift */; };
 		17DE8CE82A9759A9007BBCCC /* ResMarvelComic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CE72A9759A9007BBCCC /* ResMarvelComic.swift */; };
@@ -156,7 +156,7 @@
 		1763B71A2A99E2330019F86D /* DefaultCharactersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCharactersRepository.swift; sourceTree = "<group>"; };
 		1763B71F2A99F8CB0019F86D /* CharactersStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersStorage.swift; sourceTree = "<group>"; };
 		1763B7232A9A2F470019F86D /* Cancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancellable.swift; sourceTree = "<group>"; };
-		1763B72F2A9A3E480019F86D /* HttpResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResponse.swift; sourceTree = "<group>"; };
+		1763B72F2A9A3E480019F86D /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		1763B7332A9B50140019F86D /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		1763B7392A9B629B0019F86D /* CoreDataStorage.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataStorage.xcdatamodel; sourceTree = "<group>"; };
 		1763B7412A9C2F810019F86D /* CoreDataCharactersStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataCharactersStorage.swift; sourceTree = "<group>"; };
@@ -205,8 +205,8 @@
 		17DE8CCC2A97209F007BBCCC /* MarvelResourceList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelResourceList.swift; sourceTree = "<group>"; };
 		17DE8CCF2A972159007BBCCC /* PagedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagedData.swift; sourceTree = "<group>"; };
 		17DE8CD62A9744B3007BBCCC /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
-		17DE8CDC2A974764007BBCCC /* NetworkResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResource.swift; sourceTree = "<group>"; };
-		17DE8CDF2A9749E2007BBCCC /* HttpResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpResource.swift; sourceTree = "<group>"; };
+		17DE8CDC2A974764007BBCCC /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		17DE8CDF2A9749E2007BBCCC /* ApiRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequest.swift; sourceTree = "<group>"; };
 		17DE8CE22A975122007BBCCC /* MarvelApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelApi.swift; sourceTree = "<group>"; };
 		17DE8CE72A9759A9007BBCCC /* ResMarvelComic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResMarvelComic.swift; sourceTree = "<group>"; };
 		17DE8CEA2A975B49007BBCCC /* AlamofireNetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetworkClient.swift; sourceTree = "<group>"; };
@@ -270,8 +270,8 @@
 		174E1DDB2AA0822B00755D6A /* AlamoClient */ = {
 			isa = PBXGroup;
 			children = (
-				17DE8CDF2A9749E2007BBCCC /* HttpResource.swift */,
-				1763B72F2A9A3E480019F86D /* HttpResponse.swift */,
+				17DE8CDF2A9749E2007BBCCC /* ApiRequest.swift */,
+				1763B72F2A9A3E480019F86D /* ApiResponse.swift */,
 				17DE8CEA2A975B49007BBCCC /* AlamofireNetworkClient.swift */,
 				1763B7042A98ACD10019F86D /* AlarmoLogger.swift */,
 				17E9A57F2AE424440047DCFE /* JSONResponseDecoder.swift */,
@@ -542,12 +542,12 @@
 		17DE8CE62A9751ED007BBCCC /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				17E9A5812AE424810047DCFE /* NetworkClient.swift */,
-				17E9A57D2AE422AC0047DCFE /* NetworkResponse.swift */,
-				1763B7082A98CB500019F86D /* NetworkError.swift */,
-				1763B7002A98A14C0019F86D /* NetworkEndpoint.swift */,
 				17DE8CD62A9744B3007BBCCC /* HttpMethod.swift */,
-				17DE8CDC2A974764007BBCCC /* NetworkResource.swift */,
+				17E9A5812AE424810047DCFE /* NetworkClient.swift */,
+				1763B7002A98A14C0019F86D /* NetworkEndpoint.swift */,
+				1763B7082A98CB500019F86D /* NetworkError.swift */,
+				17DE8CDC2A974764007BBCCC /* NetworkRequest.swift */,
+				17E9A57D2AE422AC0047DCFE /* NetworkResponse.swift */,
 				1763B70C2A9907A80019F86D /* ResponseDecoder.swift */,
 				174E1DDB2AA0822B00755D6A /* AlamoClient */,
 				174E1DD42AA0813C00755D6A /* Service */,
@@ -795,7 +795,7 @@
 				17E9A57C2AE41B560047DCFE /* HumanReadable.swift in Sources */,
 				17E9A5822AE424810047DCFE /* NetworkClient.swift in Sources */,
 				1763B7242A9A2F470019F86D /* Cancellable.swift in Sources */,
-				17DE8CDD2A974764007BBCCC /* NetworkResource.swift in Sources */,
+				17DE8CDD2A974764007BBCCC /* NetworkRequest.swift in Sources */,
 				1763B7652A9D78820019F86D /* BaseViewModel.swift in Sources */,
 				1763B7672A9DD4EB0019F86D /* CharactersTableVc.swift in Sources */,
 				1763B73A2A9B629B0019F86D /* CoreDataStorage.xcdatamodeld in Sources */,
@@ -830,8 +830,8 @@
 				17E0988B2A965F8D00178398 /* SceneDelegate.swift in Sources */,
 				1763B7752A9E0E950019F86D /* CharacterDetailVc.swift in Sources */,
 				1763B7602A9D74B70019F86D /* UIViewController+AddChild.swift in Sources */,
-				1763B7302A9A3E480019F86D /* HttpResponse.swift in Sources */,
-				17DE8CE02A9749E2007BBCCC /* HttpResource.swift in Sources */,
+				1763B7302A9A3E480019F86D /* ApiResponse.swift in Sources */,
+				17DE8CE02A9749E2007BBCCC /* ApiRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -847,11 +847,11 @@
 				1763B7022A98A14C0019F86D /* NetworkEndpoint.swift in Sources */,
 				17DE8CBE2A96F801007BBCCC /* ResMarvelURL.swift in Sources */,
 				1763B7062A98ACD10019F86D /* AlarmoLogger.swift in Sources */,
-				174E1DDC2AA0823B00755D6A /* NetworkResource.swift in Sources */,
+				174E1DDC2AA0823B00755D6A /* NetworkRequest.swift in Sources */,
 				1763B7212A99F8CB0019F86D /* CharactersStorage.swift in Sources */,
 				17E098A02A965F8E00178398 /* ResMarvelContainerTests.swift in Sources */,
 				17DE8CBB2A96F740007BBCCC /* ResMarvelError.swift in Sources */,
-				1763B7312A9A3E480019F86D /* HttpResponse.swift in Sources */,
+				1763B7312A9A3E480019F86D /* ApiResponse.swift in Sources */,
 				17DE8CC12A96F8EE007BBCCC /* ResMarvelCharacter.swift in Sources */,
 				1763B7362A9B501A0019F86D /* CoreDataStorage.swift in Sources */,
 				17DE8CB32A96EF27007BBCCC /* MarvelEndpoint.swift in Sources */,
@@ -871,13 +871,13 @@
 			files = (
 				1763B7262A9A2F470019F86D /* Cancellable.swift in Sources */,
 				17DE8CD82A9744B3007BBCCC /* HttpMethod.swift in Sources */,
-				17DE8CE12A9749E2007BBCCC /* HttpResource.swift in Sources */,
-				1763B7322A9A3E480019F86D /* HttpResponse.swift in Sources */,
+				17DE8CE12A9749E2007BBCCC /* ApiRequest.swift in Sources */,
+				1763B7322A9A3E480019F86D /* ApiResponse.swift in Sources */,
 				17DE8CEF2A975E78007BBCCC /* ResMarvelText.swift in Sources */,
 				17E098AC2A965F8E00178398 /* AppUITestsLaunchTests.swift in Sources */,
 				17DE8CE42A975122007BBCCC /* MarvelApi.swift in Sources */,
 				17DE8CE92A9759A9007BBCCC /* ResMarvelComic.swift in Sources */,
-				17DE8CDE2A974764007BBCCC /* NetworkResource.swift in Sources */,
+				17DE8CDE2A974764007BBCCC /* NetworkRequest.swift in Sources */,
 				17E098AA2A965F8E00178398 /* AppUITests.swift in Sources */,
 				1763B7142A990C420019F86D /* CharactersRepository.swift in Sources */,
 				1763B76E2A9DE3A10019F86D /* Also.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  NetworkResource.swift
+//  HttpRequest.swift
 //  KisTest
 //
 //  Created by hyonsoo han on 2023/08/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HttpResource<A>: NetworkResource {
+struct ApiRequest<A>: NetworkRequest {
     let endpoint: NetworkEndpoint
     let method: HttpMethod
     let body: Data?

@@ -1,5 +1,5 @@
 //
-//  NetworkClient.swift
+//  AlamofireNetworkClient.swift
 //  KisTest
 //
 //  Created by hyonsoo han on 2023/08/24.
@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-class DefaultNetworkClient: NetworkClient {
+class AlamofireNetworkClient: NetworkClient {
     
     let session: Alamofire.Session = {
         let config = URLSessionConfiguration.af.default
@@ -20,7 +20,7 @@ class DefaultNetworkClient: NetworkClient {
 #endif
     }()
     
-    func request(_ resource: NetworkResource) async throws -> NetworkResponse {
+    func request(_ resource: NetworkRequest) async throws -> NetworkResponse {
         let request = try resource.toUrlRequest()
         let task = self.session.request(request)
             .validate(statusCode: 200..<299)
@@ -29,7 +29,7 @@ class DefaultNetworkClient: NetworkClient {
         
         switch response.result {
             case .success(let data):
-                return HttpResponse(status: response.response?.statusCode ?? 0, data: data)
+                return ApiResponse(status: response.response?.statusCode ?? 0, data: data)
             case .failure(let afError):
                 throw self.handleError(afError, withData: response.data)
         }

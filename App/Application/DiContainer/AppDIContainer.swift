@@ -10,7 +10,7 @@ import Foundation
 final class AppDIContainer {
     
     lazy var networkDataService: NetworkDataService = {
-       DefaultNetworkDataService(client: DefaultNetworkClient(),
+       DefaultNetworkDataService(client: AlamofireNetworkClient(),
                                  decoder: JSONResponseDecoder())
     }()
     

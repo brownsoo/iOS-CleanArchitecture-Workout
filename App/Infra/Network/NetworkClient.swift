@@ -8,5 +8,5 @@
 import Foundation
 
 protocol NetworkClient {
-    func request(_ resource: NetworkResource) async throws -> NetworkResponse
+    func request(_ resource: NetworkRequest) async throws -> NetworkResponse
 }
