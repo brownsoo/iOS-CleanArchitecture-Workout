@@ -29,8 +29,8 @@ final class DefaultCharactersListViewModel: BaseCharactersListViewModel {
                         case .success(let newPage):
                             self?.appendPage(newPage)
                         case .failure(let error):
-                            if let e = error.asAppError,
-                               case AppError.contentNotChanged = e {
+                            if let e = error.asNetworkError,
+                               case NetworkError.contentNotChanged = e {
                                 // not changed
                             } else {
                                 self?.handleError(error)

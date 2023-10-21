@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MarvelEndpoint: ApiEndpoint {
+struct MarvelEndpoint: NetworkEndpoint {
     private let apiHost = kMarvelApiHost
     private let apiKey = kMarvelPublicKey
     private let privateKey = kMarvelPrivateKey

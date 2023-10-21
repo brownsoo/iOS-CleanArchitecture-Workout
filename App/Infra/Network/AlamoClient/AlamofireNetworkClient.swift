@@ -8,10 +8,6 @@
 import Foundation
 import Alamofire
 
-protocol NetworkClient {
-    func request(_ resource: Resource) async throws -> Response
-}
-
 class DefaultNetworkClient: NetworkClient {
     
     let session: Alamofire.Session = {
@@ -24,7 +20,7 @@ class DefaultNetworkClient: NetworkClient {
 #endif
     }()
     
-    func request(_ resource: Resource) async throws -> Response {
+    func request(_ resource: NetworkResource) async throws -> NetworkResponse {
         let request = try resource.toUrlRequest()
         let task = self.session.request(request)
             .validate(statusCode: 200..<299)
@@ -33,19 +29,19 @@ class DefaultNetworkClient: NetworkClient {
         
         switch response.result {
             case .success(let data):
-                return NetworkResponse(status: response.response?.statusCode ?? 0, data: data)
+                return HttpResponse(status: response.response?.statusCode ?? 0, data: data)
             case .failure(let afError):
                 throw self.handleError(afError, withData: response.data)
         }
     }
                                         
-    private func handleError(_ error: AFError, withData data: Data?) -> AppError {
+    private func handleError(_ error: AFError, withData data: Data?) -> NetworkError {
         if let data = data,
            let res = try? JSONDecoder().decode(ResMarvelError.self, from: data) {
-            return AppError.requestFailed(statusCode: res.code, message: res.status)
+            return NetworkError.requestFailed(statusCode: res.code, message: res.status)
         }
         if error.responseCode == 304 {
-            return AppError.contentNotChanged
+            return NetworkError.contentNotChanged
         }
         if let nsError = error.underlyingError as? NSError {
             switch(nsError.code) {
@@ -56,12 +52,12 @@ class DefaultNetworkClient: NetworkClient {
                     NSURLErrorCannotFindHost,
                     NSURLErrorCannotConnectToHost,
                     NSURLErrorNetworkConnectionLost:
-                    return .networkDisconnected
+                    return NetworkError.networkDisconnected
                 default:
                     break
                     
             }
         }
-        return .networkError(cause: error)
+        return NetworkError.networkError(cause: error)
     }
 }

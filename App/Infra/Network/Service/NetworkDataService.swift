@@ -9,7 +9,7 @@ import Foundation
 
 /// 네트워크에서 데이터 모델을 제공 
 protocol NetworkDataService {
-    func request<T>(_ resource: NetworkResource<T>) async throws -> T where T: Decodable
+    func request<T>(_ resource: HttpResource<T>) async throws -> T where T: Decodable
 }
 
 final class DefaultNetworkDataService {
@@ -24,13 +24,13 @@ final class DefaultNetworkDataService {
 }
 
 extension DefaultNetworkDataService: NetworkDataService {
-    func request<T>(_ resource: NetworkResource<T>) async throws -> T where T: Decodable {
+    func request<T>(_ resource: HttpResource<T>) async throws -> T where T: Decodable {
         let res = try await self.client.request(resource)
         if res.status == 304 {
-            throw AppError.contentNotChanged
+            throw NetworkError.contentNotChanged
         }
         guard let data = res.data else {
-            throw AppError.emptyResponse
+            throw NetworkError.emptyResponse
         }
         let model: T = try self.decoder.decode(data)
         return model

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NetworkResponse: Response {
-    var status: Int
-    var data: Data?
+protocol NetworkResponse {
+    var status: Int { get }
+    var data: Data? { get }
 }

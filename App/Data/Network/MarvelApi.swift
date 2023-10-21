@@ -18,8 +18,8 @@ class MarvelApi {
 }
 
 struct CharacterApi {
-    func search(page: Int = 1, limit: Int = 20, etag: String? = nil) -> NetworkResource<ResMarvelResults<ResMarvelCharacter>> {
-        return NetworkResource(
+    func search(page: Int = 1, limit: Int = 20, etag: String? = nil) -> HttpResource<ResMarvelResults<ResMarvelCharacter>> {
+        return HttpResource(
             MarvelEndpoint("/v1/public/characters",
                            etag: etag,
                            parameters: ["offset" : (page - 1) * limit,
@@ -27,15 +27,15 @@ struct CharacterApi {
         )
     }
     
-    func get(characterId: Int, etag: String? = nil) -> NetworkResource<ResMarvelResults<ResMarvelCharacter>> {
-        return NetworkResource(
+    func get(characterId: Int, etag: String? = nil) -> HttpResource<ResMarvelResults<ResMarvelCharacter>> {
+        return HttpResource(
             MarvelEndpoint("/v1/public/characters/\(characterId)",
                            etag: etag)
         )
     }
     
-    func searchComics(characterId: Int, page: Int = 1, limit: Int = 20, etag: String? = nil) -> NetworkResource<ResMarvelResults<ResMarvelComic>> {
-        return NetworkResource(
+    func searchComics(characterId: Int, page: Int = 1, limit: Int = 20, etag: String? = nil) -> HttpResource<ResMarvelResults<ResMarvelComic>> {
+        return HttpResource(
             MarvelEndpoint("/v1/public/characters/\(characterId)/comics",
                            etag: etag,
                            parameters: ["offset" : (page - 1) * limit,
@@ -46,8 +46,8 @@ struct CharacterApi {
 
 
 struct ComicApi {
-    func get(comicId: Int, etag: String? = nil) -> NetworkResource<ResMarvelResults<ResMarvelComic>> {
-        return NetworkResource(
+    func get(comicId: Int, etag: String? = nil) -> HttpResource<ResMarvelResults<ResMarvelComic>> {
+        return HttpResource(
             MarvelEndpoint("/v1/public/comics/\(comicId)", etag: etag)
         )
     }

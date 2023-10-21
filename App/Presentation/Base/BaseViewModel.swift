@@ -31,7 +31,7 @@ class BaseViewModel: ViewModel {
     
     func handleError(_ error: Error) {
         let message: String
-        if let e = error as? AppError {
+        if let e = error as? HumanReadable {
             message = e.humanMessage()
             debugPrint(e)
         } else {
