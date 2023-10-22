@@ -127,6 +127,7 @@
 		17E9A57E2AE422AC0047DCFE /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9A57D2AE422AC0047DCFE /* NetworkResponse.swift */; };
 		17E9A5802AE424440047DCFE /* JSONResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9A57F2AE424440047DCFE /* JSONResponseDecoder.swift */; };
 		17E9A5822AE424810047DCFE /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9A5812AE424810047DCFE /* NetworkClient.swift */; };
+		17E9A5832AE574EA0047DCFE /* JSONResponseDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E9A57F2AE424440047DCFE /* JSONResponseDecoder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -267,7 +268,7 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		174E1DDB2AA0822B00755D6A /* AlamoClient */ = {
+		174E1DDB2AA0822B00755D6A /* ApiClient */ = {
 			isa = PBXGroup;
 			children = (
 				17DE8CDF2A9749E2007BBCCC /* ApiRequest.swift */,
@@ -276,7 +277,7 @@
 				1763B7042A98ACD10019F86D /* AlarmoLogger.swift */,
 				17E9A57F2AE424440047DCFE /* JSONResponseDecoder.swift */,
 			);
-			path = AlamoClient;
+			path = ApiClient;
 			sourceTree = "<group>";
 		};
 		174E1DE62AA082FE00755D6A /* Resource */ = {
@@ -534,6 +535,8 @@
 		17DE8CE52A9751D6007BBCCC /* Infra */ = {
 			isa = PBXGroup;
 			children = (
+				174E1DDB2AA0822B00755D6A /* ApiClient */,
+				174E1DD42AA0813C00755D6A /* Service */,
 				17DE8CE62A9751ED007BBCCC /* Network */,
 			);
 			path = Infra;
@@ -549,8 +552,6 @@
 				17DE8CDC2A974764007BBCCC /* NetworkRequest.swift */,
 				17E9A57D2AE422AC0047DCFE /* NetworkResponse.swift */,
 				1763B70C2A9907A80019F86D /* ResponseDecoder.swift */,
-				174E1DDB2AA0822B00755D6A /* AlamoClient */,
-				174E1DD42AA0813C00755D6A /* Service */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -850,6 +851,7 @@
 				174E1DDC2AA0823B00755D6A /* NetworkRequest.swift in Sources */,
 				1763B7212A99F8CB0019F86D /* CharactersStorage.swift in Sources */,
 				17E098A02A965F8E00178398 /* ResMarvelContainerTests.swift in Sources */,
+				17E9A5832AE574EA0047DCFE /* JSONResponseDecoder.swift in Sources */,
 				17DE8CBB2A96F740007BBCCC /* ResMarvelError.swift in Sources */,
 				1763B7312A9A3E480019F86D /* ApiResponse.swift in Sources */,
 				17DE8CC12A96F8EE007BBCCC /* ResMarvelCharacter.swift in Sources */,
