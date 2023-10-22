@@ -26,7 +26,8 @@ struct MarvelEndpoint: NetworkEndpoint {
         params["apikey"] = apiKey
         let ts = "\(Int(round(Date().timeIntervalSince1970)))"
         params["ts"] = ts
-        if let hash = "\(ts)\(privateKey)\(apiKey)".hashed(.md5) {
+        let hashingData = "\(ts)\(privateKey)\(apiKey)".data(using: .utf8)
+        if let hash = hashingData?.MD5hashed() {
             params["hash"] = hash
         }
         self.parameters = params
