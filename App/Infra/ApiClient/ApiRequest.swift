@@ -8,6 +8,8 @@
 import Foundation
 
 struct ApiRequest<A>: NetworkRequest {
+    typealias ResponseType = A
+    
     let endpoint: NetworkEndpoint
     let method: HttpMethod
     let body: Data?
