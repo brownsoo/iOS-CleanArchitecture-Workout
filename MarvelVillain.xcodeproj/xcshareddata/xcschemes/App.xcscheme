@@ -17,7 +17,7 @@
                BlueprintIdentifier = "17E098842A965F8D00178398"
                BuildableName = "App.app"
                BlueprintName = "App"
-               ReferencedContainer = "container:KisTest.xcodeproj">
+               ReferencedContainer = "container:MarvelVillain.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -37,7 +37,7 @@
                BlueprintIdentifier = "17E0989A2A965F8E00178398"
                BuildableName = "AppTests.xctest"
                BlueprintName = "AppTests"
-               ReferencedContainer = "container:KisTest.xcodeproj">
+               ReferencedContainer = "container:MarvelVillain.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -48,7 +48,7 @@
                BlueprintIdentifier = "17E098A42A965F8E00178398"
                BuildableName = "AppUITests.xctest"
                BlueprintName = "AppUITests"
-               ReferencedContainer = "container:KisTest.xcodeproj">
+               ReferencedContainer = "container:MarvelVillain.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -70,7 +70,7 @@
             BlueprintIdentifier = "17E098842A965F8D00178398"
             BuildableName = "App.app"
             BlueprintName = "App"
-            ReferencedContainer = "container:KisTest.xcodeproj">
+            ReferencedContainer = "container:MarvelVillain.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -87,7 +87,7 @@
             BlueprintIdentifier = "17E098842A965F8D00178398"
             BuildableName = "App.app"
             BlueprintName = "App"
-            ReferencedContainer = "container:KisTest.xcodeproj">
+            ReferencedContainer = "container:MarvelVillain.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

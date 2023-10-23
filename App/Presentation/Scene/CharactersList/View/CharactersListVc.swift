@@ -1,6 +1,6 @@
 //
 //  CharactersListVc.swift
-//  KisTest
+//  MarvelVillain
 //
 //  Created by hyonsoo on 2023/08/24.
 //
@@ -37,7 +37,7 @@ class CharactersListVc: UIViewController, Alertable {
 
 extension CharactersListVc {
     private func setupViews() {
-        self.title = "Marvel Characters"
+        self.title = "Marvel Villains"
         self.view.backgroundColor = .systemBackground
         
         let thumbImage = UIImage(systemName: "hand.thumbsup",

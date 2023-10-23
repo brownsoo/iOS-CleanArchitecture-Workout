@@ -1,6 +1,6 @@
 //
-//  KisTestUITestsLaunchTests.swift
-//  KisTestUITests
+//  AppUITestsLaunchTests.swift
+//  AppUITestsLaunchTests
 //
 //  Created by hyonsoo on 2023/08/24.
 //
