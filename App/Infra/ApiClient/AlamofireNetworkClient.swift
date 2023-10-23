@@ -20,7 +20,7 @@ class AlamofireNetworkClient: NetworkClient {
 #endif
     }()
     
-    func request(_ resource: any NetworkRequest) async throws -> NetworkResponse {
+    func request(_ resource: some NetworkRequest) async throws -> NetworkResponse {
         let request = try resource.toUrlRequest()
         let task = self.session.request(request)
             .validate(statusCode: 200..<299)

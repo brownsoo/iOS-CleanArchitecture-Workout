@@ -10,7 +10,6 @@
 		174E1DDC2AA0823B00755D6A /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CDC2A974764007BBCCC /* NetworkRequest.swift */; };
 		174E1DDD2AA0824300755D6A /* AlamofireNetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17DE8CEA2A975B49007BBCCC /* AlamofireNetworkClient.swift */; };
 		1763B6FE2A9892120019F86D /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B6FD2A9892120019F86D /* NetworkDataService.swift */; };
-		1763B6FF2A9892120019F86D /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B6FD2A9892120019F86D /* NetworkDataService.swift */; };
 		1763B7012A98A14C0019F86D /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7002A98A14C0019F86D /* NetworkEndpoint.swift */; };
 		1763B7022A98A14C0019F86D /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7002A98A14C0019F86D /* NetworkEndpoint.swift */; };
 		1763B7032A98A14C0019F86D /* NetworkEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7002A98A14C0019F86D /* NetworkEndpoint.swift */; };
@@ -271,10 +270,10 @@
 		174E1DDB2AA0822B00755D6A /* ApiClient */ = {
 			isa = PBXGroup;
 			children = (
-				17DE8CDF2A9749E2007BBCCC /* ApiRequest.swift */,
-				1763B72F2A9A3E480019F86D /* ApiResponse.swift */,
 				17DE8CEA2A975B49007BBCCC /* AlamofireNetworkClient.swift */,
 				1763B7042A98ACD10019F86D /* AlarmoLogger.swift */,
+				17DE8CDF2A9749E2007BBCCC /* ApiRequest.swift */,
+				1763B72F2A9A3E480019F86D /* ApiResponse.swift */,
 				17E9A57F2AE424440047DCFE /* JSONResponseDecoder.swift */,
 			);
 			path = ApiClient;
@@ -859,7 +858,6 @@
 				17DE8CB32A96EF27007BBCCC /* MarvelEndpoint.swift in Sources */,
 				17DE8CA72A96E8A2007BBCCC /* ResMarvelResults.swift in Sources */,
 				17DE8CC82A96FAF9007BBCCC /* ResMarvelResourceList.swift in Sources */,
-				1763B6FF2A9892120019F86D /* NetworkDataService.swift in Sources */,
 				1763B7252A9A2F470019F86D /* Cancellable.swift in Sources */,
 				17DE8CC52A96FA30007BBCCC /* ResMarvelImage.swift in Sources */,
 				1763B70E2A9907A80019F86D /* ResponseDecoder.swift in Sources */,
@@ -971,7 +969,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1026,7 +1024,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1049,7 +1047,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = "$(inherited)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1079,7 +1077,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = "$(inherited)";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

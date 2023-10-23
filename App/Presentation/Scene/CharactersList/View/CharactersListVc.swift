@@ -42,10 +42,20 @@ extension CharactersListVc {
         
         let thumbImage = UIImage(systemName: "hand.thumbsup",
                                  withConfiguration: UIImage.SymbolConfiguration(hierarchicalColor: .systemMint))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: nil,
-                                                                 image: thumbImage,
-                                                                 target: self,
-                                                                 action: #selector(navigateToFavoriteView))
+        if #available(iOS 16.0, *) {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                title: nil,
+                image: thumbImage,
+                target: self,
+                action: #selector(navigateToFavoriteView))
+        } else {
+            // Fallback on earlier versions
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(
+                image: thumbImage,
+                style: .plain,
+                target: self,
+                action: #selector(navigateToFavoriteView))
+        }
         
         listViewContainer.also { it in
             it.backgroundColor = .yellow
@@ -102,13 +112,13 @@ extension CharactersListVc {
         LoadingView.hide()
         
         switch loading {
-            case .first:
-                LoadingView.show(parent: self.view)
-            case .next:
-                listViewContainer.isHidden = false
-            case .idle:
-               // listViewContainer.isHidden = viewModel?.itemsIsEmpty == true
-                emptyLabel.isHidden = viewModel?.itemsIsEmpty == false
+        case .first:
+            LoadingView.show(parent: self.view)
+        case .next:
+            listViewContainer.isHidden = false
+        case .idle:
+            // listViewContainer.isHidden = viewModel?.itemsIsEmpty == true
+            emptyLabel.isHidden = viewModel?.itemsIsEmpty == false
         }
         listTableVc?.updateLoading(loading)
     }
