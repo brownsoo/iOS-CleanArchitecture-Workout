@@ -8,19 +8,22 @@
 import Foundation
 import Alamofire
 
-class AlamofireNetworkClient: NetworkClient {
+public class AlamofireNetworkClient: NetworkClient {
+    
+    static var loggingNetwork = false
     
     let session: Alamofire.Session = {
         let config = URLSessionConfiguration.af.default
-        let apiLogger = AlarmoLogger()
-#if DEBUG
-        return Session(configuration: config, eventMonitors: [apiLogger])
-#else
+        if AlamofireNetworkClient.loggingNetwork {
+            let apiLogger = AlarmoLogger()
+            return Session(configuration: config, eventMonitors: [apiLogger])
+        }
         return Session(configuration: config)
-#endif
     }()
     
-    func request(_ resource: some NetworkRequest) async throws -> NetworkResponse {
+    public init() {}
+    
+    public func request(_ resource: some NetworkRequest) async throws -> NetworkResponse {
         let request = try resource.toUrlRequest()
         let task = self.session.request(request)
             .validate(statusCode: 200..<299)
@@ -31,15 +34,11 @@ class AlamofireNetworkClient: NetworkClient {
             case .success(let data):
                 return ApiResponse(status: response.response?.statusCode ?? 0, data: data)
             case .failure(let afError):
-                throw self.handleError(afError, withData: response.data)
+                throw self.handleToNetworkError(afError, withData: response.data)
         }
     }
                                         
-    private func handleError(_ error: AFError, withData data: Data?) -> NetworkError {
-        if let data = data,
-           let res = try? JSONDecoder().decode(ResMarvelError.self, from: data) {
-            return NetworkError.requestFailed(statusCode: res.code, message: res.status)
-        }
+    private func handleToNetworkError(_ error: AFError, withData data: Data?) -> NetworkError {
         if error.responseCode == 304 {
             return NetworkError.contentNotChanged
         }
@@ -58,6 +57,8 @@ class AlamofireNetworkClient: NetworkClient {
                     
             }
         }
-        return NetworkError.networkError(cause: error)
+        return NetworkError.networkError(statusCode: error.responseCode,
+                                         cause: error,
+                                         data: data)
     }
 }

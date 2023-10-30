@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol NetworkEndpoint {
+public protocol NetworkEndpoint {
     var urlString: String { get }
     var headers: [String: String] { get }
     var parameters: [String: Any]? { get }

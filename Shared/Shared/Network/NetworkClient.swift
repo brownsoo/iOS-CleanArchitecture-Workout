@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol NetworkClient {
+public protocol NetworkClient {
     func request(_ resource: some NetworkRequest) async throws -> NetworkResponse
 }

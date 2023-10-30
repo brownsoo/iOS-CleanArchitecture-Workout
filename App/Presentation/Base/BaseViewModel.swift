@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Shared
 
 protocol ViewModel {
     var errorMessages: AnyPublisher<String, Never> { get }

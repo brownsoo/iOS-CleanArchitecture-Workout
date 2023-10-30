@@ -6,18 +6,19 @@
 //
 
 import Foundation
+import Shared
 
-/// 네트워크에서 데이터 모델을 제공 
+/// 네트워크에서 데이터 모델을 제공
 protocol NetworkDataService {
     func request<T>(_ request: some NetworkRequest<T>) async throws -> T where T: Decodable
 }
 
 final class DefaultNetworkDataService {
     private let client: NetworkClient
-    private let decoder: ResponseDecoder
+    private let decoder: NetworkResponseDecoder
     
     init(client: NetworkClient,
-         decoder: ResponseDecoder) {
+         decoder: NetworkResponseDecoder) {
         self.client = client
         self.decoder = decoder
     }
@@ -25,16 +26,17 @@ final class DefaultNetworkDataService {
 
 extension DefaultNetworkDataService: NetworkDataService {
     func request<T>(_ request: some NetworkRequest<T>) async throws -> T where T: Decodable {
-        let res = try await self.client.request(request)
-        if res.status == 304 {
-            // 304 를 오류로 처리
-            throw NetworkError.contentNotChanged
+        do {
+            let res = try await self.client.request(request)
+            let model: T = try self.decoder.decode(res.data)
+            return model
+        } catch {
+            if case NetworkError.networkError(_, _, let data) = error,
+               let errorBody = data,
+               let res = try? JSONDecoder().decode(ResMarvelError.self, from: errorBody) {
+                throw AppError.requestFailed(statusCode: res.code, message: res.status)
+            }
+            throw error
         }
-        guard let data = res.data else {
-            // FIXME: 바디가 없지만 성공한 응답문 처리 
-            throw NetworkError.emptyResponse
-        }
-        let model: T = try self.decoder.decode(data)
-        return model
     }
 }

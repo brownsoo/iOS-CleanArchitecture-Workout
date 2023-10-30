@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol NetworkResponse {
+public protocol NetworkResponse {
     var status: Int { get }
     var data: Data? { get }
 }

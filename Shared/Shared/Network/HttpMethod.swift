@@ -5,7 +5,7 @@
 //  Created by hyonsoo han on 2023/08/24.
 //
 
-enum HttpMethod: String {
+public enum HttpMethod: String {
     case get = "GET"
     case post = "POST"
     case delete = "DELETE"

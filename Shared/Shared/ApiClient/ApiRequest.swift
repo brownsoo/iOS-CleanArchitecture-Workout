@@ -7,23 +7,22 @@
 
 import Foundation
 
-struct ApiRequest<A>: NetworkRequest {
-    typealias ResponseType = A
+public struct ApiRequest<A>: NetworkRequest {
+    public typealias ResponseType = A
     
     let endpoint: NetworkEndpoint
     let method: HttpMethod
     let body: Data?
     
-    var headers: [String: String] {
+    public var headers: [String: String] {
         endpoint.headers
     }
     
-    var url: URL {
+    public var url: URL {
         URL(string: endpoint.urlString + paramsAppendix())!
     }
     
-    
-    init(_ endpoint: NetworkEndpoint,
+    public init(_ endpoint: NetworkEndpoint,
          method: HttpMethod = .get,
          body: Data? =  nil
     ) {
@@ -39,7 +38,7 @@ struct ApiRequest<A>: NetworkRequest {
         return "?\(params.map { "\($0.key)=\($0.value)" }.joined(separator: "&"))"
     }
     
-    func toUrlRequest() throws -> URLRequest {
+    public func toUrlRequest() throws -> URLRequest {
         var request = URLRequest(url: self.url)
         if let body = self.body {
             request.httpBody = body

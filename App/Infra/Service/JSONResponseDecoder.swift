@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Shared
 
-class JSONResponseDecoder: ResponseDecoder {
+class JSONResponseDecoder: NetworkResponseDecoder {
     
     private var decoder: JSONDecoder = {
         let decorder = JSONDecoder()
@@ -29,11 +30,17 @@ class JSONResponseDecoder: ResponseDecoder {
     
     init(){}
     
-    func decode<T>(_ data: Data) throws -> T where T : Decodable {
+    func decode<T>(_ data: Data?) throws -> T where T : Decodable {
+        if T.self == EmptySuccessResponse.self {
+            return EmptySuccessResponse() as! T
+        }
+        guard let data = data else {
+            throw AppError.emptyResponse
+        }
         do {
             return try decoder.decode(T.self, from: data)
         } catch {
-            throw NetworkError.parsing(cause: error, model: String(describing: T.self))
+            throw AppError.parsing(cause: error, model: String(describing: T.self))
         }
     }
 }

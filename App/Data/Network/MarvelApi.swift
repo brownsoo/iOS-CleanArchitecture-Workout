@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Shared
 
 class MarvelApi {
     static var character: CharacterApi = {

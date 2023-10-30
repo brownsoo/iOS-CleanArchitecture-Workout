@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ApiResponse: NetworkResponse {
-    var status: Int
-    var data: Data?
+public struct ApiResponse: NetworkResponse {
+    public var status: Int
+    public var data: Data?
 }

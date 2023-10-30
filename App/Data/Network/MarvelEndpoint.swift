@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Shared
 
 struct MarvelEndpoint: NetworkEndpoint {
     private let apiHost = kMarvelApiHost

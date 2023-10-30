@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol NetworkRequest<ResponseType> {
+public protocol NetworkRequest<ResponseType> {
     associatedtype ResponseType
     var url: URL { get }
     var headers: [String : String] { get }

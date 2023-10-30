@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Shared
 
 final class DefaultCharactersListViewModel: BaseCharactersListViewModel {
     
