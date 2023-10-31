@@ -1,15 +1,15 @@
 //
 //  Also.swift
-//  App
+//  Shared
 //
 //  Created by hyonsoo on 2023/08/29.
 //
 
 import Foundation
 
-protocol Also {}
+public protocol Also {}
 
-extension Also {
+public extension Also {
     @discardableResult
     func also(perform thisFn: (Self)->Void) -> Self {
         thisFn(self)

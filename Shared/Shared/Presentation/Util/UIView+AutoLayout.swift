@@ -7,26 +7,26 @@
 
 import UIKit
 
-struct AutoLayoutEdges: OptionSet {
+public struct AutoLayoutEdges: OptionSet {
     
-    let rawValue: Int
+    public let rawValue: Int
     
-    init(rawValue: Int) {
+    public init(rawValue: Int) {
         self.rawValue = rawValue
     }
     
-    static let leading  = AutoLayoutEdges(rawValue: 1 << 0)
-    static let trailing = AutoLayoutEdges(rawValue: 1 << 1)
-    static let top      = AutoLayoutEdges(rawValue: 1 << 2)
-    static let bottom   = AutoLayoutEdges(rawValue: 1 << 3)
+    public static let leading  = AutoLayoutEdges(rawValue: 1 << 0)
+    public static let trailing = AutoLayoutEdges(rawValue: 1 << 1)
+    public static let top      = AutoLayoutEdges(rawValue: 1 << 2)
+    public static let bottom   = AutoLayoutEdges(rawValue: 1 << 3)
     
-    static let all: AutoLayoutEdges = [.leading, .trailing, .top, .bottom]
-    static let horizontal: AutoLayoutEdges = [.leading, .trailing]
-    static let vertical: AutoLayoutEdges = [.top, .bottom]
+    public static let all: AutoLayoutEdges = [.leading, .trailing, .top, .bottom]
+    public static let horizontal: AutoLayoutEdges = [.leading, .trailing]
+    public static let vertical: AutoLayoutEdges = [.top, .bottom]
     
 }
 
-extension UIView {
+public extension UIView {
     @discardableResult
     func makeConstraints(_ receiver: (UIView) -> Void) -> Self {
         self.translatesAutoresizingMaskIntoConstraints = false
@@ -36,8 +36,7 @@ extension UIView {
     
 }
 
-extension UIView {
-    
+public extension UIView {
     
     @discardableResult
     func topAnchorConstraintTo(_ view: UIView, constant: CGFloat = 0) -> NSLayoutConstraint? {

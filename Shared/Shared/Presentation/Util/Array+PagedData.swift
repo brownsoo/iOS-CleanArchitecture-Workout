@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Array where Element == PagedData<MarvelCharacter> {
+public extension Array where Element == PagedData<MarvelCharacter> {
     var characters: [MarvelCharacter] {
         self.flatMap { $0.items }
     }

@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Shared
 
 class CharactersListVc: UIViewController, Alertable {
     

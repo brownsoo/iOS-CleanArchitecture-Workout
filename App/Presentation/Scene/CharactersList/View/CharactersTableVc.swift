@@ -7,6 +7,7 @@
 
 import UIKit
 import Combine
+import Shared
 
 final class CharactersTableVc: UITableViewController {
     

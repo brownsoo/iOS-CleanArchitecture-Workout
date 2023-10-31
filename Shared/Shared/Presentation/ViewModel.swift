@@ -1,27 +1,28 @@
 //
-//  BaseViewModel.swift
-//  App
+//  ViewModel.swift
+//  Shared
 //
-//  Created by hyonsoo on 2023/08/29.
+//  Created by hyonsoo on 11/1/23.
 //
 
 import Foundation
 import Combine
-import Shared
 
-protocol ViewModel {
+public protocol ViewModel {
     var errorMessages: AnyPublisher<String, Never> { get }
 }
 
-class BaseViewModel: ViewModel {
+open class BaseViewModel: ViewModel {
     
-    var errorMessages: AnyPublisher<String, Never> {
-        _errorMessages.receive(on: Scheduler.masinScheduler).eraseToAnyPublisher()
+    public var errorMessages: AnyPublisher<String, Never> {
+        _errorMessages.receive(on: RunLoop.main).eraseToAnyPublisher()
     }
     
-    var cancellabels: Set<AnyCancellable> = []
+    public var cancellabels: Set<AnyCancellable> = []
     
     private let _errorMessages = PassthroughSubject<String, Never>()
+    
+    public init() {}
     
     deinit {
         cancellabels.forEach { work in
@@ -30,7 +31,7 @@ class BaseViewModel: ViewModel {
         cancellabels.removeAll()
     }
     
-    func handleError(_ error: Error) {
+    open func handleError(_ error: Error) {
         let message: String
         if let e = error as? HumanReadable {
             message = e.humanMessage()

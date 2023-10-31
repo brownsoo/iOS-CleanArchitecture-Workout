@@ -8,7 +8,7 @@
 import Foundation
 import CryptoKit
 
-extension Data {
+public extension Data {
     
     func MD5hashed() -> String? {
         let digest = Insecure.MD5.hash(data: self)

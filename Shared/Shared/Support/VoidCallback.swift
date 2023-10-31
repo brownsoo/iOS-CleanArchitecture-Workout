@@ -1,8 +1,8 @@
 //
 //  VoidCallback.swift
-//  App
+//  Shared
 //
 //  Created by hyonsoo on 2023/08/30.
 //
 
-typealias VoidCallback = () -> Void
+public typealias VoidCallback = () -> Void

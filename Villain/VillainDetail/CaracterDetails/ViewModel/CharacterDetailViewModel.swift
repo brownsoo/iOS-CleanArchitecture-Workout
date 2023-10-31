@@ -9,11 +9,11 @@ import Foundation
 import Combine
 import Shared
 
-struct CharacterDetailViewModelActions {
-    
+public struct CharacterDetailViewModelActions {
+    public init() {}
 }
 
-protocol CharacterDetailViewModel: ViewModel {
+public protocol CharacterDetailViewModel: ViewModel {
     // out
     var characterName: String { get }
     var stateChanges: AnyPublisher<DetailViewState, Never> { get }
@@ -22,7 +22,7 @@ protocol CharacterDetailViewModel: ViewModel {
     func toggleFavorited(characterId: Int) -> Void
 }
 
-struct DetailViewState: Equatable {
+public struct DetailViewState: Equatable {
     var title: String
     var thumbnail: URL?
     var isFavorite: Bool
@@ -38,13 +38,13 @@ struct DetailViewState: Equatable {
     }
 }
 
-final class DefaultCharacterDetailViewModel: BaseViewModel {
+public class DefaultCharacterDetailViewModel: BaseViewModel {
     private let actions: CharacterDetailViewModelActions?
     private let repository: CharactersRepository
     private var character: MarvelCharacter
     private var _stateChanges: CurrentValueSubject<DetailViewState, Never>!
     
-    init(character: MarvelCharacter,
+    public init(character: MarvelCharacter,
          actions: CharacterDetailViewModelActions,
          repository: CharactersRepository) {
         self.character = character
@@ -88,18 +88,18 @@ final class DefaultCharacterDetailViewModel: BaseViewModel {
 
 extension DefaultCharacterDetailViewModel: CharacterDetailViewModel {
     // out
-    var characterName: String {
+    public var characterName: String {
         self.character.name
     }
-    var stateChanges: AnyPublisher<DetailViewState, Never> {
+    public var stateChanges: AnyPublisher<DetailViewState, Never> {
         _stateChanges.eraseToAnyPublisher()
     }
     
-    var state: DetailViewState {
+    public var state: DetailViewState {
         _stateChanges.value
     }
     // in
-    func toggleFavorited(characterId: Int) {
+    public func toggleFavorited(characterId: Int) {
         let bool = _stateChanges.value.isFavorite == true
         if bool {
             unmarkFavorte()

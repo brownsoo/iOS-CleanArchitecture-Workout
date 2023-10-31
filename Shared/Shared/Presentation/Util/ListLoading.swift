@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ListLoading {
+public enum ListLoading {
     case idle
     case first
     case next

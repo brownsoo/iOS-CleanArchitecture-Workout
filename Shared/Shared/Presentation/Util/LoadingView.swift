@@ -7,12 +7,12 @@
 
 import UIKit
 
-class LoadingView {
+public class LoadingView {
 
     static var spinner: UIActivityIndicatorView?
     static var spinnerContainer: UIView?
     
-    static func show(parent: UIView) {
+    public static func show(parent: UIView) {
         DispatchQueue.main.async {
             NotificationCenter.default.addObserver(self, selector: #selector(update), name: UIDevice.orientationDidChangeNotification, object: nil)
             
@@ -36,7 +36,7 @@ class LoadingView {
         }
     }
 
-    static func hide(didHide: (() -> Void)? = nil) {
+    public static func hide(didHide: (() -> Void)? = nil) {
         DispatchQueue.main.async {
             guard let spinner = spinner else { return }
             spinner.stopAnimating()
@@ -48,7 +48,8 @@ class LoadingView {
         }
     }
 
-    @objc static func update() {
+    @objc
+    static func update() {
         DispatchQueue.main.async {
             if let superview = spinnerContainer?.superview {
                 hide {

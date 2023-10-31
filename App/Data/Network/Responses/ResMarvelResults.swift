@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Shared
 
 struct ResMarvelResults<T: Decodable>: Decodable {
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIImage {
+public extension UIImage {
     
     @discardableResult
     func solid(_ color: UIColor, width: CGFloat = 1, height: CGFloat = 1) -> UIImage {

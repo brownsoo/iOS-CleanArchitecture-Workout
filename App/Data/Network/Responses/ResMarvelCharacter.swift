@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Shared
 
 struct ResMarvelCharacter: Decodable {
     let id: Int

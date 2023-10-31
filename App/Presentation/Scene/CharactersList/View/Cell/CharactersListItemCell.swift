@@ -8,6 +8,7 @@
 import UIKit
 import SwiftUI
 import Kingfisher
+import Shared
 
 enum CharactersListItemClickType {
     case item(characterId: Int)
@@ -34,15 +35,15 @@ final class CharactersListItemCell: UITableViewCell {
     private let thumbImage = UIImage(
         systemName: "hand.thumbsup",
             withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 28))
-            .applying(UIImage.SymbolConfiguration(hierarchicalColor: .systemMint)))
+            .applying(UIImage.SymbolConfiguration(hierarchicalColor: .tintColor)))
     private let thumbImageFill = UIImage(
         systemName: "hand.thumbsup.fill",
         withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 28))
-            .applying(UIImage.SymbolConfiguration(hierarchicalColor: .systemMint)))
+            .applying(UIImage.SymbolConfiguration(hierarchicalColor: .tintColor)))
     private let thumbImageFillHighlight = UIImage(
         systemName: "hand.thumbsup.fill",
         withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 28))
-            .applying(UIImage.SymbolConfiguration(hierarchicalColor: .systemMint.withAlphaComponent(0.5))))
+            .applying(UIImage.SymbolConfiguration(hierarchicalColor: .tintColor.withAlphaComponent(0.5))))
     
     private let btThumb = UIButton(type: .custom)
     
@@ -141,9 +142,6 @@ extension CharactersListItemCell {
             it.makeConstraints {
                 $0.leadingAnchorConstraintToSuperview(20)
                 $0.bottomAnchorConstraintToSuperview(-20)
-//                $0.trailingAnchor
-//                    .constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -40)
-//                    .isActive = true
             }
         }
         

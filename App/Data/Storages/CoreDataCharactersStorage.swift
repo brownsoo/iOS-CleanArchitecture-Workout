@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import Shared
 
 final class CoreDataCharactersStorage {
     private let dataStorage: CoreDataStorage

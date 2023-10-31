@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Shared
+import VillainDetail
 
 protocol CharactersFlowCoordinatorDependencies {
     func makeCharactersListView(actions: CharactersListViewModelActions) -> CharactersListVc

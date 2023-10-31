@@ -7,28 +7,28 @@
 
 import Foundation
 import Combine
+import Shared
 
 /// CharactersListViewModel 의 공통 구현체
 class BaseCharactersListViewModel: BaseViewModel {
     
-    internal var actions: CharactersListViewModelActions?
-    internal var repository: CharactersRepository
-    
-    internal var currentPage: Int = 0
-    internal var naxtPage: Int { hasMorePages ? currentPage + 1 : currentPage }
+    var actions: CharactersListViewModelActions?
+    var repository: CharactersRepository
+    var currentPage: Int = 0
+    var naxtPage: Int { hasMorePages ? currentPage + 1 : currentPage }
     private var totalPages: Int = 0
     private var hasMorePages: Bool { currentPage < totalPages }
-    
     private var pages: [PagedData<MarvelCharacter>] = []
-    internal var loadTask: Cancellable? {
+    
+    var loadTask: Cancellable? {
         willSet {
             loadTask?.cancel()
         }
     }
-    internal let maingQueue = DispatchQueue.main
-    internal let _itemsAllLoaded = PassthroughSubject<Bool, Never>()
-    internal let _items = CurrentValueSubject<[CharactersListItemViewModel], Never>([])
-    internal let _loading = CurrentValueSubject<ListLoading, Never>(.idle)
+    let maingQueue = DispatchQueue.main
+    let _itemsAllLoaded = PassthroughSubject<Bool, Never>()
+    let _items = CurrentValueSubject<[CharactersListItemViewModel], Never>([])
+    let _loading = CurrentValueSubject<ListLoading, Never>(.idle)
     
     init(actions: CharactersListViewModelActions,
          characterRepository: CharactersRepository) {

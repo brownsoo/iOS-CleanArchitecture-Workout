@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Shared
 
 protocol ResMarvelResourceItem: Decodable {
     var resourceURI: String { get }

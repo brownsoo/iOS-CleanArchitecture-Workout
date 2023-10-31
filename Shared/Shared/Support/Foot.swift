@@ -7,7 +7,7 @@
 
 import Foundation
 
-func foot(_ msg: String? = nil, filename: String = #file, funcName: String = #function) {
+public func foot(_ msg: String? = nil, filename: String = #file, funcName: String = #function) {
     print("foot** \(filename.components(separatedBy: "/").last ?? filename) \t\(funcName) \(msg ?? "")")
 }
 

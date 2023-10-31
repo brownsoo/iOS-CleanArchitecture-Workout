@@ -10,10 +10,11 @@ import Combine
 import SwiftUI
 import Kingfisher
 import SafariServices
+import Shared
 
-final class CharacterDetailVc: UIViewController, Alertable {
+public class CharacterDetailVc: UIViewController, Alertable {
     
-    static func create(viewModel: CharacterDetailViewModel) -> CharacterDetailVc {
+    public static func create(viewModel: CharacterDetailViewModel) -> CharacterDetailVc {
         let vc = CharacterDetailVc()
         vc.viewModel = viewModel
         return vc
@@ -25,14 +26,14 @@ final class CharacterDetailVc: UIViewController, Alertable {
     private let btDownloadImage = UIButton(type: .custom)
     private let btUrls = UIButton(type: .roundedRect)
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
         bindViewModel()
     }
 }
 
-extension CharacterDetailVc {
+public extension CharacterDetailVc {
     private func setupViews() {
         self.view.backgroundColor = .systemBackground
         self.title = viewModel?.characterName

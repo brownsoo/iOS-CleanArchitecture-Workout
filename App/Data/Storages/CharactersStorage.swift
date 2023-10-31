@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Shared
 
 protocol CharactersStorage {
     func getCharactors(page: Int) async throws -> PagedData<MarvelCharacter>?
