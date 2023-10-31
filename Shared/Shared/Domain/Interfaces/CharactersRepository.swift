@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol CharactersRepository {
+public protocol CharactersRepository {
     
     /// 페이지 단위로 캐릭터를 가져옴
     /// - Parameters:

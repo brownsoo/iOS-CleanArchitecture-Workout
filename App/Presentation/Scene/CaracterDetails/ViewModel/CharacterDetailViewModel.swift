@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Shared
 
 struct CharacterDetailViewModelActions {
     

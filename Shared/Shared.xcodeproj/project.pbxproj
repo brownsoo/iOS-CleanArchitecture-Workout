@@ -23,6 +23,12 @@
 		173D1CE32AEF4EC9003F380D /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1CD82AEF4EC9003F380D /* NetworkError.swift */; };
 		173D1CE62AEF4F42003F380D /* HumanReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1CE52AEF4F42003F380D /* HumanReadable.swift */; };
 		173D1CF02AEF6225003F380D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 173D1CEF2AEF6225003F380D /* Alamofire */; };
+		173D1CFA2AF122CD003F380D /* PagedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1CF32AF122CD003F380D /* PagedData.swift */; };
+		173D1CFB2AF122CD003F380D /* MarvelCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1CF42AF122CD003F380D /* MarvelCharacter.swift */; };
+		173D1CFC2AF122CD003F380D /* MarvelResourceList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1CF52AF122CD003F380D /* MarvelResourceList.swift */; };
+		173D1CFD2AF122CD003F380D /* MarvelUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1CF62AF122CD003F380D /* MarvelUrl.swift */; };
+		173D1CFE2AF122CD003F380D /* MarvelComic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1CF72AF122CD003F380D /* MarvelComic.swift */; };
+		173D1CFF2AF122CD003F380D /* CharactersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1CF92AF122CD003F380D /* CharactersRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +58,12 @@
 		173D1CD72AEF4EC9003F380D /* NetworkRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		173D1CD82AEF4EC9003F380D /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		173D1CE52AEF4F42003F380D /* HumanReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HumanReadable.swift; sourceTree = "<group>"; };
+		173D1CF32AF122CD003F380D /* PagedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagedData.swift; sourceTree = "<group>"; };
+		173D1CF42AF122CD003F380D /* MarvelCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelCharacter.swift; sourceTree = "<group>"; };
+		173D1CF52AF122CD003F380D /* MarvelResourceList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelResourceList.swift; sourceTree = "<group>"; };
+		173D1CF62AF122CD003F380D /* MarvelUrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelUrl.swift; sourceTree = "<group>"; };
+		173D1CF72AF122CD003F380D /* MarvelComic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarvelComic.swift; sourceTree = "<group>"; };
+		173D1CF92AF122CD003F380D /* CharactersRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharactersRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +107,9 @@
 		173D1CB62AEF4E76003F380D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				173D1D002AF124D8003F380D /* Infra */,
+				173D1CF12AF122CD003F380D /* Domain */,
 				173D1CE42AEF4F28003F380D /* Type */,
-				173D1CCC2AEF4EC9003F380D /* ApiClient */,
-				173D1CD12AEF4EC9003F380D /* Network */,
 				173D1CB72AEF4E76003F380D /* Shared.h */,
 			);
 			path = Shared;
@@ -142,6 +154,44 @@
 				173D1CE52AEF4F42003F380D /* HumanReadable.swift */,
 			);
 			path = Type;
+			sourceTree = "<group>";
+		};
+		173D1CF12AF122CD003F380D /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				173D1CF22AF122CD003F380D /* Entities */,
+				173D1CF82AF122CD003F380D /* Interfaces */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		173D1CF22AF122CD003F380D /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				173D1CF32AF122CD003F380D /* PagedData.swift */,
+				173D1CF42AF122CD003F380D /* MarvelCharacter.swift */,
+				173D1CF52AF122CD003F380D /* MarvelResourceList.swift */,
+				173D1CF62AF122CD003F380D /* MarvelUrl.swift */,
+				173D1CF72AF122CD003F380D /* MarvelComic.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		173D1CF82AF122CD003F380D /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				173D1CF92AF122CD003F380D /* CharactersRepository.swift */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		173D1D002AF124D8003F380D /* Infra */ = {
+			isa = PBXGroup;
+			children = (
+				173D1CCC2AEF4EC9003F380D /* ApiClient */,
+				173D1CD12AEF4EC9003F380D /* Network */,
+			);
+			path = Infra;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,13 +309,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				173D1CFC2AF122CD003F380D /* MarvelResourceList.swift in Sources */,
+				173D1CFF2AF122CD003F380D /* CharactersRepository.swift in Sources */,
 				173D1CD92AEF4EC9003F380D /* AlamofireNetworkClient.swift in Sources */,
+				173D1CFE2AF122CD003F380D /* MarvelComic.swift in Sources */,
 				173D1CDD2AEF4EC9003F380D /* NetworkClient.swift in Sources */,
 				173D1CDF2AEF4EC9003F380D /* NetworkResponse.swift in Sources */,
+				173D1CFD2AF122CD003F380D /* MarvelUrl.swift in Sources */,
 				173D1CDC2AEF4EC9003F380D /* AlarmoLogger.swift in Sources */,
+				173D1CFB2AF122CD003F380D /* MarvelCharacter.swift in Sources */,
 				173D1CE22AEF4EC9003F380D /* NetworkRequest.swift in Sources */,
 				173D1CE02AEF4EC9003F380D /* HttpMethod.swift in Sources */,
 				173D1CDA2AEF4EC9003F380D /* ApiResponse.swift in Sources */,
+				173D1CFA2AF122CD003F380D /* PagedData.swift in Sources */,
 				173D1CDB2AEF4EC9003F380D /* ApiRequest.swift in Sources */,
 				173D1CE12AEF4EC9003F380D /* NetworkResponseDecoder.swift in Sources */,
 				173D1CE32AEF4EC9003F380D /* NetworkError.swift in Sources */,
