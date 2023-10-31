@@ -5,14 +5,15 @@
 - API : [https://developer.marvel.com](https://developer.marvel.com)
 - 페이지 단위 무한 스크롤
 - 즐겨찾기 화면 
-- etag 처리 
 - 간단한 상세 화면
 
 ## Architecture
 
 * 클린 아키텍트 이론에 기반해 도메인, 데이터, 프리젠테이션, 인프라로 구분.
+* 1개 애플리케이션과 2개 프레임워크 프로젝트로 구성
 * UIKit 기반 뷰 구성, SwiftUI 미리보기 작성
 * MVVM 방식 뷰 업데이트 구성 
+* etag 처리 (304 상태코드로 요청 간소화) 
 * minimum target : iOS 15.0
 
 ---
