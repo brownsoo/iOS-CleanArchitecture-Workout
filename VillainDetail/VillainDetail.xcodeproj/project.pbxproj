@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		173D1D3F2AF127CA003F380D /* VillainDetail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 173D1D362AF127CA003F380D /* VillainDetail.framework */; };
-		173D1D442AF127CA003F380D /* VillainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1D432AF127CA003F380D /* VillainTests.swift */; };
+		173D1D442AF127CA003F380D /* VillainDetailTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1D432AF127CA003F380D /* VillainDetailTests.swift */; };
 		173D1D452AF127CA003F380D /* VillainDetail.h in Headers */ = {isa = PBXBuildFile; fileRef = 173D1D392AF127CA003F380D /* VillainDetail.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		173D1D542AF128A1003F380D /* MockCharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1D502AF128A1003F380D /* MockCharacterDetailViewModel.swift */; };
 		173D1D552AF128A1003F380D /* CharacterDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1D512AF128A1003F380D /* CharacterDetailViewModel.swift */; };
@@ -46,7 +46,7 @@
 		173D1D362AF127CA003F380D /* VillainDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VillainDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		173D1D392AF127CA003F380D /* VillainDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VillainDetail.h; sourceTree = "<group>"; };
 		173D1D3E2AF127CA003F380D /* VillainDetailTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VillainDetailTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		173D1D432AF127CA003F380D /* VillainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillainTests.swift; sourceTree = "<group>"; };
+		173D1D432AF127CA003F380D /* VillainDetailTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillainDetailTests.swift; sourceTree = "<group>"; };
 		173D1D502AF128A1003F380D /* MockCharacterDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockCharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		173D1D512AF128A1003F380D /* CharacterDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDetailViewModel.swift; sourceTree = "<group>"; };
 		173D1D532AF128A1003F380D /* CharacterDetailVc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterDetailVc.swift; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				173D1D382AF127CA003F380D /* VillainDetail */,
-				173D1D422AF127CA003F380D /* VillainTests */,
+				173D1D422AF127CA003F380D /* VillainDetailTests */,
 				173D1D372AF127CA003F380D /* Products */,
 				173D1D5D2AF1B540003F380D /* Frameworks */,
 			);
@@ -102,12 +102,12 @@
 			path = VillainDetail;
 			sourceTree = "<group>";
 		};
-		173D1D422AF127CA003F380D /* VillainTests */ = {
+		173D1D422AF127CA003F380D /* VillainDetailTests */ = {
 			isa = PBXGroup;
 			children = (
-				173D1D432AF127CA003F380D /* VillainTests.swift */,
+				173D1D432AF127CA003F380D /* VillainDetailTests.swift */,
 			);
-			path = VillainTests;
+			path = VillainDetailTests;
 			sourceTree = "<group>";
 		};
 		173D1D4E2AF128A1003F380D /* CaracterDetails */ = {
@@ -270,7 +270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				173D1D442AF127CA003F380D /* VillainTests.swift in Sources */,
+				173D1D442AF127CA003F380D /* VillainDetailTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +431,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.marvel.Villain;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.marvel.VillainDetail;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -461,7 +461,7 @@
 				MARKETING_VERSION = 1.0;
 				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
 				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
-				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.marvel.Villain;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.marvel.VillainDetail;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

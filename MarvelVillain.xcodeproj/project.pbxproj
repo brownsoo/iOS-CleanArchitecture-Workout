@@ -811,6 +811,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TB576F3KJ6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Application/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "이미지를 소장하기 위해 필요합니다.";
@@ -823,7 +824,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = i.wish.success.MarvelVillain;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.marvel.App;
 				PRODUCT_NAME = "Marvel Villains";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -841,6 +842,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = TB576F3KJ6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Application/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "이미지를 소장하기 위해 필요합니다.";
@@ -853,7 +855,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = i.wish.success.MarvelVillain;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.marvel.App;
 				PRODUCT_NAME = "Marvel Villains";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -874,7 +876,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = i.wish.success.AppTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.marvel.AppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -896,7 +898,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = i.wish.success.AppTests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.marvel.AppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -916,7 +918,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = i.wish.success.AppUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.marvel.AppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -936,7 +938,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = i.wish.success.AppUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hansoolabs.sample.marvel.AppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
