@@ -30,17 +30,11 @@ class JSONResponseDecoder: NetworkResponseDecoder {
     
     init(){}
     
-    func decode<T>(_ data: Data?) throws -> T where T : Decodable {
-        if T.self == EmptySuccessResponse.self {
-            return EmptySuccessResponse() as! T
-        }
-        guard let data = data else {
-            throw AppError.emptyResponse
-        }
+    func decode<T>(_ data: Data) throws -> T where T : Decodable {
         do {
             return try decoder.decode(T.self, from: data)
         } catch {
-            throw AppError.parsing(cause: error, model: String(describing: T.self))
+            throw NetworkError.parsing(cause: error, model: String(describing: T.self))
         }
     }
 }

@@ -13,5 +13,5 @@ public protocol NetworkResponseDecoder {
     /// - Parameter data: Data
     /// - Returns: 응답 모델
     /// - Throws: AppError.parsing, AppError.emptyResponse
-    func decode<T: Decodable>(_ data: Data?) throws -> T
+    func decode<T: Decodable>(_ data: Data) throws -> T
 }
