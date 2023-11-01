@@ -15,7 +15,7 @@ final class AppDIContainer {
                                  decoder: JSONResponseDecoder())
     }()
     
-    func makeCharactersSceneDIContainer() -> CharactersSceneDIContainer {
-        CharactersSceneDIContainer(networkDataService: networkDataService)
+    func makeCharactersSceneProvider() -> CharactersSceneProvider {
+        CharactersSceneProvider(networkDataService: networkDataService)
     }
 }

@@ -29,7 +29,7 @@
 		1763B7512A9CF6300019F86D /* CharactersListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7502A9CF6300019F86D /* CharactersListItemViewModel.swift */; };
 		1763B7532A9CF8B20019F86D /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7522A9CF8B20019F86D /* CharactersListViewModel.swift */; };
 		1763B7552A9CFDCD0019F86D /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7542A9CFDCD0019F86D /* AppFlowCoordinator.swift */; };
-		1763B7572A9CFEA10019F86D /* CharactersSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7562A9CFEA10019F86D /* CharactersSceneDIContainer.swift */; };
+		1763B7572A9CFEA10019F86D /* CharactersSceneProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7562A9CFEA10019F86D /* CharactersSceneProvider.swift */; };
 		1763B75A2A9CFF5B0019F86D /* CharactersFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7592A9CFF5B0019F86D /* CharactersFlowCoordinator.swift */; };
 		1763B7602A9D74B70019F86D /* UIViewController+AddChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B75F2A9D74B70019F86D /* UIViewController+AddChild.swift */; };
 		1763B7672A9DD4EB0019F86D /* CharactersTableVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7662A9DD4EB0019F86D /* CharactersTableVc.swift */; };
@@ -122,7 +122,7 @@
 		1763B7502A9CF6300019F86D /* CharactersListItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListItemViewModel.swift; sourceTree = "<group>"; };
 		1763B7522A9CF8B20019F86D /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
 		1763B7542A9CFDCD0019F86D /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
-		1763B7562A9CFEA10019F86D /* CharactersSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersSceneDIContainer.swift; sourceTree = "<group>"; };
+		1763B7562A9CFEA10019F86D /* CharactersSceneProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersSceneProvider.swift; sourceTree = "<group>"; };
 		1763B7592A9CFF5B0019F86D /* CharactersFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersFlowCoordinator.swift; sourceTree = "<group>"; };
 		1763B75F2A9D74B70019F86D /* UIViewController+AddChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddChild.swift"; sourceTree = "<group>"; };
 		1763B7662A9DD4EB0019F86D /* CharactersTableVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableVc.swift; sourceTree = "<group>"; };
@@ -256,7 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				1763B7492A9C78DE0019F86D /* AppDIContainer.swift */,
-				1763B7562A9CFEA10019F86D /* CharactersSceneDIContainer.swift */,
+				1763B7562A9CFEA10019F86D /* CharactersSceneProvider.swift */,
 			);
 			path = DiContainer;
 			sourceTree = "<group>";
@@ -620,7 +620,7 @@
 				17E098892A965F8D00178398 /* AppDelegate.swift in Sources */,
 				17E9A57A2AE419D40047DCFE /* AppError.swift in Sources */,
 				1763B7532A9CF8B20019F86D /* CharactersListViewModel.swift in Sources */,
-				1763B7572A9CFEA10019F86D /* CharactersSceneDIContainer.swift in Sources */,
+				1763B7572A9CFEA10019F86D /* CharactersSceneProvider.swift in Sources */,
 				1763B7702A9DEE580019F86D /* UITableViewController+AcitivityIndicator.swift in Sources */,
 				1763B78A2A9F99410019F86D /* BaseCharactersListViewModel.swift in Sources */,
 				17E0988B2A965F8D00178398 /* SceneDelegate.swift in Sources */,

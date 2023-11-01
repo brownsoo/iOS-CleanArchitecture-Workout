@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "17E098842A965F8D00178398"
-               BuildableName = "App.app"
+               BuildableName = "Marvel Villains.app"
                BlueprintName = "App"
                ReferencedContainer = "container:MarvelVillain.xcodeproj">
             </BuildableReference>
@@ -68,7 +68,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "17E098842A965F8D00178398"
-            BuildableName = "App.app"
+            BuildableName = "Marvel Villains.app"
             BlueprintName = "App"
             ReferencedContainer = "container:MarvelVillain.xcodeproj">
          </BuildableReference>
@@ -85,7 +85,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "17E098842A965F8D00178398"
-            BuildableName = "App.app"
+            BuildableName = "Marvel Villains.app"
             BlueprintName = "App"
             ReferencedContainer = "container:MarvelVillain.xcodeproj">
          </BuildableReference>

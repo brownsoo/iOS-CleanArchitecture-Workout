@@ -1,5 +1,5 @@
 //
-//  CharactersSceneDIContainer.swift
+//  CharactersSceneProvider.swift
 //  App
 //
 //  Created by hyonsoo on 2023/08/29.
@@ -9,7 +9,7 @@ import UIKit
 import Shared
 import VillainDetail
 
-final class CharactersSceneDIContainer {
+final class CharactersSceneProvider {
     
     private let networkDataService: NetworkDataService
     private lazy var charactersCache: CharactersStorage = CoreDataCharactersStorage()
@@ -47,24 +47,26 @@ final class CharactersSceneDIContainer {
     }
 }
 
-extension CharactersSceneDIContainer {
+extension CharactersSceneProvider {
     func makeCharactersFlowCoordinator(nc: UINavigationController) -> CharactersFlowCoordinator {
+        // CharactersFlowCoordinator 가 CharactersSceneProvider를 참조로 가져간다.
+        // nc 는 약참조로.
         CharactersFlowCoordinator(nc: nc, dependencies: self)
     }
 }
 
-extension CharactersSceneDIContainer: CharactersFlowCoordinatorDependencies {
+extension CharactersSceneProvider: CharactersFlowCoordinatorDependencies {
     
-    func makeCharactersListView(actions: CharactersListViewModelActions) -> CharactersListVc {
+    func makeCharactersListView(actions: CharactersListViewModelActions) -> UIViewController {
         CharactersListVc.create(viewModel: self.makeCharactersListViewModel(actions: actions))
     }
     
     func makeCharactersDetailView(character: MarvelCharacter,
-                                  actons: CharacterDetailViewModelActions) -> CharacterDetailVc {
+                                  actons: CharacterDetailViewModelActions) -> UIViewController {
         CharacterDetailVc.create(viewModel: self.makeDetailViewModel(chracter: character, actions: actons))
     }
     
-    func makeFavoritesListView(actions: CharactersListViewModelActions) -> FavoritesListVc {
+    func makeFavoritesListView(actions: CharactersListViewModelActions) -> UIViewController {
         FavoritesListVc.create(viewModel: self.makeFavoritesListViewModel(actions: actions))
     }
 }
