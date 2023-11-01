@@ -1,4 +1,4 @@
-# iOS Clean Architecture Workout
+# iOS Clean Architecture Workout 2nd
 
 ## 마블 빌런 조회 구현  
 
@@ -16,6 +16,10 @@
 * etag 처리 (304 상태코드로 요청 간소화) 
 * minimum target : iOS 15.0
 
+## Preview
+
+[<img src="marvel-villain-low.gif" width="360px">](https://vimeo.com/880053093 "iOS앱 연습2-마블빌런즈(어중간)")
+
 ---
 
 TODO: 
@@ -28,3 +32,4 @@ TODO:
 - [ ] 원격 데이터 먼저 조회하기 (etag 적극활용, 타임아웃 짧게 수정)
 - [ ] 원격 데이터와 캐시데이터 구분없이 하나로 변경
 - [ ] 네트워크 단절시 상태 표시
+
