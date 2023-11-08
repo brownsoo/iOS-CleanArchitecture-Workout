@@ -12,6 +12,8 @@ import VillainDetail
 final class CharactersSceneProvider {
     
     private let networkDataService: NetworkDataService
+    /// 캐시 서비스를 씬 단에서 유지.
+    /// 캐릭터 저장은 캐릭터 화면들에서만 제공하는 형태.
     private lazy var charactersCache: CharactersStorage = CoreDataCharactersStorage()
     
     init(networkDataService: NetworkDataService) {
