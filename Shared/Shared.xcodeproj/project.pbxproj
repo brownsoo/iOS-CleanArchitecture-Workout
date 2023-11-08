@@ -44,6 +44,8 @@
 		173D1D7D2AF1B81E003F380D /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1D752AF1B81E003F380D /* UIViewControllerPreview.swift */; };
 		173D1D7E2AF1B81E003F380D /* ListLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1D762AF1B81E003F380D /* ListLoading.swift */; };
 		173D1D7F2AF1B81E003F380D /* UIImage+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1D772AF1B81E003F380D /* UIImage+Extentions.swift */; };
+		1793D7612AFB063E00EF94B1 /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D7602AFB063E00EF94B1 /* NetworkDataService.swift */; };
+		1793D7632AFB073200EF94B1 /* EmptySuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D7622AFB073200EF94B1 /* EmptySuccessResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		173D1D752AF1B81E003F380D /* UIViewControllerPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerPreview.swift; sourceTree = "<group>"; };
 		173D1D762AF1B81E003F380D /* ListLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListLoading.swift; sourceTree = "<group>"; };
 		173D1D772AF1B81E003F380D /* UIImage+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extentions.swift"; sourceTree = "<group>"; };
+		1793D7602AFB063E00EF94B1 /* NetworkDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataService.swift; sourceTree = "<group>"; };
+		1793D7622AFB073200EF94B1 /* EmptySuccessResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptySuccessResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,12 +141,12 @@
 		173D1CB62AEF4E76003F380D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				173D1D622AF1B6E9003F380D /* Support */,
-				173D1D5A2AF1B4FE003F380D /* Presentation */,
-				173D1D002AF124D8003F380D /* Infra */,
 				173D1CF12AF122CD003F380D /* Domain */,
-				173D1CE42AEF4F28003F380D /* Type */,
+				173D1CD12AEF4EC9003F380D /* Network */,
+				173D1D5A2AF1B4FE003F380D /* Presentation */,
 				173D1CB72AEF4E76003F380D /* Shared.h */,
+				173D1D622AF1B6E9003F380D /* Support */,
+				173D1CE42AEF4F28003F380D /* Type */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -169,13 +173,10 @@
 		173D1CD12AEF4EC9003F380D /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				173D1CD22AEF4EC9003F380D /* NetworkClient.swift */,
-				173D1CD32AEF4EC9003F380D /* NetworkEndpoint.swift */,
-				173D1CD42AEF4EC9003F380D /* NetworkResponse.swift */,
-				173D1CD52AEF4EC9003F380D /* HttpMethod.swift */,
-				173D1CD62AEF4EC9003F380D /* NetworkResponseDecoder.swift */,
-				173D1CD72AEF4EC9003F380D /* NetworkRequest.swift */,
-				173D1CD82AEF4EC9003F380D /* NetworkError.swift */,
+				1793D7622AFB073200EF94B1 /* EmptySuccessResponse.swift */,
+				173D1CCC2AEF4EC9003F380D /* ApiClient */,
+				1793D75F2AFB062700EF94B1 /* Service */,
+				1793D75E2AFB061600EF94B1 /* Core */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -217,15 +218,6 @@
 			path = Interfaces;
 			sourceTree = "<group>";
 		};
-		173D1D002AF124D8003F380D /* Infra */ = {
-			isa = PBXGroup;
-			children = (
-				173D1CCC2AEF4EC9003F380D /* ApiClient */,
-				173D1CD12AEF4EC9003F380D /* Network */,
-			);
-			path = Infra;
-			sourceTree = "<group>";
-		};
 		173D1D5A2AF1B4FE003F380D /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +253,28 @@
 				173D1D702AF1B81E003F380D /* UIViewPreview.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		1793D75E2AFB061600EF94B1 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				173D1CD22AEF4EC9003F380D /* NetworkClient.swift */,
+				173D1CD32AEF4EC9003F380D /* NetworkEndpoint.swift */,
+				173D1CD42AEF4EC9003F380D /* NetworkResponse.swift */,
+				173D1CD52AEF4EC9003F380D /* HttpMethod.swift */,
+				173D1CD62AEF4EC9003F380D /* NetworkResponseDecoder.swift */,
+				173D1CD72AEF4EC9003F380D /* NetworkRequest.swift */,
+				173D1CD82AEF4EC9003F380D /* NetworkError.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		1793D75F2AFB062700EF94B1 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1793D7602AFB063E00EF94B1 /* NetworkDataService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +398,7 @@
 				173D1CD92AEF4EC9003F380D /* AlamofireNetworkClient.swift in Sources */,
 				173D1CFE2AF122CD003F380D /* MarvelComic.swift in Sources */,
 				173D1CDD2AEF4EC9003F380D /* NetworkClient.swift in Sources */,
+				1793D7612AFB063E00EF94B1 /* NetworkDataService.swift in Sources */,
 				173D1D7E2AF1B81E003F380D /* ListLoading.swift in Sources */,
 				173D1D6B2AF1B6E9003F380D /* Foot.swift in Sources */,
 				173D1CDF2AEF4EC9003F380D /* NetworkResponse.swift in Sources */,
@@ -401,6 +416,7 @@
 				173D1D7D2AF1B81E003F380D /* UIViewControllerPreview.swift in Sources */,
 				173D1CDA2AEF4EC9003F380D /* ApiResponse.swift in Sources */,
 				173D1D6E2AF1B6E9003F380D /* Foundation+Extentions.swift in Sources */,
+				1793D7632AFB073200EF94B1 /* EmptySuccessResponse.swift in Sources */,
 				173D1CFA2AF122CD003F380D /* PagedData.swift in Sources */,
 				173D1D6D2AF1B6E9003F380D /* Cancellable.swift in Sources */,
 				173D1CDB2AEF4EC9003F380D /* ApiRequest.swift in Sources */,

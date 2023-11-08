@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		173D1CE92AEF5756003F380D /* Shared.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 173D1CE82AEF5756003F380D /* Shared.framework */; };
 		173D1CEA2AEF5756003F380D /* Shared.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 173D1CE82AEF5756003F380D /* Shared.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		173D1CED2AEF585C003F380D /* EmptySuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1CEC2AEF585C003F380D /* EmptySuccessResponse.swift */; };
 		173D1D842AF1BDA6003F380D /* VillainDetail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 173D1D832AF1BDA6003F380D /* VillainDetail.framework */; };
 		173D1D852AF1BDA6003F380D /* VillainDetail.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 173D1D832AF1BDA6003F380D /* VillainDetail.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1763B6FE2A9892120019F86D /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B6FD2A9892120019F86D /* NetworkDataService.swift */; };
@@ -109,7 +108,6 @@
 
 /* Begin PBXFileReference section */
 		173D1CE82AEF5756003F380D /* Shared.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Shared.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		173D1CEC2AEF585C003F380D /* EmptySuccessResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptySuccessResponse.swift; sourceTree = "<group>"; };
 		173D1D832AF1BDA6003F380D /* VillainDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VillainDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1763B6FD2A9892120019F86D /* NetworkDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataService.swift; sourceTree = "<group>"; };
 		1763B71A2A99E2330019F86D /* DefaultCharactersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCharactersRepository.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 			children = (
 				17E9A57F2AE424440047DCFE /* JSONResponseDecoder.swift */,
 				1763B6FD2A9892120019F86D /* NetworkDataService.swift */,
-				173D1CEC2AEF585C003F380D /* EmptySuccessResponse.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -613,7 +610,6 @@
 				1763B75A2A9CFF5B0019F86D /* CharactersFlowCoordinator.swift in Sources */,
 				17E9A5802AE424440047DCFE /* JSONResponseDecoder.swift in Sources */,
 				1763B7452A9C432F0019F86D /* MarvelPagedCharactersEntity+Mapping.swift in Sources */,
-				173D1CED2AEF585C003F380D /* EmptySuccessResponse.swift in Sources */,
 				17DE8CC02A96F8EE007BBCCC /* ResMarvelCharacter.swift in Sources */,
 				1763B7782A9E0F230019F86D /* FavoritesListVc.swift in Sources */,
 				1763B71B2A99E2330019F86D /* DefaultCharactersRepository.swift in Sources */,

@@ -8,11 +8,6 @@
 import Foundation
 import Shared
 
-/// 네트워크에서 데이터 모델을 제공
-protocol NetworkDataService {
-    func request<T>(_ request: some NetworkRequest<T>) async throws -> T where T: Decodable
-}
-
 final class DefaultNetworkDataService {
     private let client: NetworkClient
     private let decoder: NetworkResponseDecoder
