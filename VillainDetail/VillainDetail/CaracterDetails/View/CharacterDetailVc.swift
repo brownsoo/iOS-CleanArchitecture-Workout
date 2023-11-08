@@ -76,7 +76,7 @@ public extension CharacterDetailVc {
         }
         .store(in: &cancellables)
         
-        btDownloadImage.addTarget(self, action: #selector(onClickDoiwnload), for: .touchUpInside)
+        btDownloadImage.addTarget(self, action: #selector(onClickDownload), for: .touchUpInside)
         btUrls.addTarget(self, action: #selector(onClickUrl), for: .touchUpInside)
     }
     
@@ -93,7 +93,7 @@ public extension CharacterDetailVc {
         
     }
     
-    @objc private func onClickDoiwnload() {
+    @objc private func onClickDownload() {
         if let url = viewModel?.state.thumbnail {
             let downloader = ImageDownloader.default
             downloader.downloadImage(with: url) { [weak self] result in
