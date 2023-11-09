@@ -11,12 +11,12 @@
 
 ## Architecture
 
-* 클린 아키텍트 이론에 기반해 경계 구분.
-* 1개 애플리케이션과 2개 프레임워크 프로젝트로 구성 (Modularization)
-* UIKit 기반 뷰 구성, SwiftUI 미리보기 작성
-* MVVM 방식 뷰 업데이트 구성 
-* etag 처리 (304 상태코드로 요청 간소화) 
-* minimum target : iOS 15.0
+- 클린 아키텍트 이론에 기반해 경계 구분.
+- 1개 애플리케이션과 2개 프레임워크 프로젝트로 구성 (Modularization)
+- UIKit 기반 뷰 구성, SwiftUI 미리보기 작성
+- MVVM 방식 뷰 업데이트 구성 
+- etag 처리 (304 상태코드로 요청 간소화) 
+- minimum target : iOS 15.0
 
 ## Preview
 
