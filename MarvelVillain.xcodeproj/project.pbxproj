@@ -418,11 +418,11 @@
 		17E098872A965F8D00178398 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				174E1DE62AA082FE00755D6A /* Resource */,
 				17DE8CC22A96F935007BBCCC /* Application */,
 				17DE8CA42A96E83B007BBCCC /* Data */,
 				17DE8CE52A9751D6007BBCCC /* Infra */,
 				17DE8CAE2A96EDAD007BBCCC /* Presentation */,
+				174E1DE62AA082FE00755D6A /* Resource */,
 			);
 			path = App;
 			sourceTree = "<group>";

@@ -9,10 +9,6 @@ import Foundation
 import Combine
 import Shared
 
-public struct CharacterDetailViewModelActions {
-    public init() {}
-}
-
 public protocol CharacterDetailViewModel: ViewModel {
     // out
     var characterName: String { get }
@@ -39,16 +35,13 @@ public struct DetailViewState: Equatable {
 }
 
 public class DefaultCharacterDetailViewModel: BaseViewModel {
-    private let actions: CharacterDetailViewModelActions?
     private let repository: CharactersRepository
     private var character: MarvelCharacter
     private var _stateChanges: CurrentValueSubject<DetailViewState, Never>!
     
     public init(character: MarvelCharacter,
-         actions: CharacterDetailViewModelActions,
-         repository: CharactersRepository) {
+                repository: CharactersRepository) {
         self.character = character
-        self.actions = actions
         self.repository = repository
         self._stateChanges = CurrentValueSubject<DetailViewState, Never>(DetailViewState.convertState(from: character))
     }

@@ -9,10 +9,10 @@ import Foundation
 import Combine
 import Shared
 
-struct CharactersListViewModelActions {
-    let showCharacterDetails: (MarvelCharacter) -> Void
-    let showFavorites: VoidCallback
-}
+//struct CharactersListViewModelActions {
+//    let showCharacterDetails: (MarvelCharacter) -> Void
+//    let showFavorites: VoidCallback
+//}
 
 protocol CharactersListViewModel: ViewModel {
     // in-

@@ -43,6 +43,6 @@ final class DefaultCharactersListViewModel: BaseCharactersListViewModel {
     }
     
     override func actionOpenFavoritesList() {
-        actions?.showFavorites()
+        Router.route?(.favorites)
     }
 }

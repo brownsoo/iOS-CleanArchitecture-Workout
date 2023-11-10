@@ -12,7 +12,6 @@ import Shared
 /// CharactersListViewModel 의 공통 구현체
 class BaseCharactersListViewModel: BaseViewModel {
     
-    var actions: CharactersListViewModelActions?
     var repository: CharactersRepository
     var currentPage: Int = 0
     var naxtPage: Int { hasMorePages ? currentPage + 1 : currentPage }
@@ -30,9 +29,7 @@ class BaseCharactersListViewModel: BaseViewModel {
     let _items = CurrentValueSubject<[CharactersListItemViewModel], Never>([])
     let _loading = CurrentValueSubject<ListLoading, Never>(.idle)
     
-    init(actions: CharactersListViewModelActions,
-         characterRepository: CharactersRepository) {
-        self.actions = actions
+    init(characterRepository: CharactersRepository) {
         self.repository = characterRepository
     }
     
@@ -138,12 +135,13 @@ extension BaseCharactersListViewModel: CharactersListViewModel {
     }
     
     func didSelectItem(at index: Int) {
-        actions?.showCharacterDetails(pages.characters[index])
+        let character = pages.characters[index]
+        Router.route?(.characterDetail(character: character))
     }
     func didSelectItem(characterId: Int) {
         let characters = self.pages.characters
         if let one = characters.first(where: { $0.id == characterId }) {
-            actions?.showCharacterDetails(one)
+            Router.route?(.characterDetail(character: one))
         }
     }
     

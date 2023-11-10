@@ -10,10 +10,9 @@ import Shared
 import VillainDetail
 
 protocol CharactersFlowCoordinatorDependencies {
-    func makeCharactersListView(actions: CharactersListViewModelActions) -> UIViewController
-    func makeCharactersDetailView(character: MarvelCharacter,
-                                  actons: CharacterDetailViewModelActions) -> UIViewController
-    func makeFavoritesListView(actions: CharactersListViewModelActions) -> UIViewController
+    func makeCharactersListView() -> UIViewController
+    func makeCharactersDetailView(character: MarvelCharacter) -> UIViewController
+    func makeFavoritesListView() -> UIViewController
 }
 
 final class CharactersFlowCoordinator {
@@ -30,24 +29,17 @@ final class CharactersFlowCoordinator {
     
     func start() {
         foot()
-        let actions = CharactersListViewModelActions(
-            showCharacterDetails: self.showDetailsView,
-            showFavorites: self.showFavoritesView)
-        let vc = dependencies.makeCharactersListView(actions: actions)
+        let vc = dependencies.makeCharactersListView()
         navigation?.pushViewController(vc, animated: false)
     }
     
     private func showDetailsView(character: MarvelCharacter) {
-        let actions = CharacterDetailViewModelActions()
-        let vc = dependencies.makeCharactersDetailView(character: character, actons: actions)
+        let vc = dependencies.makeCharactersDetailView(character: character)
         navigation?.pushViewController(vc, animated: true)
     }
     
     private func showFavoritesView() {
-        let actions = CharactersListViewModelActions(
-            showCharacterDetails: self.showDetailsView,
-            showFavorites: self.showFavoritesView)
-        let vc = dependencies.makeFavoritesListView(actions: actions)
+        let vc = dependencies.makeFavoritesListView()
         navigation?.pushViewController(vc, animated: true)
     }
 }
