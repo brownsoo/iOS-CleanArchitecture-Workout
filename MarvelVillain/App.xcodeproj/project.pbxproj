@@ -154,7 +154,6 @@
 		17E098BC2A966A6D00178398 /* Env.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Env.swift; sourceTree = "<group>"; };
 		17E9A5792AE419D40047DCFE /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		17E9A57F2AE424440047DCFE /* JSONResponseDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONResponseDecoder.swift; sourceTree = "<group>"; };
-		17E9A58E2AE64F990047DCFE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,7 +384,6 @@
 		17E0987C2A965F8D00178398 = {
 			isa = PBXGroup;
 			children = (
-				17E9A58E2AE64F990047DCFE /* README.md */,
 				17E098872A965F8D00178398 /* App */,
 				17E0989E2A965F8E00178398 /* AppTests */,
 				17E098A82A965F8E00178398 /* AppUITests */,
@@ -517,7 +515,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 17E098802A965F8D00178398 /* Build configuration list for PBXProject "MarvelVillain" */;
+			buildConfigurationList = 17E098802A965F8D00178398 /* Build configuration list for PBXProject "App" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -937,7 +935,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		17E098802A965F8D00178398 /* Build configuration list for PBXProject "MarvelVillain" */ = {
+		17E098802A965F8D00178398 /* Build configuration list for PBXProject "App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				17E098AD2A965F8E00178398 /* Debug */,
