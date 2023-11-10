@@ -25,6 +25,7 @@ public class CharacterDetailVc: UIViewController, Alertable {
     private let ivRepresent = UIImageView()
     private let btDownloadImage = UIButton(type: .custom)
     private let btUrls = UIButton(type: .roundedRect)
+    private var btFavorite: UIBarButtonItem!
     
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +38,12 @@ public extension CharacterDetailVc {
     private func setupViews() {
         self.view.backgroundColor = .systemBackground
         self.title = viewModel?.characterName
+        
+        btFavorite = UIBarButtonItem(image: UIImage(systemName: "star"),
+                                     style: UIBarButtonItem.Style.plain,
+                                     target: self,
+                                     action: #selector(onClickFavorite))
+        navigationItem.rightBarButtonItem = btFavorite
         
         ivRepresent.also { it in
             view.addSubview(it)
@@ -71,7 +78,9 @@ public extension CharacterDetailVc {
         }
     }
     private func bindViewModel() {
-        viewModel?.stateChanges.sink {
+        viewModel?.stateChanges
+            .receive(on: RunLoop.main)
+            .sink {
             self.updateView($0)
         }
         .store(in: &cancellables)
@@ -90,7 +99,15 @@ public extension CharacterDetailVc {
             btUrls.setTitle("No Urls", for: .normal)
             btUrls.isEnabled = false
         }
-        
+        if data.isFavorite {
+            btFavorite.image = UIImage(systemName: "star.fill")
+        } else {
+            btFavorite.image = UIImage(systemName: "star")
+        }
+    }
+    
+    @objc private func onClickFavorite() {
+        viewModel?.toggleFavorited()
     }
     
     @objc private func onClickDownload() {

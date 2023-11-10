@@ -15,7 +15,7 @@ public protocol CharacterDetailViewModel: ViewModel {
     var stateChanges: AnyPublisher<DetailViewState, Never> { get }
     var state: DetailViewState { get }
     // in
-    func toggleFavorited(characterId: Int) -> Void
+    func toggleFavorited() -> Void
 }
 
 public struct DetailViewState: Equatable {
@@ -92,7 +92,7 @@ extension DefaultCharacterDetailViewModel: CharacterDetailViewModel {
         _stateChanges.value
     }
     // in
-    public func toggleFavorited(characterId: Int) {
+    public func toggleFavorited() {
         let bool = _stateChanges.value.isFavorite == true
         if bool {
             unmarkFavorte()
