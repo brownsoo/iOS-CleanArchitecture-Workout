@@ -40,11 +40,6 @@ class BaseCharactersListViewModel: BaseViewModel {
         debugPrint("서브 클래스에서 구현해야 해")
     }
     
-    // MARK: implements to subclass
-    internal func actionOpenFavoritesList() {
-        debugPrint("서브 클래스에서 구현해야 해")
-    }
-    
     internal func appendPage(_ newPage: PagedData<MarvelCharacter>) {
         foot("page \(newPage.page) totalPages:\(newPage.totalPages)")
         currentPage = newPage.page
@@ -136,12 +131,12 @@ extension BaseCharactersListViewModel: CharactersListViewModel {
     
     func didSelectItem(at index: Int) {
         let character = pages.characters[index]
-        Router.route?(.characterDetail(character: character))
+        Router.route(.characterDetail(character: character))
     }
     func didSelectItem(characterId: Int) {
         let characters = self.pages.characters
         if let one = characters.first(where: { $0.id == characterId }) {
-            Router.route?(.characterDetail(character: one))
+            Router.route(.characterDetail(character: one))
         }
     }
     
@@ -159,6 +154,6 @@ extension BaseCharactersListViewModel: CharactersListViewModel {
     }
     
     func showFavoritesList() {
-        actionOpenFavoritesList()
+        Router.route(.favorites)
     }
 }

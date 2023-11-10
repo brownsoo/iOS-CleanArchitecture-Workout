@@ -41,8 +41,7 @@ extension CharactersListVc {
         self.title = "Marvel Villains"
         self.view.backgroundColor = .systemBackground
         
-        let thumbImage = UIImage(systemName: "hand.thumbsup",
-                                 withConfiguration: UIImage.SymbolConfiguration(hierarchicalColor: .systemMint))
+        let thumbImage = UIImage(systemName: "list.star")
         if #available(iOS 16.0, *) {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(
                 title: nil,

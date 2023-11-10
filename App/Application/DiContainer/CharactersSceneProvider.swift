@@ -46,14 +46,6 @@ final class CharactersSceneProvider {
 }
 
 extension CharactersSceneProvider {
-    func makeCharactersFlowCoordinator(nc: UINavigationController) -> CharactersFlowCoordinator {
-        // CharactersFlowCoordinator 가 CharactersSceneProvider를 참조로 가져간다.
-        // nc 는 약참조로.
-        CharactersFlowCoordinator(nc: nc, dependencies: self)
-    }
-}
-
-extension CharactersSceneProvider: CharactersFlowCoordinatorDependencies {
     
     func makeCharactersListView() -> UIViewController {
         CharactersListVc.create(viewModel: self.makeCharactersListViewModel())

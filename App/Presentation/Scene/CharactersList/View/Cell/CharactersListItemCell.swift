@@ -33,15 +33,15 @@ final class CharactersListItemCell: UITableViewCell {
     private let lbUrlsCount = UILabel()
     private let stackCount = UIStackView()
     private let thumbImage = UIImage(
-        systemName: "hand.thumbsup",
+        systemName: "star",
             withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 28))
             .applying(UIImage.SymbolConfiguration(hierarchicalColor: .tintColor)))
     private let thumbImageFill = UIImage(
-        systemName: "hand.thumbsup.fill",
+        systemName: "star.fill",
         withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 28))
             .applying(UIImage.SymbolConfiguration(hierarchicalColor: .tintColor)))
     private let thumbImageFillHighlight = UIImage(
-        systemName: "hand.thumbsup.fill",
+        systemName: "star.fill",
         withConfiguration: UIImage.SymbolConfiguration(font: .systemFont(ofSize: 28))
             .applying(UIImage.SymbolConfiguration(hierarchicalColor: .tintColor.withAlphaComponent(0.5))))
     
@@ -76,8 +76,9 @@ final class CharactersListItemCell: UITableViewCell {
                 .cacheOriginalImage
             ], completionHandler:  { result in
                 switch result {
-                    case .success(let value):
-                        foot("\(value.cacheType) -> \(value.source.url?.absoluteString ?? "?")")
+                    case .success(_):
+                        // foot("\(value.cacheType) -> \(value.source.url?.absoluteString ?? "?")")
+                        break
                     case .failure(let error):
                         foot("\(error.localizedDescription)")
                 }
