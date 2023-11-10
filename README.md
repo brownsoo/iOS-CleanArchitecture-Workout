@@ -13,6 +13,10 @@
 
 - 클린 아키텍트 이론에 기반해 경계 구분.
 - 1개 애플리케이션과 2개 프레임워크 프로젝트로 구성 (Modularization)
+  - MarvelVillain.xcodeproj : 최종 앱 프로젝트
+  - Shared/Shared.xcodeproj : 공용 소스 프레임워크 프로젝트 
+  - VillainDetail.xcodeproj : 빌런 상세 화면 프레임워크, 샘플 앱 프로젝트
+    - VillainDetailSample : 빌런 상세 화면만 구성한 앱 타켓
 - UIKit 기반 뷰 구성, SwiftUI 미리보기 작성
 - MVVM 방식 뷰 업데이트 구성 
 - etag 처리 (304 상태코드로 요청 간소화) 

@@ -9,28 +9,28 @@ import Foundation
 import Combine
 import Shared
 
-final class MockCharacterDetailViewModel: BaseViewModel, CharacterDetailViewModel {
+final public class MockCharacterDetailViewModel: BaseViewModel, CharacterDetailViewModel {
     
-    override init() {
+    public override init() {
         _stateChanges = CurrentValueSubject<DetailViewState, Never>(DetailViewState.convertState(from: character))
     }
     
-    var characterName: String {
+    public var characterName: String {
         "gagga"
     }
     
     private var _stateChanges: CurrentValueSubject<DetailViewState, Never>!
     
-    var stateChanges: AnyPublisher<DetailViewState, Never> {
+    public var stateChanges: AnyPublisher<DetailViewState, Never> {
         _stateChanges.eraseToAnyPublisher()
     }
     
-    var state: DetailViewState {
+    public var state: DetailViewState {
         _stateChanges.value
     }
     
     
-    func toggleFavorited() {
+    public func toggleFavorited() {
         
     }
     
