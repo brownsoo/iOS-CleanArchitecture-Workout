@@ -9,17 +9,13 @@ import Foundation
 import Combine
 import Shared
 
-public struct CharacterDetailViewModelActions {
-    public init() {}
-}
-
 public protocol CharacterDetailViewModel: ViewModel {
     // out
     var characterName: String { get }
     var stateChanges: AnyPublisher<DetailViewState, Never> { get }
     var state: DetailViewState { get }
     // in
-    func toggleFavorited(characterId: Int) -> Void
+    func toggleFavorited() -> Void
 }
 
 public struct DetailViewState: Equatable {
@@ -39,16 +35,13 @@ public struct DetailViewState: Equatable {
 }
 
 public class DefaultCharacterDetailViewModel: BaseViewModel {
-    private let actions: CharacterDetailViewModelActions?
     private let repository: CharactersRepository
     private var character: MarvelCharacter
     private var _stateChanges: CurrentValueSubject<DetailViewState, Never>!
     
     public init(character: MarvelCharacter,
-         actions: CharacterDetailViewModelActions,
-         repository: CharactersRepository) {
+                repository: CharactersRepository) {
         self.character = character
-        self.actions = actions
         self.repository = repository
         self._stateChanges = CurrentValueSubject<DetailViewState, Never>(DetailViewState.convertState(from: character))
     }
@@ -99,7 +92,7 @@ extension DefaultCharacterDetailViewModel: CharacterDetailViewModel {
         _stateChanges.value
     }
     // in
-    public func toggleFavorited(characterId: Int) {
+    public func toggleFavorited() {
         let bool = _stateChanges.value.isFavorite == true
         if bool {
             unmarkFavorte()

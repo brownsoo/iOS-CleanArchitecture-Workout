@@ -28,6 +28,11 @@ final class FavoritesListVc: UIViewController, Alertable {
         bindViewModel()
         viewModel?.refresh(forced: false)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        foot()
+    }
 }
 
 extension FavoritesListVc {

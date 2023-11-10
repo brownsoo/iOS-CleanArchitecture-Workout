@@ -29,46 +29,33 @@ final class CharactersSceneProvider {
     
     // MARK: - ViewModels
     
-    func makeCharactersListViewModel(actions: CharactersListViewModelActions) -> CharactersListViewModel {
-        DefaultCharactersListViewModel(actions: actions,
-                                       characterRepository: makeCharactersRepository())
+    func makeCharactersListViewModel() -> CharactersListViewModel {
+        DefaultCharactersListViewModel(characterRepository: makeCharactersRepository())
     }
     
-    func makeFavoritesListViewModel(actions: CharactersListViewModelActions) -> CharactersListViewModel {
-        DefaultFavoritesListViewModel(actions: actions,
-                                      characterRepository: makeCharactersRepository())
+    func makeFavoritesListViewModel() -> CharactersListViewModel {
+        DefaultFavoritesListViewModel(characterRepository: makeCharactersRepository())
     }
     
-    func makeDetailViewModel(chracter: MarvelCharacter,
-                             actions: CharacterDetailViewModelActions) -> CharacterDetailViewModel {
+    func makeDetailViewModel(chracter: MarvelCharacter) -> CharacterDetailViewModel {
         DefaultCharacterDetailViewModel(
             character: chracter,
-            actions: actions,
             repository: makeCharactersRepository()
         )
     }
 }
 
 extension CharactersSceneProvider {
-    func makeCharactersFlowCoordinator(nc: UINavigationController) -> CharactersFlowCoordinator {
-        // CharactersFlowCoordinator 가 CharactersSceneProvider를 참조로 가져간다.
-        // nc 는 약참조로.
-        CharactersFlowCoordinator(nc: nc, dependencies: self)
-    }
-}
-
-extension CharactersSceneProvider: CharactersFlowCoordinatorDependencies {
     
-    func makeCharactersListView(actions: CharactersListViewModelActions) -> UIViewController {
-        CharactersListVc.create(viewModel: self.makeCharactersListViewModel(actions: actions))
+    func makeCharactersListView() -> UIViewController {
+        CharactersListVc.create(viewModel: self.makeCharactersListViewModel())
     }
     
-    func makeCharactersDetailView(character: MarvelCharacter,
-                                  actons: CharacterDetailViewModelActions) -> UIViewController {
-        CharacterDetailVc.create(viewModel: self.makeDetailViewModel(chracter: character, actions: actons))
+    func makeCharactersDetailView(character: MarvelCharacter) -> UIViewController {
+        CharacterDetailVc.create(viewModel: self.makeDetailViewModel(chracter: character))
     }
     
-    func makeFavoritesListView(actions: CharactersListViewModelActions) -> UIViewController {
-        FavoritesListVc.create(viewModel: self.makeFavoritesListViewModel(actions: actions))
+    func makeFavoritesListView() -> UIViewController {
+        FavoritesListVc.create(viewModel: self.makeFavoritesListViewModel())
     }
 }

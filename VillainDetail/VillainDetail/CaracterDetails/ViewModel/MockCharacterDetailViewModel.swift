@@ -30,7 +30,7 @@ final class MockCharacterDetailViewModel: BaseViewModel, CharacterDetailViewMode
     }
     
     
-    func toggleFavorited(characterId: Int) {
+    func toggleFavorited() {
         
     }
     
@@ -57,7 +57,4 @@ final class MockCharacterDetailViewModel: BaseViewModel, CharacterDetailViewMode
                                     series: MarvelResourceList(
                                         availableCount: 10,
                                         collectionURI: "http://gateway.marvel.com/v1/public/characters/1011136/series"))
-}
-
-extension MockCharacterDetailViewModel {
 }

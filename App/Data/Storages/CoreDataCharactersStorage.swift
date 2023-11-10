@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import Shared
 
-final class CoreDataCharactersStorage {
+actor CoreDataCharactersStorage {
     private let dataStorage: CoreDataStorage
     private let queryLimit: Int
     
@@ -162,6 +162,7 @@ extension CoreDataCharactersStorage: CharactersStorage {
                     try context.save()
                 }
             })
+            foot()
         } catch {
             //  TODO : log to cloud
             debugPrint("CoreDataFavoritesStorage :: \(error), \((error as NSError).userInfo)")
@@ -183,6 +184,7 @@ extension CoreDataCharactersStorage: CharactersStorage {
                     try context.save()
                 }
             })
+            foot()
         } catch {
             //  TODO : log to cloud
             debugPrint("CoreDataFavoritesStorage :: \(error), \((error as NSError).userInfo)")

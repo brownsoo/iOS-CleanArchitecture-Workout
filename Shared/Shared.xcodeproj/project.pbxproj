@@ -46,6 +46,7 @@
 		173D1D7F2AF1B81E003F380D /* UIImage+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1D772AF1B81E003F380D /* UIImage+Extentions.swift */; };
 		1793D7612AFB063E00EF94B1 /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D7602AFB063E00EF94B1 /* NetworkDataService.swift */; };
 		1793D7632AFB073200EF94B1 /* EmptySuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D7622AFB073200EF94B1 /* EmptySuccessResponse.swift */; };
+		1793D7652AFE124000EF94B1 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D7642AFE124000EF94B1 /* Router.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		173D1D772AF1B81E003F380D /* UIImage+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extentions.swift"; sourceTree = "<group>"; };
 		1793D7602AFB063E00EF94B1 /* NetworkDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataService.swift; sourceTree = "<group>"; };
 		1793D7622AFB073200EF94B1 /* EmptySuccessResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptySuccessResponse.swift; sourceTree = "<group>"; };
+		1793D7642AFE124000EF94B1 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +225,7 @@
 			children = (
 				173D1D6F2AF1B7B2003F380D /* Util */,
 				173D1D5B2AF1B530003F380D /* ViewModel.swift */,
+				1793D7642AFE124000EF94B1 /* Router.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 				173D1D7A2AF1B81E003F380D /* Array+PagedData.swift in Sources */,
 				173D1CFF2AF122CD003F380D /* CharactersRepository.swift in Sources */,
 				173D1CD92AEF4EC9003F380D /* AlamofireNetworkClient.swift in Sources */,
+				1793D7652AFE124000EF94B1 /* Router.swift in Sources */,
 				173D1CFE2AF122CD003F380D /* MarvelComic.swift in Sources */,
 				173D1CDD2AEF4EC9003F380D /* NetworkClient.swift in Sources */,
 				1793D7612AFB063E00EF94B1 /* NetworkDataService.swift in Sources */,

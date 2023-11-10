@@ -29,7 +29,6 @@
 		1763B7532A9CF8B20019F86D /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7522A9CF8B20019F86D /* CharactersListViewModel.swift */; };
 		1763B7552A9CFDCD0019F86D /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7542A9CFDCD0019F86D /* AppFlowCoordinator.swift */; };
 		1763B7572A9CFEA10019F86D /* CharactersSceneProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7562A9CFEA10019F86D /* CharactersSceneProvider.swift */; };
-		1763B75A2A9CFF5B0019F86D /* CharactersFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7592A9CFF5B0019F86D /* CharactersFlowCoordinator.swift */; };
 		1763B7602A9D74B70019F86D /* UIViewController+AddChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B75F2A9D74B70019F86D /* UIViewController+AddChild.swift */; };
 		1763B7672A9DD4EB0019F86D /* CharactersTableVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7662A9DD4EB0019F86D /* CharactersTableVc.swift */; };
 		1763B76A2A9DD67D0019F86D /* CharactersListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1763B7692A9DD67D0019F86D /* CharactersListItemCell.swift */; };
@@ -121,7 +120,6 @@
 		1763B7522A9CF8B20019F86D /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
 		1763B7542A9CFDCD0019F86D /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		1763B7562A9CFEA10019F86D /* CharactersSceneProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersSceneProvider.swift; sourceTree = "<group>"; };
-		1763B7592A9CFF5B0019F86D /* CharactersFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersFlowCoordinator.swift; sourceTree = "<group>"; };
 		1763B75F2A9D74B70019F86D /* UIViewController+AddChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddChild.swift"; sourceTree = "<group>"; };
 		1763B7662A9DD4EB0019F86D /* CharactersTableVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersTableVc.swift; sourceTree = "<group>"; };
 		1763B7692A9DD67D0019F86D /* CharactersListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListItemCell.swift; sourceTree = "<group>"; };
@@ -279,14 +277,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		1763B7582A9CFF2C0019F86D /* Flows */ = {
-			isa = PBXGroup;
-			children = (
-				1763B7592A9CFF5B0019F86D /* CharactersFlowCoordinator.swift */,
-			);
-			path = Flows;
-			sourceTree = "<group>";
-		};
 		1763B75C2A9CFFFE0019F86D /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,7 +292,6 @@
 			isa = PBXGroup;
 			children = (
 				1763B74D2A9CF5C50019F86D /* CharactersList */,
-				1763B7582A9CFF2C0019F86D /* Flows */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -372,15 +361,15 @@
 		17DE8CC22A96F935007BBCCC /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				17E098962A965F8E00178398 /* Info.plist */,
 				17E098882A965F8D00178398 /* AppDelegate.swift */,
 				17E9A5792AE419D40047DCFE /* AppError.swift */,
 				1763B7542A9CFDCD0019F86D /* AppFlowCoordinator.swift */,
-				1763B7482A9C78C90019F86D /* DiContainer */,
 				17E098BC2A966A6D00178398 /* Env.swift */,
-				17E098962A965F8E00178398 /* Info.plist */,
-				17E098932A965F8E00178398 /* LaunchScreen.storyboard */,
 				17E0988A2A965F8D00178398 /* SceneDelegate.swift */,
 				1763B77D2A9E151E0019F86D /* Scheduler.swift */,
+				1763B7482A9C78C90019F86D /* DiContainer */,
+				17E098932A965F8E00178398 /* LaunchScreen.storyboard */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -418,11 +407,11 @@
 		17E098872A965F8D00178398 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				174E1DE62AA082FE00755D6A /* Resource */,
 				17DE8CC22A96F935007BBCCC /* Application */,
 				17DE8CA42A96E83B007BBCCC /* Data */,
 				17DE8CE52A9751D6007BBCCC /* Infra */,
 				17DE8CAE2A96EDAD007BBCCC /* Presentation */,
+				174E1DE62AA082FE00755D6A /* Resource */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -607,7 +596,6 @@
 				1763B73A2A9B629B0019F86D /* CoreDataStorage.xcdatamodeld in Sources */,
 				17E0988D2A965F8D00178398 /* CharactersListVc.swift in Sources */,
 				1763B77E2A9E151E0019F86D /* Scheduler.swift in Sources */,
-				1763B75A2A9CFF5B0019F86D /* CharactersFlowCoordinator.swift in Sources */,
 				17E9A5802AE424440047DCFE /* JSONResponseDecoder.swift in Sources */,
 				1763B7452A9C432F0019F86D /* MarvelPagedCharactersEntity+Mapping.swift in Sources */,
 				17DE8CC02A96F8EE007BBCCC /* ResMarvelCharacter.swift in Sources */,
