@@ -44,6 +44,7 @@
 		173D1D7D2AF1B81E003F380D /* UIViewControllerPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1D752AF1B81E003F380D /* UIViewControllerPreview.swift */; };
 		173D1D7E2AF1B81E003F380D /* ListLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1D762AF1B81E003F380D /* ListLoading.swift */; };
 		173D1D7F2AF1B81E003F380D /* UIImage+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1D772AF1B81E003F380D /* UIImage+Extentions.swift */; };
+		177393192B023EAD005D0F74 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177393182B023EAC005D0F74 /* BaseViewModel.swift */; };
 		1773931B2B023F5E005D0F74 /* AppNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773931A2B023F5E005D0F74 /* AppNotification.swift */; };
 		1793D7612AFB063E00EF94B1 /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D7602AFB063E00EF94B1 /* NetworkDataService.swift */; };
 		1793D7632AFB073200EF94B1 /* EmptySuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D7622AFB073200EF94B1 /* EmptySuccessResponse.swift */; };
@@ -230,6 +231,7 @@
 				173D1D6F2AF1B7B2003F380D /* Util */,
 				173D1D5B2AF1B530003F380D /* ViewModel.swift */,
 				1793D7642AFE124000EF94B1 /* Router.swift */,
+				177393182B023EAC005D0F74 /* BaseViewModel.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
