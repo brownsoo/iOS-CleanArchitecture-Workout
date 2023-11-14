@@ -24,20 +24,61 @@ class BaseCharactersListViewModel: BaseViewModel {
             loadTask?.cancel()
         }
     }
-    let maingQueue = DispatchQueue.main
+    let mainQueue = DispatchQueue.main
     let _itemsAllLoaded = PassthroughSubject<Bool, Never>()
     let _items = CurrentValueSubject<[CharactersListItemViewModel], Never>([])
     let _loading = CurrentValueSubject<ListLoading, Never>(.idle)
     
+    private var eventBinds = Set<AnyCancellable>()
+    private var changedIds: Set<Int> = []
+    
     init(characterRepository: CharactersRepository) {
         self.repository = characterRepository
     }
+    
+    private func bindEvents() {
+        eventBinds.removeAll()
+        NotificationCenter.default.publisher(for: AppNotification.FavoritesChanged)
+            .receive(on: mainQueue)
+            .sink { it in
+                let selfName = String(describing: self)
+                guard let changes = it.object as? FavoritesChanges,
+                      selfName != changes.sender else { return }
+                // 변경사항들을 담는다.
+                for id in changes.ids {
+                    self.changedIds.insert(id)
+                }
+            }
+            .store(in: &eventBinds)
+        
+    }
+    
+    deinit {
+        debugPrint("--- deinit --- \(String(describing: self))")
+    }
+    
     
     // MARK: implements to subclass
     internal func load(loading: ListLoading,
               refreshing: Bool = false,
               isCurrentPage: Bool = false) {
         debugPrint("서브 클래스에서 구현해야 해")
+    }
+    
+    
+    internal func reload(with ids: [Int]) {
+        foot("\(ids)")
+        repository.getCharacters(ids: ids) { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.handleError(error)
+            case .success(let characters):
+                self?.mainQueue.async {
+                    self?.updateCharacters(with: characters)
+                }
+            }
+        }
+        .store(in: &cancellabels)
     }
     
     internal func appendPage(_ newPage: PagedData<MarvelCharacter>) {
@@ -56,6 +97,23 @@ class BaseCharactersListViewModel: BaseViewModel {
         _itemsAllLoaded.send(newPage.items.count < kQueryLimit && !characters.isEmpty)
     }
     
+    /// 캐릭터 데이터 교체
+    internal func updateCharacters(with characters: [MarvelCharacter]) {
+        var pages = self.pages
+        for i in 0..<pages.count {
+            var page = pages[i]
+            page.items.enumerated().forEach { it in
+                if let one = characters.first(where: { $0.id == it.element.id}) {
+                    page.items[it.offset] = one
+                }
+            }
+            pages[i] = page
+        }
+        self.pages = pages
+        _items.send(pages.characters.map(CharactersListItemViewModel.init))
+    }
+    
+    
     private func resetPages() {
         currentPage = 0
         totalPages = 1
@@ -64,31 +122,35 @@ class BaseCharactersListViewModel: BaseViewModel {
     }
     
     private func markFavorite(character: MarvelCharacter) {
-        foot()
         repository.favorite(character: character) { [weak self] result in
             if case let .failure(error) = result {
                 self?.handleError(error)
             } else {
-                self?.maingQueue.async {
+                self?.mainQueue.async {
                     self?.load(loading: .idle, isCurrentPage: true)
                 }
             }
         }
         .store(in: &cancellabels)
+        // 변경사항 알림
+        AppNotification.shared.notifyFavoritesChanged(
+            FavoritesChanges(sender: String(describing: self), ids: [character.id]))
     }
     
     private func unmarkFavorte(character: MarvelCharacter) {
-        foot()
         repository.unfavorite(character: character) { [weak self] result in
             if case let .failure(error) = result {
                 self?.handleError(error)
             } else {
-                self?.maingQueue.async {
+                self?.mainQueue.async {
                     self?.load(loading: .idle, isCurrentPage: true)
                 }
             }
         }
         .store(in: &cancellabels)
+        // 변경사항 알림
+        AppNotification.shared.notifyFavoritesChanged(
+            FavoritesChanges(sender: String(describing: self), ids: [character.id]))
     }
 }
 
@@ -117,6 +179,16 @@ extension BaseCharactersListViewModel: CharactersListViewModel {
     }
     
     // in -
+    
+    func onReveal() {
+        foot()
+        bindEvents()
+        let ids = changedIds
+        if !ids.isEmpty {
+            changedIds = []
+            reload(with: ids.map { $0 })
+        }
+    }
     
     func refresh(forced: Bool = false) {
         resetPages()

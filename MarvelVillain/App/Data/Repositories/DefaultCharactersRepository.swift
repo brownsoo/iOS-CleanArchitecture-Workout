@@ -21,10 +21,10 @@ final class DefaultCharactersRepository {
 
 extension DefaultCharactersRepository: CharactersRepository {
     
-    func fetchList(page: Int,
-                   refreshing: Bool,
-                   onCached: @escaping (PagedData<MarvelCharacter>?) -> Void,
-                   onFetched: @escaping (Result<PagedData<MarvelCharacter>, Error>) -> Void) -> Cancellable {
+    func getCharacters(page: Int,
+                       refreshing: Bool,
+                       onCached: @escaping (PagedData<MarvelCharacter>?) -> Void,
+                       onFetched: @escaping (Result<PagedData<MarvelCharacter>, Error>) -> Void) -> Cancellable {
         foot()
         let task = Task { [weak self] in
             guard let this = self else { return }
@@ -42,18 +42,42 @@ extension DefaultCharactersRepository: CharactersRepository {
                     return
                 }
                 var paged = results.toPagedData()
-                // FIXME: 원격데이터에 좋아요 정보가 없어 제공하고 있으나, 전부 조회하는 건 성능개선이 필요.
-                let allFavorites = try await this.cache.getAllFavorites()
-                allFavorites.forEach { it in
-                    if let index = paged.items.firstIndex(where: { $0.id == it.id }) {
-                        paged.items[index].isFavorite = true
-                        paged.items[index].favoritedAt = it.favoritedAt
+                let favorites = try await this.cache.getFavorites(ids: paged.items.map({ $0.id }))
+                paged.items.enumerated().forEach { it in
+                    if let fa = favorites.first(where: { $0.id == it.element.id }) {
+                        paged.items[it.offset].isFavorite = true
+                        paged.items[it.offset].favoritedAt = fa.favoritedAt
                     }
                 }
+                
                 await this.cache.save(data: paged)
+                
                 onFetched(.success(paged))
             } catch {
                 onFetched(.failure(error))
+            }
+        }
+        return task
+    }
+    
+    func getCharacters(ids: [Int], 
+                       onResult: @escaping (Result<[MarvelCharacter], Error>) -> Void) -> Cancellable {
+        foot()
+        let task = Task { [weak self] in
+            guard let this = self else { return }
+            var cached = (try? await this.cache.getCharactors(ids: ids)) ?? []
+            do {
+                // TODO: get characters from remotes
+                let favorites = try await this.cache.getFavorites(ids: cached.map({ $0.id }))
+                cached.enumerated().forEach { it in
+                    if let fa = favorites.first(where: { $0.id == it.element.id }) {
+                        cached[it.offset].isFavorite = true
+                        cached[it.offset].favoritedAt = fa.favoritedAt
+                    }
+                }
+                onResult(.success(cached))
+            } catch {
+                onResult(.failure(error))
             }
         }
         return task
@@ -87,12 +111,25 @@ extension DefaultCharactersRepository: CharactersRepository {
     }
     
     
-    func getFavoriteList(page: Int,
+    func getFavorites(page: Int,
                  onResult: @escaping (Result<PagedData<MarvelCharacter>, Error>) -> Void) -> any Cancellable {
         let task = Task { [weak self] in
             guard let this = self else { return }
             do {
                 let cached = try await this.cache.getFavorites(page: page)
+                onResult(.success(cached))
+            } catch {
+                onResult(.failure(error))
+            }
+        }
+        return task
+    }
+    
+    func getFavorites(ids: [Int], onResult: @escaping (Result<[MarvelCharacter], Error>) -> Void) -> Cancellable {
+        let task = Task { [weak self] in
+            guard let this = self else { return }
+            do {
+                let cached = try await this.cache.getFavorites(ids: ids)
                 onResult(.success(cached))
             } catch {
                 onResult(.failure(error))

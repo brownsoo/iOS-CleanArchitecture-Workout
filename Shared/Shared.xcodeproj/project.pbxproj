@@ -46,6 +46,7 @@
 		173D1D7F2AF1B81E003F380D /* UIImage+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173D1D772AF1B81E003F380D /* UIImage+Extentions.swift */; };
 		177393192B023EAD005D0F74 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 177393182B023EAC005D0F74 /* BaseViewModel.swift */; };
 		1773931B2B023F5E005D0F74 /* AppNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773931A2B023F5E005D0F74 /* AppNotification.swift */; };
+		1773931E2B02E599005D0F74 /* FavoritesChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1773931D2B02E599005D0F74 /* FavoritesChanges.swift */; };
 		1793D7612AFB063E00EF94B1 /* NetworkDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D7602AFB063E00EF94B1 /* NetworkDataService.swift */; };
 		1793D7632AFB073200EF94B1 /* EmptySuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D7622AFB073200EF94B1 /* EmptySuccessResponse.swift */; };
 		1793D7652AFE124000EF94B1 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1793D7642AFE124000EF94B1 /* Router.swift */; };
@@ -101,6 +102,7 @@
 		173D1D772AF1B81E003F380D /* UIImage+Extentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extentions.swift"; sourceTree = "<group>"; };
 		177393182B023EAC005D0F74 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		1773931A2B023F5E005D0F74 /* AppNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotification.swift; sourceTree = "<group>"; };
+		1773931D2B02E599005D0F74 /* FavoritesChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesChanges.swift; sourceTree = "<group>"; };
 		1793D7602AFB063E00EF94B1 /* NetworkDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataService.swift; sourceTree = "<group>"; };
 		1793D7622AFB073200EF94B1 /* EmptySuccessResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptySuccessResponse.swift; sourceTree = "<group>"; };
 		1793D7642AFE124000EF94B1 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 			isa = PBXGroup;
 			children = (
 				1773931A2B023F5E005D0F74 /* AppNotification.swift */,
+				1773931D2B02E599005D0F74 /* FavoritesChanges.swift */,
 			);
 			path = AppNotification;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				173D1D6A2AF1B6E9003F380D /* Also.swift in Sources */,
 				173D1D692AF1B6E9003F380D /* VoidCallback.swift in Sources */,
 				173D1CFB2AF122CD003F380D /* MarvelCharacter.swift in Sources */,
+				1773931E2B02E599005D0F74 /* FavoritesChanges.swift in Sources */,
 				173D1CE22AEF4EC9003F380D /* NetworkRequest.swift in Sources */,
 				173D1CE02AEF4EC9003F380D /* HttpMethod.swift in Sources */,
 				173D1D5C2AF1B530003F380D /* ViewModel.swift in Sources */,

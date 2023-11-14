@@ -14,7 +14,8 @@ public class AppNotification {
     
     private init() {}
     
-    public func notifyFavoritesChanged() {
-        NotificationCenter.default.post(name: AppNotification.FavoritesChanged, object: nil)
+    public func notifyFavoritesChanged(_ changes: FavoritesChanges) {
+        NotificationCenter.default.post(name: AppNotification.FavoritesChanged,
+                                        object: changes)
     }
 }

@@ -30,8 +30,11 @@ class CharactersListVc: UIViewController, Alertable {
         setupViews()
         bindViewModel()
         viewModel?.refresh(forced: false)
-        
-        // TODO: 좋아요 화면의 변경사항을 반영
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel?.onReveal()
     }
     
 }

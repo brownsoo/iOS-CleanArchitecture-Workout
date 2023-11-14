@@ -9,13 +9,9 @@ import Foundation
 import Combine
 import Shared
 
-//struct CharactersListViewModelActions {
-//    let showCharacterDetails: (MarvelCharacter) -> Void
-//    let showFavorites: VoidCallback
-//}
-
 protocol CharactersListViewModel: ViewModel {
     // in-
+    func onReveal() -> Void
     func refresh(forced: Bool) -> Void
     func loadNextPage() -> Void
     func didSelectItem(at index: Int) -> Void
