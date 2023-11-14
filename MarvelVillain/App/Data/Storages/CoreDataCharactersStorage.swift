@@ -19,6 +19,12 @@ actor CoreDataCharactersStorage {
         self.queryLimit = queryLimit
     }
     
+    private func fetchCharacters(ids: [Int64]) -> NSFetchRequest<MarvelCharacterEntity> {
+        let request = MarvelCharacterEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "id IN %@", ids)
+        return request
+    }
+    
     private func fetchCharacters(page: Int) -> NSFetchRequest<MarvelPagedCharactersEntity> {
         let request = MarvelPagedCharactersEntity.fetchRequest()
         request.predicate = NSPredicate(format: "%K = %d",
@@ -27,11 +33,11 @@ actor CoreDataCharactersStorage {
         return request
     }
     
-    private func fetchCharacter(characterId: Int) -> NSFetchRequest<MarvelCharacterEntity> {
+    private func fetchCharacter(characterId: Int64) -> NSFetchRequest<MarvelCharacterEntity> {
         let request = MarvelCharacterEntity.fetchRequest()
         request.fetchLimit = 1
         request.predicate = NSPredicate(format: "id = %d",
-                                        Int64(characterId))
+                                        characterId)
         return request
     }
     
@@ -52,7 +58,7 @@ actor CoreDataCharactersStorage {
         return request
     }
     
-    private func fetchFavorites(inIds ids: [Int64]) -> NSFetchRequest<FavoriteEntity> {
+    private func fetchFavorites(ids: [Int64]) -> NSFetchRequest<FavoriteEntity> {
         let request = FavoriteEntity.fetchRequest()
         request.predicate = NSPredicate(format: "%K IN %@",
                                         #keyPath(FavoriteEntity.characterId),
@@ -72,9 +78,31 @@ actor CoreDataCharactersStorage {
             return 0
         }
     }
+    
+    private func fetchFavorite(id: Int64) -> NSFetchRequest<FavoriteEntity> {
+        let request = FavoriteEntity.fetchRequest()
+        request.predicate = NSPredicate(format: "%K = %d",
+                                        #keyPath(FavoriteEntity.characterId),
+                                        Int64(id))
+        request.fetchLimit = 1
+        return request
+    }
 }
 
 extension CoreDataCharactersStorage: CharactersStorage {
+    
+    func getCharactors(ids: [Int]) async throws -> [MarvelCharacter] {
+        do {
+            let data: [MarvelCharacter] = try await dataStorage.performBackgroundTask { context in
+                let request = self.fetchCharacters(ids: ids.map(Int64.init))
+                let entity = try context.fetch(request)
+                return entity.map({$0.toDomain()})
+            }
+            return data
+        } catch {
+            throw AppError.runtime(cause: error, message: error.localizedDescription)
+        }
+    }
     
     func getCharactors(page: Int) async throws -> PagedData<MarvelCharacter>? {
         do {
@@ -94,7 +122,7 @@ extension CoreDataCharactersStorage: CharactersStorage {
         do {
             try await dataStorage.performBackgroundTask { context in
                 let ids: [Int64] = data.items.map({ Int64($0.id) })
-                let favoritesRequest = self.fetchFavorites(inIds: ids)
+                let favoritesRequest = self.fetchFavorites(ids: ids)
                 let favorites = try context.fetch(favoritesRequest)
                 
                 try self.deleteCharacters(page: data.page, in: context)
@@ -111,7 +139,7 @@ extension CoreDataCharactersStorage: CharactersStorage {
     func getCharactor(id: Int) async throws -> MarvelCharacter? {
         do {
             let data: MarvelCharacter? = try await dataStorage.performBackgroundTask({ context in
-                let request = self.fetchCharacter(characterId: id)
+                let request = self.fetchCharacter(characterId: Int64(id))
                 let entity = try context.fetch(request).first
                 return entity?.toDomain()
             })
@@ -128,6 +156,19 @@ extension CoreDataCharactersStorage: CharactersStorage {
                 let entities = try context.fetch(request)
                 return entities.compactMap({ $0.item?.toDomain() })
             })
+            return data
+        } catch {
+            throw AppError.runtime(cause: error, message: error.localizedDescription)
+        }
+    }
+    
+    func getFavorites(ids: [Int]) async throws -> [MarvelCharacter] {
+        do {
+            let data: [MarvelCharacter] = try await dataStorage.performBackgroundTask { context in
+                let request = self.fetchFavorites(ids: ids.map(Int64.init))
+                let entities = try context.fetch(request)
+                return entities.compactMap({ $0.item?.toDomain() })
+            }
             return data
         } catch {
             throw AppError.runtime(cause: error, message: error.localizedDescription)
@@ -154,7 +195,11 @@ extension CoreDataCharactersStorage: CharactersStorage {
     func saveFavorite(data: MarvelCharacter) async throws {
         do {
             try await dataStorage.performBackgroundTask({ context in
-                let request = self.fetchCharacter(characterId: data.id)
+                let fa = self.fetchFavorite(id: Int64(data.id))
+                guard (try context.fetch(fa)).first == nil else {
+                    return
+                }
+                let request = self.fetchCharacter(characterId: Int64(data.id))
                 if let character = try context.fetch(request).first {
                     let _ = data.toFavoritEntity(in: context,
                                                  character: character,
@@ -162,7 +207,6 @@ extension CoreDataCharactersStorage: CharactersStorage {
                     try context.save()
                 }
             })
-            foot()
         } catch {
             //  TODO : log to cloud
             debugPrint("CoreDataFavoritesStorage :: \(error), \((error as NSError).userInfo)")
@@ -173,24 +217,16 @@ extension CoreDataCharactersStorage: CharactersStorage {
     func removeFavorite(data: MarvelCharacter) async throws {
         do {
             try await dataStorage.performBackgroundTask({ context in
-                let request: NSFetchRequest = FavoriteEntity.fetchRequest()
-                request.predicate = NSPredicate(
-                    format: "%K = %d",
-                    #keyPath(FavoriteEntity.characterId),
-                    Int64(data.id)
-                )
+                let request = self.fetchFavorite(id: Int64(data.id))
                 if let result = try context.fetch(request).first {
                     context.delete(result)
                     try context.save()
                 }
             })
-            foot()
         } catch {
             //  TODO : log to cloud
             debugPrint("CoreDataFavoritesStorage :: \(error), \((error as NSError).userInfo)")
             throw error
         }
     }
-    
-    
 }

@@ -15,10 +15,10 @@ final class DefaultFavoritesListViewModel: BaseCharactersListViewModel {
                       refreshing: Bool = false,
                       isCurrentPage: Bool = false) {
         _loading.send(loading)
-        loadTask = repository.getFavoriteList(
+        loadTask = repository.getFavorites(
             page: isCurrentPage ? currentPage : naxtPage,
             onResult: { [weak self] result in
-                self?.maingQueue.async {
+                self?.mainQueue.async {
                     switch result {
                         case .success(let newPage):
                             self?.appendPage(newPage)

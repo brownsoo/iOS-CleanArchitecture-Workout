@@ -104,7 +104,6 @@ extension CharactersTableVc {
         
         cellClickPublisher.throttle(for: 1.0, scheduler: Scheduler.masinScheduler, latest: true)
             .sink { type in
-                foot("\(type)")
                 self.handleCellClick(type)
             }
             .store(in: &cancellables)
@@ -177,7 +176,6 @@ extension CharactersTableVc {
     }
     
     private func updateView(with items: [CharactersListItemViewModel], animating: Bool = true) {
-        foot("\(items.count)")
         DispatchQueue.main.async {
             var snapshot = self.dataSource.snapshot()
             snapshot.deleteAllItems()

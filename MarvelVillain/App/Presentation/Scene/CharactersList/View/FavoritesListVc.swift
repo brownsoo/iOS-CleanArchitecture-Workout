@@ -29,9 +29,9 @@ final class FavoritesListVc: UIViewController, Alertable {
         viewModel?.refresh(forced: false)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        foot()
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        viewModel?.onReveal()
     }
 }
 

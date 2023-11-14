@@ -15,17 +15,17 @@ final class DefaultCharactersListViewModel: BaseCharactersListViewModel {
                        refreshing: Bool = false,
                        isCurrentPage: Bool = false) {
         _loading.send(loading)
-        loadTask = repository.fetchList(
+        loadTask = repository.getCharacters(
             page: isCurrentPage ? currentPage : naxtPage,
             refreshing: refreshing,
             onCached: { [weak self] page in
                 guard let newPage = page else { return }
-                self?.maingQueue.async {
+                self?.mainQueue.async {
                     self?.appendPage(newPage)
                 }
             },
             onFetched: { [weak self] result in
-                self?.maingQueue.async {
+                self?.mainQueue.async {
                     switch result {
                         case .success(let newPage):
                             self?.appendPage(newPage)
@@ -41,4 +41,5 @@ final class DefaultCharactersListViewModel: BaseCharactersListViewModel {
                 }
             })
     }
+    
 }

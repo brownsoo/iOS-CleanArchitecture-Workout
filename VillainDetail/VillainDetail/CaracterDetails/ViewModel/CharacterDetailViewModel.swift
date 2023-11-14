@@ -99,5 +99,8 @@ extension DefaultCharacterDetailViewModel: CharacterDetailViewModel {
         } else {
             markFavorite()
         }
+        AppNotification.shared.notifyFavoritesChanged(
+            FavoritesChanges(sender: String(describing: self), ids: [character.id])
+        )
     }
 }

@@ -15,12 +15,22 @@ public protocol CharactersRepository {
     ///   - page: 페이지 단위 1 ~ n
     ///   - refreshing: etag 를 사용하지 않고, 데이터를 가져옴.
     ///   - onCached: 캐시 스토리지에서 데이터를 가져옴.
-    ///   - onFetched: 데이터 서비스에서 가져옴.
+    ///   - onFetched: 네트워크 데이터 서비스에서 가져옴.
     /// - Returns: Task
-    func fetchList(page: Int,
-                   refreshing: Bool,
-                   onCached: @escaping(PagedData<MarvelCharacter>?) -> Void,
-                   onFetched: @escaping (Result<PagedData<MarvelCharacter>, Error>) -> Void
+    func getCharacters(page: Int,
+                       refreshing: Bool,
+                       onCached: @escaping(PagedData<MarvelCharacter>?) -> Void,
+                       onFetched: @escaping (Result<PagedData<MarvelCharacter>, Error>) -> Void
+    ) -> Cancellable
+    
+    
+    /// 특정 캐릭터들을 불러옴
+    /// - Parameters:
+    ///   - ids: 캐릭터 id
+    ///   - onResult: 캐시 스토리지에서 데이터 가져옴
+    /// - Returns: Task
+    func getCharacters(ids: [Int],
+                       onResult: @escaping (Result<[MarvelCharacter], Error>) -> Void
     ) -> Cancellable
     
     
@@ -34,15 +44,15 @@ public protocol CharactersRepository {
     ) -> Cancellable
     
     
-    func getFavoriteList(page: Int,
-                         onResult: @escaping (Result<PagedData<MarvelCharacter>, Error>) -> Void
-    ) -> Cancellable
+    func getFavorites(page: Int,
+                      onResult: @escaping (Result<PagedData<MarvelCharacter>, Error>) -> Void) -> Cancellable
+    
+    func getFavorites(ids: [Int], 
+                      onResult: @escaping (Result<[MarvelCharacter], Error>) -> Void) -> Cancellable
     
     func favorite(character: MarvelCharacter,
-                  onResult: @escaping (Result<Bool, Error>) -> Void
-    ) -> Cancellable
+                  onResult: @escaping (Result<Bool, Error>) -> Void) -> Cancellable
     
     func unfavorite(character: MarvelCharacter,
-                    onResult: @escaping (Result<Bool, Error>) -> Void
-    ) -> Cancellable
+                    onResult: @escaping (Result<Bool, Error>) -> Void) -> Cancellable
 }
